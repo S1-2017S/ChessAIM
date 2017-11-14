@@ -68,7 +68,7 @@ var traite_requete = function (req, res) {
 			case '/req_retour_membre':
 				req_retour_membre(req, res, query);
 				break;
-			case '/rejoindre_salon':
+			case '/req_rejoindre_salon':
 				req_rejoindre_salon(req, res, query);
 				break;
 //			case '/commencer_actif':
