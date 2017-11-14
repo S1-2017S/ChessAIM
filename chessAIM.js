@@ -14,12 +14,12 @@ var querystring = require("querystring");
 // DECLARATION DES DIFFERENTS MODULES CORRESPONDANT A CHAQUE ACTION
 //-------------------------------------------------------------------------
 
-var req_retour_acceuil = require("./req_retour_acceuil.js");
+var req_retour_accueil = require("./req_retour_accueil.js");
 var req_connexion = require("./req_connexion.js");
 var req_inscription = require("./req_inscription.js");
 var req_confirme_inscription = require("./req_confirme_inscription.js");
-// var req_retour_membre = require("./req_retour_membre.js");
-// var req_rejoindre_salon = require("./req_rejoindre_salon.js");
+var req_retour_membre = require("./req_retour_membre.js");
+var req_rejoindre_salon = require("./req_rejoindre_salon.js");
 // var req_commencer_actif = require("./req_commencer_actif.js");
 // var req_commencer_passif = require("./req_commencer_passif.js");
 // var req_choix = require("./req_choix.js");
@@ -53,8 +53,8 @@ var traite_requete = function (req, res) {
     try {
         switch (pathname) {
             case '/':
-            case '/retour_acceuil':
-                req_retour_acceuil(req, res, query);
+            case '/retour_accueil':
+                req_retour_accueil(req, res, query);
                 break;
             case '/req_connexion':
                 req_connexion(req, res, query);
@@ -65,12 +65,12 @@ var traite_requete = function (req, res) {
             case '/req_confirme_inscription':
 				req_confirme_inscription(req, res, query);
 				break;
-//			case '/req_retour_membre':
-//				req_retour_membre(req, res, query);
-//				break;
-//			case '/rejoindre_salon':
-//				req_rejoindre_salon(req, res, query);
-//				break;
+			case '/req_retour_membre':
+				req_retour_membre(req, res, query);
+				break;
+			case '/rejoindre_salon':
+				req_rejoindre_salon(req, res, query);
+				break;
 //			case '/commencer_actif':
 //				req_commencer_actif(req, res, query);
 //				break;
