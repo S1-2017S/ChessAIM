@@ -8,6 +8,7 @@
 
 var fs = require('fs');
 var path = require('path');
+require('remedial');
 
 var req_rejoindre_salon = function(req,res,query) {
 
