@@ -1,7 +1,7 @@
 //=========================================================================
 // Traitement de l'envoi d'une requête fichier
-// Auteur : P. Thiré
-// Version : 09/10/2015
+// Bennaceur / Fumey-Humbert / Mercier-Handisyde / Vasseur
+// Version : 14.11.2017
 //=========================================================================
 
 "use strict";
