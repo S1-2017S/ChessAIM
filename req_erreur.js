@@ -1,14 +1,13 @@
 //=========================================================================
 // Affichage d'une page d'erreur
-// Auteur : P. Thiré
-// Version : 09/10/2015
+// Bennaceur / Fumey-Humbert / Mercier-Handisyde / Vasseur
+// Version : 14.11.2017
 //=========================================================================
 
 "use strict";
 
 var fs = require("fs");
 var path = require("path");
-"use strict";
 
 
 var show_erreur = function (req, res, query) {
