@@ -7,13 +7,13 @@
 var fs = require("fs");
 require('remedial');
 
-var trait = function(req, res, query) {
+var req_retour_membre = function(req, res, query) {
 	var marqueurs;
 	var page;
 
 	// AFFICHAGE DE LA PAGE D'ACCUEIL MEMBRE
 
-	page = fs.readFileSync('res_accueil-membre.html', 'utf-8');
+	page = fs.readFileSync('res_accueil_membre.html', 'utf-8');
 
 	marqueurs = {};
 	marqueurs.pseudo = "";
@@ -27,4 +27,4 @@ var trait = function(req, res, query) {
 };
 //==================================================
 
-module.exports = trait;
+module.exports = req_retour_membre;
