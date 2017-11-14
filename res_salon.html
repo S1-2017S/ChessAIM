@@ -1,0 +1,40 @@
+<!DOCTYPE>
+<html>
+
+<head>
+
+	<meta charset ="UTF-8" />
+	<title> Salon</title>
+
+</head>
+
+<body>
+
+
+	<p>Bonjour, {login}! Nous somme le {date}.
+	<form action ="req_retour_membre" method="GET">
+		<button name="action" value="disconnect">Se déconnecter</button>
+	</form>
+	</p>
+
+	
+	
+	<p>{login}
+	<form action ="req_commencer_passif" method="GET">
+		<button name="action" value="defy">Défier</button>
+	</form>
+	</p>
+
+
+	<p>
+	Ici, vous pouvez défier quiconque est simultanément connecté en cliquant sur défier. Le joueur à l'origine du défi perd automatiquement la main en début de partie.
+	</p>
+
+
+	<p>
+	Astuce du jour: {astuce aléatoire}
+	</p>
+
+</body>
+
+</html>
