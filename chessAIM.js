@@ -53,7 +53,7 @@ var traite_requete = function (req, res) {
     try {
         switch (pathname) {
             case '/':
-            case '/retour_accueil':
+            case '/req_retour_accueil':
                 req_retour_accueil(req, res, query);
                 break;
             case '/req_connexion':
@@ -68,28 +68,28 @@ var traite_requete = function (req, res) {
 			case '/req_retour_membre':
 				req_retour_membre(req, res, query);
 				break;
-			case '/rejoindre_salon':
+			case '/req_rejoindre_salon':
 				req_rejoindre_salon(req, res, query);
 				break;
-//			case '/commencer_actif':
+//			case '/req_commencer_actif':
 //				req_commencer_actif(req, res, query);
 //				break;
-//			case '/commencer_passif':
+//			case '/req_commencer_passif':
 //				req_commencer_passif(req, res, query);
 //				break;
 //			case '/choix':
 //				req_choix(req, res, query);
 //				break;
-//			case '/abandon':
+//			case '/req_abandon':
 //				req_choix(req, res, query);
 //				break;
-//			case '/placement':
+//			case '/req_placement':
 //				req_placement(req, res, query);
 //				break;
-//			case '/passer_actif':
+//			case '/req_passer_actif':
 //				req_passer_actif(req, res, query);
 //				break;
-//			case '/stats':
+//			case '/req_stats':
 //				req_stats(req, res, query);
 //				break;
 			default:
