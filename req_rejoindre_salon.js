@@ -19,7 +19,7 @@ var req_rejoindre_salon = function(req,res,query) {
 
 
 	marqueurs = {};
-	marqueurs.login = query.login;
+	marqueurs.pseudo = query.pseudo;
 	marqueurs.date = query.date;
 	marqueurs.astuce = query.astuce;
 
