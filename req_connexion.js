@@ -34,6 +34,10 @@ var trait = function (req, res, query) {
 		if(listeMembres[i].pseudo === query.pseudo) {
 			if(listeMembres[i].password === query.password) {
 				trouve = true;
+				listeMembres[i].statut = "true";
+				console.log("prout");
+				contenu_fichier = JSON.stringify(listeMembres);
+				fs.writeFileSync("membres.json", contenu_fichier, 'utf-8');
 			}
 		}
 		i++;

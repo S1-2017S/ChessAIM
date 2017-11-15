@@ -50,6 +50,7 @@ var trait = function (req, res, query) {
 			nouveauMembre = {};
 			nouveauMembre.pseudo = query.pseudo;
 			nouveauMembre.password = query.password;
+			nouveauMembre.statut = "";
 			listeMembres[listeMembres.length] = nouveauMembre;
 
 			contenu_fichier = JSON.stringify(listeMembres);
