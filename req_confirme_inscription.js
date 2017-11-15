@@ -19,11 +19,7 @@ var trait = function (req, res, query) {
 	var contenu_fichier;
 	var listeMembres;
 	var trouve;
-	var code;
-	var pwd_check;
-	var pwd_check2;
-	var i;
-	var j;
+	var pwd_len;
 
 	// ON LIT LES COMPTES EXISTANTS
 
@@ -42,29 +38,15 @@ var trait = function (req, res, query) {
 	}
 
 	if(query.password.length < 6) {
-		pwd_check = false;
+		pwd_len = false;
 	} else {
-		pwd_check = true;
-		
-		code = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIGKLMNOPQRSTUVWXYZ";
-		pwd_check2 = true;	
-		
-		for (i = 0; i < query.password.length; i++) {
-			for (j = 0; j < code.length; j++) {
-				if (query.password[i] !== code[j]) {
-					pwd_check2 = false;
-					j = code.length;
-				}
-			} 		
-		break;
-		}
+		pwd_len = true;
 	}
-
-
+	
 
 		// SI PAS TROUVE, ON AJOUTE LE NOUVEAU COMPTE DANS LA LISTE DES COMPTES
 
-		if(trouve === false && pwd_check === true && pwd_check2 === true) {
+		if(trouve === false && pwd_len === true) {
 			nouveauMembre = {};
 			nouveauMembre.pseudo = query.pseudo;
 			nouveauMembre.password = query.password;
@@ -88,22 +70,12 @@ var trait = function (req, res, query) {
 			marqueurs.pseudo = query.pseudo;
 			page = page.supplant(marqueurs);
 
-		} else if(pwd_check === false) {
+		} else if(pwd_len === false) {
 
 			page = fs.readFileSync('res_inscription.html', 'utf-8');
 
 			marqueurs = {};
 			marqueurs.erreur = "ERREUR : Veuillez entrer un mot de passe d'au moins 6 caractères";
-			marqueurs.pseudo = query.pseudo;
-			marqueurs.password = query.password;
-			page = page.supplant(marqueurs);
-
-		} else if(pwd_check2 === false) {
-			
-			page = fs.readFileSync('res_inscription.html', 'utf-8');
-			
-			marqueurs = {};
-			marqueurs.erreur = "ERREUR : Veuillez respecter la syntaxe de mot de passe indiquée";
 			marqueurs.pseudo = query.pseudo;
 			marqueurs.password = query.password;
 			page = page.supplant(marqueurs);
