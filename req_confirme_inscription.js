@@ -20,6 +20,7 @@ var trait = function (req, res, query) {
 	var listeMembres;
 	var trouve;
 	var pwd_len;
+	var pwd_check;
 	var i;
 	// ON LIT LES COMPTES EXISTANTS
 
@@ -36,17 +37,31 @@ var trait = function (req, res, query) {
 		}
 		i++;
 	}
-
+	
+	// ON VERIFIE LA LONGUEUR DU PASSWORD
 	if(query.password.length < 6) {
 		pwd_len = false;
 	} else {
 		pwd_len = true;
 	}
+
+	// ON VERIFIE LES CARACTERES DU PASSWORD
+	pwd_check = true;
+	var pwd = query.password;
+	for(var j = 0; j < pwd.length; j++) {
+		if((pwd.charCodeAt(j) < 48 || pwd.charCodeAt(j) > 57) && 
+		   (pwd.charCodeAt(j) < 65 || pwd.charCodeAt(j) > 90) && 
+		   (pwd.charCodeAt(j) < 97 || pwd.charCodeAt(j) > 122)) {
+			
+			pwd_check = false;
+			break;
+		}
+	}
 	
 
 		// SI PAS TROUVE, ON AJOUTE LE NOUVEAU COMPTE DANS LA LISTE DES COMPTES
 
-		if(trouve === false && pwd_len === true) {
+		if(trouve === false && pwd_len === true && pwd_check === true) {
 			nouveauMembre = {};
 			nouveauMembre.pseudo = query.pseudo;
 			nouveauMembre.password = query.password;
@@ -76,6 +91,16 @@ var trait = function (req, res, query) {
 
 			marqueurs = {};
 			marqueurs.erreur = "ERREUR : Veuillez entrer un mot de passe d'au moins 6 caractères";
+			marqueurs.pseudo = query.pseudo;
+			marqueurs.password = query.password;
+			page = page.supplant(marqueurs);
+
+		} else if(pwd_check === false) {
+			
+			page = fs.readFileSync('res_inscription.html', 'utf-8');
+
+			marqueurs = {};
+			marqueurs.erreur = "ERREUR : Veuillez entrer un mot de passe avec des caractères alphanumérique";
 			marqueurs.pseudo = query.pseudo;
 			marqueurs.password = query.password;
 			page = page.supplant(marqueurs);
