@@ -16,7 +16,7 @@ var req_retour_membre = function(req, res, query) {
 	page = fs.readFileSync('res_accueil_membre.html', 'utf-8');
 
 	marqueurs = {};
-	marqueurs.pseudo = "";
+	marqueurs.pseudo = query.pseudo;
 	marqueurs.date = "";
 	marqueurs.heure = "";
 	page = page.supplant(marqueurs);
