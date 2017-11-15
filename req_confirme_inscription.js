@@ -20,7 +20,7 @@ var trait = function (req, res, query) {
 	var listeMembres;
 	var trouve;
 	var pwd_len;
-
+	var i;
 	// ON LIT LES COMPTES EXISTANTS
 
 	contenu_fichier = fs.readFileSync("membres.json", 'utf-8');    
