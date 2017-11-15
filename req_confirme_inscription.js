@@ -103,7 +103,7 @@ var trait = function (req, res, query) {
 			page = fs.readFileSync('res_inscription.html', 'utf-8');
 			
 			marqueurs = {};
-			marqueurs.erreur = "ERREUR : Veuillez respecter la syntaxe de mot de passe imdiquée";
+			marqueurs.erreur = "ERREUR : Veuillez respecter la syntaxe de mot de passe indiquée";
 			marqueurs.pseudo = query.pseudo;
 			marqueurs.password = query.password;
 			page = page.supplant(marqueurs);
