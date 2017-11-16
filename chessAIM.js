@@ -20,7 +20,7 @@ var req_inscription = require("./req_inscription.js");
 var req_confirme_inscription = require("./req_confirme_inscription.js");
 var req_retour_membre = require("./req_retour_membre.js");
 var req_rejoindre_salon = require("./req_rejoindre_salon.js");
-// var req_commencer_actif = require("./req_commencer_actif.js");
+ var req_commencer_actif = require("./req_commencer_actif.js");
 // var req_commencer_passif = require("./req_commencer_passif.js");
 // var req_choix = require("./req_choix.js");
 // var req_abandon = require("./req_abandon.js");
@@ -71,9 +71,9 @@ var traite_requete = function (req, res) {
 			case '/req_rejoindre_salon':
 				req_rejoindre_salon(req, res, query);
 				break;
-//			case '/req_commencer_actif':
-//				req_commencer_actif(req, res, query);
-//				break;
+			case '/req_commencer_actif':
+				req_commencer_actif(req, res, query);
+				break;
 //			case '/req_commencer_passif':
 //				req_commencer_passif(req, res, query);
 //				break;
