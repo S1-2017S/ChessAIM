@@ -20,11 +20,11 @@ var trait = function(req, res, query) {
 	liste_membre = JSON.parse(contenu_fichier);
 
 	var liste = "";
-
 	for (i = 0; i < liste_membre.length; i++) {
-		if (liste_membre[i].pseudo !== query.pseudo) {
+		if (liste_membre[i].pseudo !== query.pseudo && liste_membre[i].etat === "disponible") {
 			liste += "<a href=./req_commencer_actif?pseudo=" + query.pseudo + "&adv=" + liste_membre[i].pseudo + ">" + liste_membre[i].pseudo + "</a>";
 			liste += "<br>";
+			console.log("coucou");
 		}
 
 	}
