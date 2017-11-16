@@ -14,7 +14,19 @@ var req_rejoindre_salon = function(req,res,query) {
 
 	var marqueurs;
 	var page;
-	
+	var contenu_fichier;
+	var liste_membre;
+	var disponible = "disponible";
+
+
+	contenu_fichier = fs.readFileSync("salon.json", 'utf-8');
+	liste_membre = JSON.parse(contenu_fichier);
+		
+		liste_membre.push(query.pseudo);
+
+	contenu_fichier = JSON.stringify(liste_membre);
+	fs.writeFileSync("salon.json", contenu_fichier, 'utf-8');
+
 	page = fs.readFileSync('res_salon.html', 'UTF-8');
 
 
