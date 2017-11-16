@@ -17,12 +17,15 @@ var req_rejoindre_salon = function(req,res,query) {
 	var contenu_fichier;
 	var liste_membre;
 	var disponible = "disponible";
-
+	var nouveau_joueur;
 
 	contenu_fichier = fs.readFileSync("salon.json", 'utf-8');
 	liste_membre = JSON.parse(contenu_fichier);
 		
-		liste_membre.push(query.pseudo);
+		nouveau_joueur = {};
+		nouveau_joueur.pseudo = query.pseudo;
+		nouveau_joueur.etat = disponible;
+		liste_membre.push(nouveau_joueur);
 
 	contenu_fichier = JSON.stringify(liste_membre);
 	fs.writeFileSync("salon.json", contenu_fichier, 'utf-8');

@@ -13,15 +13,15 @@ var req_retour_membre = function(req, res, query) {
 	var contenu_fichier;
 	var liste_membre;
 	var i;
-
+	var indisponible = "indisponible"
 	contenu_fichier = fs.readFileSync("salon.json", 'utf-8');
 	liste_membre = JSON.parse(contenu_fichier);
 
 	for(i = 0; i < liste_membre.length; i++){
-		if(liste_membre[i] === query.pseudo){
-			liste_membre.splice(i, 1);
-			console.log("olivier pd");
-		}
+		if(liste_membre[i].pseudo === query.pseudo){
+			liste_membre[i].etat = indisponible;
+			console.log(liste_membre.length);
+			}
 	}
 
 	contenu_fichier = JSON.stringify(liste_membre);
