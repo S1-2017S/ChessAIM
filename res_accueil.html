@@ -7,25 +7,28 @@
 <title>ChessAIM</title>
 </head>
 
+	<body background="img_bg_accueil.jpg";>
 
-<h2><img src="img_favicon.ico"> ChessAIM</h2>
+		<h2><img src="img_favicon.ico"> ChessAIM</h2>
 
-{erreur}
+		{erreur}
 
-<p/>
+		<p/>
 
-<form action="/req_connexion" method="GET"> 
-    <input type="text" name="pseudo" value="{pseudo}"> 
-    <br/>
-    <input type="password" name="password" value="">
-    <br/>
-    <input type="submit" name="action" value="Se connecter">
-</form>
+			<form action="/req_connexion" method="GET"> 
+				<input type="text" name="pseudo" value="{pseudo}"> 
+				<br/>
+				<input type="password" name="password" value="">
+				<br/>
+				<input type="submit" name="action" value="Se connecter">
+			</form>
 
-<p/>
+		<p/>
 
-<form action="/req_inscription" method="GET">
-    <button name="action" value="creer">Créer compte</button>
-</form>
+		<form action="/req_inscription" method="GET">
+			<button name="action" value="creer">Créer compte</button>
+		</form>
+
+	</body>
 
 </html>
