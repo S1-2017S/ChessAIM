@@ -20,7 +20,6 @@ var req_retour_membre = function(req, res, query) {
 	for(i = 0; i < liste_membre.length; i++){
 		if(liste_membre[i].pseudo === query.pseudo){
 			liste_membre[i].etat = indisponible;
-			console.log(liste_membre.length);
 			}
 	}
 
