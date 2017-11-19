@@ -39,6 +39,7 @@ var req_rejoindre_salon = function(req,res,query) {
 		nouveau_joueur = {};
 		nouveau_joueur.pseudo = query.pseudo;
 		nouveau_joueur.etat = disponible;
+		nouveau_joueur.adv = "non";
 		liste_membre.push(nouveau_joueur);
 
 		contenu_fichier = JSON.stringify(liste_membre);
