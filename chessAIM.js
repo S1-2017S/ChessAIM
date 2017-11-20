@@ -22,9 +22,9 @@ var req_retour_membre = require("./req_retour_membre.js");
 var req_rejoindre_salon = require("./req_rejoindre_salon.js");
 var req_commencer_actif = require("./req_commencer_actif.js");
 var req_commencer_passif = require("./req_commencer_passif.js");
-// var req_choix = require("./req_choix.js");
+var req_choix = require("./req_choix.js");
 // var req_abandon = require("./req_abandon.js");
-// var req_placement = require("./req_placement.js");
+var req_placement = require("./req_placement.js");
 // var req_passer_actif = require("./req_passer_actif.js");
 // var req_stats = require("./req_stats.js");
 
@@ -77,15 +77,15 @@ var traite_requete = function (req, res) {
 			case '/req_commencer_passif':
 				req_commencer_passif(req, res, query);
 				break;
-//			case '/choix':
-//				req_choix(req, res, query);
-//				break;
+			case '/req_choix':
+				req_choix(req, res, query);
+				break;
 //			case '/req_abandon':
 //				req_choix(req, res, query);
 //				break;
-//			case '/req_placement':
-//				req_placement(req, res, query);
-//				break;
+			case '/req_placement':
+				req_placement(req, res, query);
+				break;
 //			case '/req_passer_actif':
 //				req_passer_actif(req, res, query);
 //				break;
