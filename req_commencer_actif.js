@@ -24,11 +24,19 @@ var trait = function(req, res, query) {
 		if (liste_membre[i].pseudo !== query.pseudo && liste_membre[i].etat === "disponible") {
 			liste += "<a href=./req_commencer_passif?pseudo=" + query.pseudo + "&adv=" + liste_membre[i].pseudo + ">" + liste_membre[i].pseudo + "</a>";
 			liste += "<br>";
-	
+
 		}
 
 	}
-
+	for(i = 0; i < liste_membre.length; i++) {
+		if(liste_membre[i].adv === query.pseudo){
+			
+			page = fs.readFileSync('res_actif.html','utf-8');
+			res.writeHead(200, {'Content-type': 'text/html'});
+			res.write(page);
+			res.end();
+		}
+	}
 	page = fs.readFileSync('res_salon.html','utf-8');
 
 	marqueurs = {};
