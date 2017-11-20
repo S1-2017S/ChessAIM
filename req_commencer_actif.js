@@ -16,7 +16,9 @@ var trait = function(req, res, query) {
 	var liste_membre;
 	var i;
 	var liste;
+	var test;
 
+	test = false;
 	contenu_fichier = fs.readFileSync("salon.json", 'utf-8');
 	liste_membre = JSON.parse(contenu_fichier);
 
@@ -32,13 +34,22 @@ var trait = function(req, res, query) {
 	for(i = 0; i < liste_membre.length; i++) {
 		if(liste_membre[i].adv === query.pseudo){
 			
-			page = fs.readFileSync('res_choix.html','utf-8');
-			res.writeHead(200, {'Content-type': 'text/html'});
-			res.write(page);
-			res.end();
+			for (i = 0; i < liste_membre.length; i++) {
+				if (liste_membre[i].pseudo === query.pseudo) {
+					liste_membre[i].etat = "indisponible";
+					contenu_fichier = JSON.stringify(liste_membre);
+					fs.writeFileSync("salon.json", contenu_fichier, "UTF-8");
+				
+				}
+			}
+			test = true;
 		}
 	}
-	page = fs.readFileSync('res_salon.html','utf-8');
+	if(test === true) {
+		page = fs.readFileSync('res_choix.html','utf-8');
+	} else {
+		page = fs.readFileSync('res_salon.html','utf-8');
+	}
 
 	marqueurs = {};
 	marqueurs.pseudo = query.pseudo;
