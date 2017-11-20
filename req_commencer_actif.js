@@ -22,7 +22,7 @@ var trait = function(req, res, query) {
 	var liste = "";
 	for (i = 0; i < liste_membre.length; i++) {
 		if (liste_membre[i].pseudo !== query.pseudo && liste_membre[i].etat === "disponible") {
-			liste += "<a href=./req_commencer_actif?pseudo=" + query.pseudo + "&adv=" + liste_membre[i].pseudo + ">" + liste_membre[i].pseudo + "</a>";
+			liste += "<a href=./req_commencer_passif?pseudo=" + query.pseudo + "&adv=" + liste_membre[i].pseudo + ">" + liste_membre[i].pseudo + "</a>";
 			liste += "<br>";
 	
 		}
