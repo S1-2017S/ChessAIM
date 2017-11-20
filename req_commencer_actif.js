@@ -1,7 +1,8 @@
-//==================================================================================
-//requete req_commencer_actif
-// Fumey-Humbert / Mercier-Handisyde / Banesseur / Vasseur
-//===================================================================================
+//=============================================================================
+// Traitement de req_commencer_actif
+// Bennaceur /  Fumey-Humbert / Mercier-Handisyde / Vasseur
+// Version : 20.11.2017
+//==============================================================================
 
 "use strict";
 
@@ -31,7 +32,7 @@ var trait = function(req, res, query) {
 	for(i = 0; i < liste_membre.length; i++) {
 		if(liste_membre[i].adv === query.pseudo){
 			
-			page = fs.readFileSync('res_actif.html','utf-8');
+			page = fs.readFileSync('res_choix.html','utf-8');
 			res.writeHead(200, {'Content-type': 'text/html'});
 			res.write(page);
 			res.end();

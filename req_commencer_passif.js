@@ -20,7 +20,7 @@ var trait = function(req, res, query) {
 	for (i = 0; i < liste_membre.length; i++) {
 		if (liste_membre[i].pseudo === query.pseudo) {
 			liste_membre[i].adv = query.adv;
-			liste_membre[i].statut = "indisponible";
+			liste_membre[i].etat = "indisponible";
 			contenu_fichier = JSON.stringify(liste_membre);
 			fs.writeFileSync("salon.json", contenu_fichier, "UTF-8");
 		
