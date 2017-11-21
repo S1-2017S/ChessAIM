@@ -16,7 +16,8 @@ var trait = function(req, res, query) {
 	var j;
 	var marqueurs;
 
-	test = false;
+	test = "a";
+
 
 	contenu_fichier = fs.readFileSync("salon.json", 'utf-8');
 	liste_membre = JSON.parse(contenu_fichier);
@@ -26,12 +27,16 @@ var trait = function(req, res, query) {
 	for(i = 0; i < liste_membre.length; i++){
 		if(liste_membre[i].pseudo === query.pseudo){
 				if(liste_membre[i].statut === "actif"){
-					test = true;
+					test = "b"
+				}else if(liste_membre[i].adv === ""){
+					test = "c"
 				}
 		}
 	}
-
-	if(test === true){
+	
+	if(test === "c"){
+		page = fs.readFileSync('res_fin.html', 'utf-8');
+	}else if(test === "b"){
 		page = fs.readFileSync('res_choix.html', 'utf-8');
 	}else{
 		page = fs.readFileSync('res_passif.html', 'utf-8');

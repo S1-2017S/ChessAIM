@@ -4,13 +4,19 @@
 <head>
 <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
 <title>ChessAIM</title>
-<meta http-equiv="refresh" content="3; url=/req_passer_actif?pseudo=c">
+<meta http-equiv="refresh" content="3; url=/req_passer_actif?pseudo={pseudo}">
 
 </head>
 
 <body>
 
+{pseudo}
+
 <h2>J'ATTEND MON TOUR </h2>
+
+<form action="req_abandon" method="GET">
+<button name="pseudo" value="{pseudo}">Abandonner</button>
+</form>
 
 </body>
 
