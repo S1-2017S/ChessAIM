@@ -154,7 +154,7 @@ var trait = function (req, res, query) {
 				page = fs.readFileSync('res_inscription.html', 'UTF-8');
 
 				marqueurs = {};
-				marqueurs.erreur = "Erreur: Le login est trop long, ou comporte des caractères non autorisés."
+				marqueurs.erreur = "Erreur: Le login est trop court, ou comporte des caractères non autorisés."
 					marqueurs.pseudo = query.pseudo;
 				marqueurs.password = query.password;
 				page = page.supplant(marqueurs);
