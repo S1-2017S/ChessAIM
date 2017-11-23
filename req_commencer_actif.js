@@ -7,6 +7,7 @@
 "use strict";
 
 var fs = require("fs");
+var moment = require('moment');
 require('remedial');
 
 var trait = function(req, res, query) {
@@ -59,7 +60,7 @@ var trait = function(req, res, query) {
 	marqueurs = {};
 	marqueurs.pseudo = query.pseudo;
 	marqueurs.joueurs = liste;
-	marqueurs.date = "";
+	marqueurs.date = moment().format('LLL');
 	marqueurs.heure = "";
 	page = page.supplant(marqueurs);
 

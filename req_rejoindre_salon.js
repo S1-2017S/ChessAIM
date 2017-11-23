@@ -8,6 +8,7 @@
 
 var fs = require('fs');
 var path = require('path');
+var moment = require('moment');
 require('remedial');
 
 var req_rejoindre_salon = function(req,res,query) {
@@ -50,7 +51,7 @@ var req_rejoindre_salon = function(req,res,query) {
 
 	marqueurs = {};
 	marqueurs.pseudo = query.pseudo;
-	marqueurs.date = query.date;
+	marqueurs.date = moment().format('LLL');;
 	marqueurs.astuce = query.astuce;
 
 

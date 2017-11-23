@@ -7,6 +7,7 @@
 "use strict";
 
 var fs = require("fs");
+var moment = require('moment');
 require('remedial');
 
 var trait = function (req, res, query) {
@@ -61,6 +62,7 @@ var trait = function (req, res, query) {
 		page = fs.readFileSync('res_accueil_membre.html', 'UTF-8');
 
 		marqueurs = {};
+		marqueurs.date = moment().format('LLL');
 		marqueurs.pseudo = query.pseudo;
 		page = page.supplant(marqueurs);
 	}
