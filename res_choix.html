@@ -6,20 +6,111 @@
 <title>ChessAIM</title>
 </head>
 
-<body>
+	<body>
 
-{pseudo}
+		{pseudo}
 
-<h2>JE CHOISIT MA PIECE</h2>
+		<h2>JE CHOISIT MA PIECE</h2>
 
-<form action="req_choix" method="GET">
-<button name="pseudo" value="{pseudo}">Choisir</button>
-</form>
+		<form action="req_choix" method="GET">
+			<button name="pseudo" value="{pseudo}">Choisir</button>
+		</form>
 
-<form action="req_abandon" method="GET">
-<button name="pseudo" value="{pseudo}">Abandonner</button>
-</form>
+		<form action="req_abandon" method="GET">
+			<button name="pseudo" value="{pseudo}">Abandonner</button>
+		</form>
 
-</body>
+		<link rel="stylesheet" type="text/css" href="css_tableau.css">
+		<title> Grille d'échecs </title>
+		<table id="plateau" cellspacing="0" cellpadding="0"> <!--retire les bordures-->
+
+		<tr> <!--ligne 1-->
+			<td><a href=req_choix?id="00"&pseudo={pseudo}><img src="ours.jpg"/></a></td>		
+			<td><a href=req_choix?id="01"&pseudo={pseudo}><img src="ping.jpg"/></a></td>		
+			<td><a href=req_choix?id="02"&pseudo={pseudo}><img src="ours.jpg"/></a></td>		
+			<td><a href=req_choix?id="03"&pseudo={pseudo}><img src="ping.jpg"/></a></td>		
+			<td><a href=req_choix?id="04"&pseudo={pseudo]><img src="ours.jpg"/></a></td>		
+			<td><a href=req_choix?id="05"&pseudo={pseudo}><img src="ping.jpg"/></a></td>		
+			<td><a href=req_choix?id="06"&pseudo={pseudo}><img src="ours.jpg"/></a></td>		
+			<td><a href=req_choix?id="07"&pseudo={pseudo}><img src="ping.jpg"/></a></td>		
+		</tr>
+
+		<tr> <!--ligne 2-->
+			<td><a href=req_choix?id="10"&pseudo={pseudo}><img src="ping.jpg"/></a></td>		
+			<td><a href=req_choix?id="11"&pseudo={pseudo}><img src="ours.jpg"/></a></td>		
+			<td><a href=req_choix?id="12"&pseudo={pseudo}><img src="ping.jpg"/></a></td>		
+			<td><a href=req_choix?id="13"&pseudo={pseudo}><img src="ours.jpg"/></a></td>		
+			<td><a href=req_choix?id="14"&pseudo={pseduo}><img src="ping.jpg"/></a></td>		
+			<td><a href=req_choix?id="15"&pseudo={pseudo}><img src="ours.jpg"/></a></td>		
+			<td><a href=req_choix?id="16"&pseudo={pseudo}><img src="ping.jpg"/></a></td>		
+			<td><a href=req_choix?id="17"&pseudo={pseudo}><img src="ours.jpg"/></a></td>		
+		</tr>
+
+		<tr> <!--ligne 3-->
+			<td><a href=req_choix?id="20"&pseudo={pseudo}><img src="ours.jpg"/></a></td>		
+			<td><a href=req_choix?id="21"&pseudo={pseudo}><img src="ping.jpg"/></a></td>		
+			<td><a href=req_choix?id="22"&pseudo={pseudo}><img src="ours.jpg"/></a></td>		
+			<td><a href=req_choix?id="23"&pseudo={pseudo}><img src="ping.jpg"/></a></td>		
+			<td><a href=req_choix?id="24"&pseudo={pseudo}><img src="ours.jpg"/></a></td>		
+			<td><a href=req_choix?id="25"&pseudo={pseudo}><img src="ping.jpg"/></a></td>		
+			<td><a href=req_choix?id="26"&pseudo={pseudo}><img src="ours.jpg"/></a></td>		
+			<td><a href=req_choix?id="27"&pseudo={pseudo}><img src="ping.jpg"/></a></td>		
+		</tr>
+
+		<tr> <!--ligne 4-->
+			<td><a href=req_choix?id="30"&pseudo={pseudo}><img src="ping.jpg"/></a></td>		
+			<td><a href=req_choix?id="31"&pseudo={pseudo}><img src="ours.jpg"/></a></td>		
+			<td><a href=req_choix?id="32"&pseudo={pseudo}><img src="ping.jpg"/></a></td>		
+			<td><a href=req_choix?id="33"&pseudo={pseudo}><img src="ours.jpg"/></a></td>		
+			<td><a href=req_choix?id="34"&pseudo={pseudo}><img src="ping.jpg"/></a></td>		
+			<td><a href=req_choix?id="35"&pseudo={pseudo}><img src="ours.jpg"/></a></td>		
+			<td><a href=req_choix?id="36"&pseudo={pseudo}><img src="ping.jpg"/></a></td>		
+			<td><a href=req_choix?id="37"&pseudo={pseudo}><img src="ours.jpg"/></a></td>		
+		</tr>
+
+		<tr> <!--ligne 5-->
+			<td><a href=req_choix?id="40"&pseudo={pseudo}><img src="ours.jpg"/></a></td>		
+			<td><a href=req_choix?id="41"&pseudo={pseudo}><img src="ping.jpg"/></a></td>		
+			<td><a href=req_choix?id="42"&pseudo={pseudo}><img src="ours.jpg"/></a></td>		
+			<td><a href=req_choix?id="43"&pseudo={pseudo}><img src="ping.jpg"/></a></td>		
+			<td><a href=req_choix?id="44"&pseudo={pseudo}><img src="ours.jpg"/></a></td>		
+			<td><a href=req_choix?id="45"&pseudo={pseudo}><img src="ping.jpg"/></a></td>		
+			<td><a href=req_choix?id="46"&pseudo={pseudo}><img src="ours.jpg"/></a></td>		
+			<td><a href=req_choix?id="47"&pseudo={pseudo}><img src="ping.jpg"/></a></td>		
+		</tr>
+
+		<tr> <!--ligne 6-->
+			<td><a href=req_choix?id="50"&pseudo={pseudo}><img src="ping.jpg"/></a></td>		
+			<td><a href=req_choix?id="51"&pseudo{pseudo}><img src="ours.jpg"/></a></td>		
+			<td><a href=req_choix?id="52"&pseudo={pseudo}><img src="ping.jpg"/></a></td>		
+			<td><a href=req_choix?id="53"&pseudo={pseudo}><img src="ours.jpg"/></a></td>		
+			<td><a href=req_choix?id="54"&pseudo={pseudo}><img src="ping.jpg"/></a></td>		
+			<td><a href=req_choix?id="55"&pseudo={pseudo}><img src="ours.jpg"/></a></td>		
+			<td><a href=req_choix?id="56"&pseudo={pseudo}><img src="ping.jpg"/></a></td>		
+			<td><a href=req_choix?id="57"&pseudo={pseudo}><img src="ours.jpg"/></a></td>		
+		</tr>
+
+		<tr> <!--ligne 7-->
+			<td><a href=req_choix?id="60"&pseudo={pseudo}><img src="ours.jpg"/></a></td>		
+			<td><a href=req_choix?id="61"&pseudo={pseudo}><img src="ping.jpg"/></a></td>		
+			<td><a href=req_choix?id="62"&pseudo={pseudo}><img src="ours.jpg"/></a></td>		
+			<td><a href=req_choix?id="63"&pseudo={pseudo}><img src="ping.jpg"/></a></td>		
+			<td><a href=req_choix?id="64"&pseudo={pseudo}><img src="ours.jpg"/></a></td>		
+			<td><a href=req_choix?id="65"&pseudo={pseudo}><img src="ping.jpg"/></a></td>		
+			<td><a href=req_choix?id="66"&pseudo={pseudo}><img src="ours.jpg"/></a></td>		
+			<td><a href=req_choix?id="67"&pseudp={pseudo}><img src="ping.jpg"/></a></td>		
+		</tr>
+
+		<tr> <!--ligne 8-->
+			<td><a href=req_choix?id="70"&pseudo={pseudo}><img src="ping.jpg"/></a></td>		
+			<td><a href=req_choix?id="71"&pseudo={pseudo}><img src="ours.jpg"/></a></td>		
+			<td><a href=req_choix?id="72"&pseudo={pseudo}><img src="ping.jpg"/></a></td>		
+			<td><a href=req_choix?id="73"&pseudo={pseudo}><img src="ours.jpg"/></a></td>		
+			<td><a href=req_choix?id="74"&pseudo={pseudo}><img src="ping.jpg"/></a></td>		
+			<td><a href=req_choix?id="75"&pseudo={pseudo}><img src="ours.jpg"/></a></td>		
+			<td><a href=req_choix?id="76"&pseudo={pseudo}><img src="ping.jpg"/></a></td>		
+			<td><a href=req_choix?id="77"&pseudo={pseudo}><img src="ours.jpg"/></a></td>		
+		</tr>
+	</body>
 
 </html>
