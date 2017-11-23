@@ -5,6 +5,7 @@
 "use strict";
 
 var fs = require("fs");
+var moment = require('moment');
 require('remedial');
 
 var req_retour_membre = function(req, res, query) {
@@ -32,8 +33,7 @@ var req_retour_membre = function(req, res, query) {
 
 	marqueurs = {};
 	marqueurs.pseudo = query.pseudo;
-	marqueurs.date = "";
-	marqueurs.heure = "";
+	marqueurs.date = moment().format('LLL');
 	page = page.supplant(marqueurs);
 
 	res.writeHead(200, {'Content-type': 'text/html'});
