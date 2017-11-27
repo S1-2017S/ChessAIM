@@ -4,7 +4,11 @@ input[type=number] {
 	border : 0;
 	text-align : center;
 }
-
+.noir {
+	background : #000000;
+}
+.blanc {
+	background : #FFFFFF;
 table {
 	border : 4px ridge black;
 }
