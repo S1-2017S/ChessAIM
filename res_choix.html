@@ -3,7 +3,40 @@
 
 <head>
 <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
-<title>ChessAIM</title>
+<title>ChessAIM</title><style type="text/css">
+         hr {
+             width: 30%;
+             margin-top: 32px;
+             margin-bottom: 24px;
+         }
+ 
+         #pgn_table {
+             width: auto;
+             height: auto;
+             margin-left: auto;
+             margin-right: auto;
+             border-collapse: collapse;
+             border: 0;
+         }
+ 
+         #png_table tr  td {padding: 2px; }
+ 
+         #chess_desk {
+             clear: both;
+             width: auto;
+             height: auto;
+             margin-top: 32px;
+             margin-bottom: 32px;
+         }
+ 
+         .white_squares {
+             background: #ffffff;
+         }
+         .black_squares {
+             background: #a9a9a9;
+         }
+         </style>
+
 </head>
 
 	<body>
@@ -20,11 +53,246 @@
 			<button name="pseudo" value="{pseudo}">Abandonner</button>
 		</form>
 
-		<link rel="stylesheet" type="text/css" href="css_tableau.css">
+		<link rel="stylesheet" type="text/css" href="css_tableau.css">	
 		<title> Grille d'échecs </title>
-		<table id="plateau" cellspacing="0" cellpadding="0"> <!--retire les bordures-->
-			
-		</table>
+		<div id="chess_desk">
+          	<div id="chess_board_box" style="width: 512px; height: 512px;">
+              	<div id="chess_box" style="width: 512px; height: 512px;">
+                  	<table id="chess_board" style="width: 500px; height: 500px; margin-bottom: 6px; margin-top: 6px;">
+                       	<tbody>
+                            <tr>
+                                <td class="board_angle"></td>
+                            </tr>
+                           	<tr>
+                                <th class="vert_coords">8</th>
+                                <td id="sqr00" class="white_squares" style="">
+									<a href=req_choix?pseudo={pseudo}&x=0&y=0>{00}</a>
+                                </td>
+                                <td id="sqr01" class="black_squares" style="">
+									<a href=req_choix?pseudo={pseudo}&x=0&y=1>{01}</a>
+                                </td>
+                                <td id="sqr02" class="white_squares" style="">
+									<a href=req_choix?pseudo={pseudo}&x=0&y=2>{02}</a>
+                                </td>
+                                <td id="sqr03" class="black_squares" style="">
+									<a href=req_choix?pseudo={pseudo}&x=0&y=3>{03}</a>
+                                </td>
+                                <td id="sqr04" class="white_squares">
+									<a href=req_choix?pseudo={pseudo}&x=0&y=4>{04}</a>
+                                </td>
+                                <td id="sqr05" class="black_squares" style="">
+									<a href=req_choix?pseudo={pseudo}&x=0&y=5>{05}</a>
+                                </td>
+                                <td id="sqr06" class="white_squares" style="">
+									<a href=req_choix?pseudo={pseudo}&x=0&y=6>{06}</a>
+                                </td>
+                                <td id="sqr07" class="black_squares" style="">
+									<a href=req_choix?pseudo={pseudo}&x=0&y=7>{07}</a>
+                                </td>
+                            </tr>
+                           	<tr>
+                                <th class="vert_coords">7</th>
+                                <td id="sqr10" class="black_squares">
+									<a href=req_choix?pseudo={pseudo}&x=1&y=0>{10}</a>
+                                </td>
+                                <td id="sqr10" class="white_squares" style="">
+									<a href=req_choix?pseudo={pseudo}&x=1&y=1>{11}</a>
+                                </td>
+                                <td id="sqr12" class="black_squares">
+									<a href=req_choix?pseudo={pseudo}&x=1&y=2>{12}</a>
+                                </td>
+                                <td id="sqr13" class="white_squares" style="">
+									<a href=req_choix?pseudo={pseudo}&x=1&y=3>{13}</a>
+                                </td>
+                                <td id="sqr14" class="black_squares" style="">
+									<a href=req_choix?pseudo={pseudo}&x=1&y=4>{14}</a>
+                                </td>
+                                <td id="sqr15" class="white_squares" style="">
+									<a href=req_choix?pseudo={pseudo}&x=1&y=5>{15}</a>
+                                </td>
+								<td id="sqr16" class="black_squares">
+									<a href=req_choix?pseudo={pseudo}&x=1&y=6>{16}</a>
+                                </td>
+                                <td id="sqr17" class="white_squares">
+									<a href=req_choix?pseudo={pseudo}&x=1&y=7>{17}</a>
+                                </td>
+                            </tr>
+                           	<tr>
+                                <th class="vert_coords">6</th>
+                                <td id="sqr20" class="white_squares" style="">
+									<a href=req_choix?pseudo={pseudo}&x=2&y=0>{20}</a>
+                                </td>
+                                <td id="sqr21" class="black_squares">
+									<a href=req_choix?pseudo={pseudo}&x=2&y=1>{21}</a>
+                                </td>
+                                <td id="sqr22" class="white_squares" style="">
+									<a href=req_choix?pseudo={pseudo}&x=2&y=2>{22}</a>
+                                </td>
+                                <td id="sqr23" class="black_squares" style="">
+									<a href=req_choix?pseudo={pseudo}&x=2&y=3>{23}</a>
+                                </td>
+                                <td id="sqr24" class="white_squares" style="">
+									<a href=req_choix?pseudo={pseudo}&x=2&y=4>{24}</a>
+                                </td>
+                                <td id="sqr25" class="black_squares">
+									<a href=req_choix?pseudo={pseudo}&x=2&y=5>{25}</a>
+                                </td>
+                                <td id="sqr26" class="white_squares">
+									<a href=req_choix?pseudo={pseudo}&x=2&y=6>{26}</a>
+                                </td>
+                                <td id="sqr27" class="black_squares">
+									<a href=req_choix?pseudo={pseudo}&x=2&y=7>{27}</a>
+                                </td>
+                            </tr>
+                           	<tr>
+                                <th class="vert_coords">5</th>
+                                <td id="sqr30" class="black_squares">
+									<a href=req_choix?pseudo={pseudo}&x=3&y=0>{30}</a>
+                                </td>
+                                <td id="sqr31" class="white_squares" style="">
+									<a href=req_choix?pseudo={pseudo}&x=3&y=1>{31}</a>
+                                </td>
+                                <td id="sqr32" class="black_squares">
+									<a href=req_choix?pseudo={pseudo}&x=3&y=2>{32}</a>
+                                </td>
+                                <td id="sqr33" class="white_squares" style="">
+									<a href=req_choix?pseudo={pseudo}&x=3&y=3>{33}</a>
+                                </td>
+                                <td id="sqr34" class="black_squares" style="">
+									<a href=req_choix?pseudo={pseudo}&x=3&y=4>{34}</a>
+                                </td>
+                                <td id="sqr35" class="white_squares" style="">
+									<a href=req_choix?pseudo={pseudo}&x=3&y=5>{35}</a>
+                                </td>
+                                <td id="sqr36" class="black_squares">
+									<a href=req_choix?pseudo={pseudo}&x=3&y=6>{36}</a>
+                                </td>
+								<td id="sqr37" class="white_squares">
+									<a href=req_choix?pseudo={pseudo}&x=3&y=7>{37}</a>
+                                </td>
+                           	</tr>
+                           	<tr>
+                                <th class="vert_coords">4</th>
+                                <td id="sqr40" class="white_squares">
+									<a href=req_choix?pseudo={pseudo}&x=4&y=0>{40}</a>
+                                </td>
+                                <td id="sqr41" class="black_squares" style="">
+									<a href=req_choix?pseudo={pseudo}&x=4&y=1>{41}</a>
+                                </td>
+                                <td id="sqr42" class="white_squares" style="">
+									<a href=req_choix?pseudo={pseudo}&x=4&y=2>{42}</a>
+                                </td>
+                                <td id="sqr43" class="black_squares" style="">
+									<a href=req_choix?pseudo={pseudo}&x=4&y=3>{43}</a>
+                                </td>
+                                <td id="sqr44" class="white_squares" style="">
+									<a href=req_choix?pseudo={pseudo}&x=4&y=4>{44}</a>
+                                </td>
+                                <td id="sqr45" class="black_squares" style="">
+									<a href=req_choix?pseudo={pseudo}&x=4&y=5>{45}</a>
+                                </td>
+                                <td id="sqr46" class="white_squares" style="">
+									<a href=req_choix?pseudo={pseudo}&x=4&y=6>{46}</a>
+                                </td>
+                              	<td id="sqr47" class="black_squares">
+									<a href=req_choix?pseudo={pseudo}&x=4&y=7>{47}</a>
+                                </td>
+                           	</tr>
+                            <tr>
+                                <th class="vert_coords">3</th>
+                                <td id="sqr50" class="black_squares" style="">
+									<a href=req_choix?pseudo={pseudo}&x=5&y=0>{50}</a>
+                                </td>
+                                <td id="sqr51" class="white_squares">
+									<a href=req_choix?pseudo={pseudo}&x=5&y=1>{51}</a>
+                                </td>
+                                <td id="sqr52" class="black_squares" style="">
+									<a href=req_choix?pseudo={pseudo}&x=5&y=2>{52}</a>
+                                </td>
+                                <td id="sqr53" class="white_squares">
+									<a href=req_choix?pseudo={pseudo}&x=5&y=3>{53}</a>
+                                </td>
+                                <td id="sqr54" class="black_squares">
+									<a href=req_choix?pseudo={pseudo}&x=5&y=4>{54}</a>
+                                </td>
+                                <td id="sqr55" class="white_squares" style="">
+									<a href=req_choix?pseudo={pseudo}&x=5&y=5>{55}</a>
+                                </td>
+                                <td id="sqr56" class="black_squares" style="">
+									<a href=req_choix?pseudo={pseudo}&x=5&y=6>{56}</a>
+                                </td>
+                                <td id="sqr57" class="white_squares" style="">
+									<a href=req_choix?pseudo={pseudo}&x=5&y=7>{57}</a>
+                                </td>
+                            </tr><tr>
+                                <th class="vert_coords">2</th>
+                                <td id="sqr60" class="white_squares" style="">
+									<a href=req_choix?pseudo={pseudo}&x=6&y=0>{60}</a>
+                                </td>
+                                <td id="sqr61" class="black_squares" style="">
+									<a href=req_choix?pseudo={pseudo}&x=6&y=1>{61}</a>
+                                </td>
+                                <td id="sqr62" class="white_squares" style="">
+									<a href=req_choix?pseudo={pseudo}&x=6&y=2>{62}</a>
+                                </td>
+                                <td id="sqr63" class="black_squares" style="">
+									<a href=req_choix?pseudo={pseudo}&x=6&y=3>{63}</a>
+                                </td>
+                                <td id="sqr64" class="white_squares" style="">
+									<a href=req_choix?pseudo={pseudo}&x=6&y=4>{64}</a>
+                                </td>
+                                <td id="sqr65" class="black_squares" style="">
+									<a href=req_choix?pseudo={pseudo}&x=6&y=5>{65}</a>
+                                </td>
+                                <td id="sqr66" class="white_squares" style="">
+									<a href=req_choix?pseudo={pseudo}&x=6&y=6>{66}</a>
+                                </td>
+                                <td id="sqr67" class="black_squares" style="">
+									<a href=req_choix?pseudo={pseudo}&x=6&y=7>{67}</a>
+                                </td>
+                         	</tr>
+                            <tr>
+                                <th class="vert_coords">1</th>
+                                <td id="sqr70" class="black_squares">
+									<a href=req_choix?pseudo={pseudo}&x=7&y=0>{70}</a>
+                                </td>
+                                <td id="sqr71" class="white_squares" style="">
+									<a href=req_choix?pseudo={pseudo}&x=7&y=1>{71}</a>
+                                </td>
+                                <td id="sqr72" class="black_squares" style="">
+									<a href=req_choix?pseudo={pseudo}&x=7&y=2>{72}</a>
+                                </td>
+                                <td id="sqr73" class="white_squares" style="">
+									<a href=req_choix?pseudo={pseudo}&x=7&y=3>{73}</a>
+                                </td>
+                                <td id="sqr74" class="black_squares">
+									<a href=req_choix?pseudo={pseudo}&x=7&y=4>{74}</a>
+                                </td>
+                                <td id="sqr75" class="white_squares" style="">
+									<a href=req_choix?pseudo={pseudo}&x=7&y=5>{75}</a>
+                                </td>
+                                <td id="sqr76" class="black_squares" style="">
+									<a href=req_choix?pseudo={pseudo}&x=7&y=6>{76}</a>
+                                </td>
+                                <td id="sqr77" class="white_squares" style="">
+									<a href=req_choix?pseudo={pseudo}&x=7&y=7>{77}</a>
+                                </td>
+                            </tr><tr>
+                                <td class="board_angle"></td>
+                                <td class="horiz_coords">a</td>
+                                <td class="horiz_coords">b</td>
+                              	<td class="horiz_coords">c</td>
+                                <td class="horiz_coords">d</td>
+                                <td class="horiz_coords">e</td>
+                                <td class="horiz_coords">f</td>
+                               	<td class="horiz_coords">g</td>
+                                <td class="horiz_coords">h</td>
+                                <td class="board_angle"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
 	</body>
-
 </html>
