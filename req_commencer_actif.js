@@ -61,7 +61,6 @@ var trait = function(req, res, query) {
 		marqueurs_board = {};
 		for(var ligne = 0; ligne < 8; ligne++) {
 			for(var colonne = 0; colonne < 8; colonne++) {
-				console.log(liste_init_board[ligne][colonne]);
 				marqueurs_board["sqr_" + ligne + ":" + colonne] = liste_init_board[ligne][colonne];
 			}
 		}
