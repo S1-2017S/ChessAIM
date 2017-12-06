@@ -14,7 +14,9 @@ var trait = function(req, res, query) {
 	var marqueurs;
 	var page;
 	var contenu_fichier;
+	var contenu_init_board;
 	var liste_membre;
+	var liste_init_board;
 	var i;
 	var liste;
 	var test;
@@ -22,7 +24,9 @@ var trait = function(req, res, query) {
 
 	test = false;
 	contenu_fichier = fs.readFileSync("salon.json", 'utf-8');
+	contenu_init_board = fs.readFileSync("init_board.json", 'utf-8');
 	liste_membre = JSON.parse(contenu_fichier);
+	liste_init_board = JSON.parse(contenu_init_board);
 
 	var liste = "";
 	for (i = 0; i < liste_membre.length; i++) {
@@ -49,15 +53,19 @@ var trait = function(req, res, query) {
 			test = true;
 		}
 	}
-
-
+	
 	if(test === true) {
 		page = fs.readFileSync('res_choix.html','utf-8');
 	} else {
 		page = fs.readFileSync('res_salon.html','utf-8');
 	}
-
+	
 	marqueurs = {};
+	for(var ligne = 0; i < 8; i++) {
+		for(var collone = 0; j < 8; j++) {
+			marqueurs[String(ligne) + String(collone)] = liste_init_board[ligne][collone];
+		}
+	}
 	marqueurs.pseudo = query.pseudo;
 	marqueurs.joueurs = liste;
 	marqueurs.date = moment().format('LLL');
