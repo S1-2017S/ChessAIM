@@ -12,6 +12,7 @@ require('remedial');
 
 var trait = function(req, res, query) {
 	var marqueurs;
+	var marqueurs_board;
 	var page;
 	var contenu_fichier;
 	var contenu_init_board;
@@ -56,16 +57,20 @@ var trait = function(req, res, query) {
 	
 	if(test === true) {
 		page = fs.readFileSync('res_choix.html','utf-8');
+		
+		marqueurs_board = {};
+		for(var ligne = 0; ligne < 8; ligne++) {
+			for(var colonne = 0; colonne < 8; colonne++) {
+				console.log(liste_init_board[ligne][colonne]);
+				marqueurs_board["sqr_" + ligne + ":" + colonne] = liste_init_board[ligne][colonne];
+			}
+		}
+		page = page.supplant(marqueurs_board);
 	} else {
 		page = fs.readFileSync('res_salon.html','utf-8');
 	}
 	
-	marqueurs = {};
-	for(var ligne = 0; ligne < 8; ligne++) {
-		for(var colonne = 0; colonne < 8; colonne++) {
-			marqueurs[String(ligne) + String(colonne)] = liste_init_board[ligne][colonne];
-		}
-	}
+	marqueurs = {};	
 	marqueurs.pseudo = query.pseudo;
 	marqueurs.joueurs = liste;
 	marqueurs.date = moment().format('LLL');
