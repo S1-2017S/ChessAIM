@@ -28,7 +28,7 @@ var trait = function(req, res, query) {
 	liste_membre = JSON.parse(contenu_fichier);
 	liste_init_board = JSON.parse(contenu_init_board);
 
-	var liste = "";
+	liste = "";
 	for (i = 0; i < liste_membre.length; i++) {
 		if (liste_membre[i].pseudo !== query.pseudo && liste_membre[i].etat === "disponible") {
 			liste += "<a href=./req_commencer_passif?pseudo=" + query.pseudo + "&adv=" + liste_membre[i].pseudo + ">" + liste_membre[i].pseudo + "</a>";
@@ -61,9 +61,9 @@ var trait = function(req, res, query) {
 	}
 	
 	marqueurs = {};
-	for(var ligne = 0; i < 8; i++) {
-		for(var collone = 0; j < 8; j++) {
-			marqueurs[String(ligne) + String(collone)] = liste_init_board[ligne][collone];
+	for(var ligne = 0; ligne < 8; ligne++) {
+		for(var colonne = 0; colonne < 8; colonne++) {
+			marqueurs[String(ligne) + String(colonne)] = liste_init_board[ligne][colonne];
 		}
 	}
 	marqueurs.pseudo = query.pseudo;
