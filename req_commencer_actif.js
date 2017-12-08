@@ -28,7 +28,7 @@ var trait = function(req, res, query) {
 	contenu_init_board = fs.readFileSync("init_board.json", 'utf-8');
 	liste_membre = JSON.parse(contenu_fichier);
 	liste_init_board = JSON.parse(contenu_init_board);
-
+	
 	liste = "";
 	for (i = 0; i < liste_membre.length; i++) {
 		if (liste_membre[i].pseudo !== query.pseudo && liste_membre[i].etat === "disponible") {
@@ -57,7 +57,8 @@ var trait = function(req, res, query) {
 	
 	if(test === true) {
 		page = fs.readFileSync('res_choix.html','utf-8');
-		
+		fs.writeFileSync(query.pseudo + ".json", contenu_init_board, "UTF-8")
+
 		marqueurs_board = {};
 		for(var ligne = 0; ligne < 8; ligne++) {
 			for(var colonne = 0; colonne < 8; colonne++) {
