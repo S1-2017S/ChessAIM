@@ -17,6 +17,7 @@ var trait = function(req, res, query) {
 	var contenu_board;
 	var liste_board;
 
+	page = fs.readFileSync('res_placement.html', 'utf-8');
 	contenu_board = fs.readFileSync(query.pseudo + ".json", 'utf-8');
 	liste_board = JSON.parse(contenu_board);
 
@@ -27,8 +28,6 @@ var trait = function(req, res, query) {
 		}
 	}
 	page = page.supplant(marqueurs_board);
-
-	page = fs.readFileSync('res_placement.html', 'utf-8');
 
 	marqueurs = {};
 	marqueurs.pseudo = query.pseudo;
