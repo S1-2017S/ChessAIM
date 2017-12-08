@@ -38,6 +38,10 @@ var trait = function(req, res, query) {
 			liste_membre[i].statut = "actif";
 		}
 	}
+	
+	contenu_fichier = JSON.stringify(liste_membre);
+	fs.writeFileSync("salon.json", contenu_fichier, "UTF-8");
+	page = fs.readFileSync("res_passif.html","UTF-8");
 
 	marqueurs_board = {};
 	for(var ligne = 0; ligne < 8; ligne++) {
@@ -47,13 +51,10 @@ var trait = function(req, res, query) {
 	}
 	page = page.supplant(marqueurs_board);
 	
-	contenu_fichier = JSON.stringify(liste_membre);
-	fs.writeFileSync("salon.json", contenu_fichier,'utf-8');
 
 	marqueurs = {};
 	marqueurs.pseudo = query.pseudo;
 	marqueurs.adv 
-		page = fs.readFileSync('res_passif.html', 'utf-8');
 
 	page = page.supplant(marqueurs);
 
