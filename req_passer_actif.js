@@ -17,7 +17,7 @@ var trait = function(req, res, query) {
 	var test;
 	var j;
 	var marqueurs;
-	var marqueurs_baord;
+	var marqueurs_board;
 
 	test = "a";
 

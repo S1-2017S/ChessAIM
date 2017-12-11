@@ -18,11 +18,11 @@ var trait = function(req, res, query) {
 	var i;
 	var marqueurs;
 	var marqueurs_board;
+	var init_board;
+	var contenu_echiquier;
 
 	contenu_fichier = fs.readFileSync("salon.json", "UTF-8");
-	contenu_board = fs.readFileSync(query.adv + ".json", 'utf-8');
 	liste_membre = JSON.parse(contenu_fichier);
-	liste_board = JSON.parse(contenu_board);
 
 	for (i = 0; i < liste_membre.length; i++) {
 		if (liste_membre[i].pseudo === query.pseudo) {
@@ -36,7 +36,9 @@ var trait = function(req, res, query) {
 		}
 	}
 	page = fs.readFileSync('res_passif.html', 'UTF-8');
-
+	contenu_board = fs.readFileSync(query.adv +".json","UTF-8");
+	liste_board = JSON.parse(contenu_board);
+	
 	marqueurs_board = {};
 	for(var ligne = 0; ligne < 8; ligne++) {
 		for(var colonne = 0; colonne < 8; colonne++) {
