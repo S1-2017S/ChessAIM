@@ -2,22 +2,293 @@
 <html>
 
 <head>
-<meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
-<title>ChessAIM</title>
-<meta http-equiv="refresh" content="3; url=/req_passer_actif?pseudo={pseudo}">
+	<meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+	<title>ChessAIM</title>
 
+	<style type="text/css">
+		hr {
+			width: 30%;
+			margin-top: 32px;
+			margin-bottom: 24px;
+		}
+		#pgn_table {
+			width: auto;
+			height: auto;
+			margin-left: auto;
+			margin-right: auto;
+			border-collapse: collapse;
+			border: 0;
+		}
+		#png_table tr td {padding: 2px }
+
+		#chess_desk {
+			clear: both;
+			width: auto;
+			height: auto;
+			margin-top: 32px;
+			margin-bottom: 32px;
+		}
+		.white_squares {
+			background: #ffffff;
+		}
+		.black_squares {
+			background: #a9a9a9;
+		}
+	</style>
+
+	<title>ChessAIM</title>
+	<meta http-equiv="refresh" content="3; url=/req_passer_actif?pseudo={pseudo}">
 </head>
 
 <body>
 
-{pseudo}
+	{pseudo}
 
-<h2>J'ATTEND MON TOUR </h2>
+	<h2>J'ATTEND MON TOUR </h2>
 
-<form action="req_abandon" method="GET">
-<button name="pseudo" value="{pseudo}">Abandonner</button>
-</form>
+	<form action="req_abandon" method="GET">
+		<button name="pseudo" value="{pseudo}">Abandonner</button>
+	</form>
 
-</body>
-
+		<title> Grille d'échecs </title> 
+		<div id="chess_desk">
+			<div id="chess_board_box" style="width: 512px; height: 512px;">
+				<div id="chess_box" style="width: 512px; height: 512px;">
+					<table id="chess_board" style="width: 500px; height: 500px; margin-bottom: 6px; margin-top: 6px;">
+						<tr>
+							<td class="board_angle"></td>
+						</tr>
+						<tr align="center">
+							<th class="vert_coords">8</th>
+							<td id="sqr00" class="white_squares" style="">
+								<img src="{sqr_0:0}">
+							</td>
+							<td id="sqr01" class="black_squares" style="">
+								<img src="{sqr_0:1}">
+							</td>
+							<td id="sqr02" class="white_squares" style="">
+								<img src="{sqr_0:2}">
+							</td>
+							<td id="sqr03" class="black_squares" style="">
+								<img src="{sqr_0:3}">
+							</td>
+							<td id="sqr04" class="white_squares">
+								<img src="{sqr_0:4}">
+							</td>
+							<td id="sqr05" class="black_squares" style="">
+								<img src="{sqr_0:5}">
+							</td>
+							<td id="sqr06" class="white_squares" style="">
+								<img src="{sqr_0:6}">
+							</td>
+							<td id="sqr07" class="black_squares" style="">
+								<img src="{sqr_0:7}">
+							</td>
+						</tr>
+						<tr align="center">
+							<th class="vert_coords">7</th>
+							<td id="sqr00" class="black_squares" style="">
+								<img src="{sqr_1:0}">
+							</td>
+							<td id="sqr01" class="white_squares" style="">
+								<img src="{sqr_1:1}">
+							</td>
+							<td id="sqr02" class="black_squares" style="">
+								<img src="{sqr_1:2}">
+							</td>
+							<td id="sqr03" class="white_squares" style="">
+								<img src="{sqr_1:3}">
+							</td>
+							<td id="sqr04" class="black_squares">
+								<img src="{sqr_1:4}">
+							</td>
+							<td id="sqr05" class="white_squares" style="">
+								<img src="{sqr_1:5}">
+							</td>
+							<td id="sqr06" class="black_squares" style="">
+								<img src="{sqr_1:6}">
+							</td>
+							<td id="sqr07" class="white_squares" style="">
+								<img src="{sqr_1:7}">
+							</td>
+						</tr>
+						<tr align="center">
+							<th class="vert_coords">6</th>
+							<td id="sqr00" class="white_squares" style="">
+								<img src="{sqr_2:0}">
+							</td>
+							<td id="sqr01" class="black_squares" style="">
+								<img src="{sqr_2:1}">
+							</td>
+							<td id="sqr02" class="white_squares" style="">
+								<img src="{sqr_2:2}">
+							</td>
+							<td id="sqr03" class="black_squares" style="">
+								<img src="{sqr_2:3}">
+							</td>
+							<td id="sqr04" class="white_squares">
+								<img src="{sqr_2:4}">
+							</td>
+							<td id="sqr05" class="black_squares" style="">
+								<img src="{sqr_2:5}">
+							</td>
+							<td id="sqr06" class="white_squares" style="">
+								<img src="{sqr_2:6}">
+							</td>
+							<td id="sqr07" class="black_squares" style="">
+								<img src="{sqr_2:7}">
+							</td>
+						</tr>
+						<tr align="center">
+							<th class="vert_coords">5</th>
+							<td id="sqr00" class="black_squares" style="">
+								<img src="{sqr_3:0}">
+							</td>
+							<td id="sqr01" class="white_squares" style="">
+								<img src="{sqr_3:1}">
+							</td>
+							<td id="sqr02" class="black_squares" style="">
+								<img src="{sqr_3:2}">
+							</td>
+							<td id="sqr03" class="white_squares" style="">
+								<img src="{sqr_3:3}">
+							</td>
+							<td id="sqr04" class="black_squares">
+								<img src="{sqr_3:4}">
+							</td>
+							<td id="sqr05" class="white_squares" style="">
+								<img src="{sqr_3:5}">
+							</td>
+							<td id="sqr06" class="black_squares" style="">
+								<img src="{sqr_3:6}">
+							</td>
+							<td id="sqr07" class="white_squares" style="">
+								<img src="{sqr_3:7}">
+							</td>
+						</tr>
+						<tr align="center">
+							<th class="vert_coords">4</th>
+							<td id="sqr00" class="white_squares" style="">
+								<img src="{sqr_4:0}">
+							</td>
+							<td id="sqr01" class="black_squares" style="">
+								<img src="{sqr_4:1}">
+							</td>
+							<td id="sqr02" class="white_squares" style="">
+								<img src="{sqr_4:2}">
+							</td>
+							<td id="sqr03" class="black_squares" style="">
+								<img src="{sqr_4:3}">
+							</td>
+							<td id="sqr04" class="white_squares">
+								<img src="{sqr_4:4}">
+							</td>
+							<td id="sqr05" class="black_squares" style="">
+								<img src="{sqr_4:5}">
+							</td>
+							<td id="sqr06" class="white_squares" style="">
+								<img src="{sqr_4:6}">
+							</td>
+							<td id="sqr07" class="black_squares" style="">
+								<img src="{sqr_4:7}">
+							</td>
+						</tr>
+						<tr align="center">
+							<th class="vert_coords">3</th>
+							<td id="sqr00" class="black_squares" style="">
+								<img src="{sqr_5:0}">
+							</td>
+							<td id="sqr01" class="white_squares" style="">
+								<img src="{sqr_5:1}">
+							</td>
+							<td id="sqr02" class="black_squares" style="">
+								<img src="{sqr_5:2}">
+							</td>
+							<td id="sqr03" class="white_squares" style="">
+								<img src="{sqr_5:3}">
+							</td>
+							<td id="sqr04" class="black_squares">
+								<img src="{sqr_5:4}">
+							</td>
+							<td id="sqr05" class="white_squares" style="">
+								<img src="{sqr_5:5}">
+							</td>
+							<td id="sqr06" class="black_squares" style="">
+								<img src="{sqr_5:6}">
+							</td>
+							<td id="sqr07" class="white_squares" style="">
+								<img src="{sqr_5:7}">
+							</td>
+						</tr>
+						<tr align="center">
+							<th class="vert_coords">2</th>
+							<td id="sqr00" class="white_squares" style="">
+								<img src="{sqr_6:0}">
+							</td>
+							<td id="sqr01" class="black_squares" style="">
+								<img src="{sqr_6:1}">
+							</td>
+							<td id="sqr02" class="white_squares" style="">
+								<img src="{sqr_6:2}">
+							</td>
+							<td id="sqr03" class="black_squares" style="">
+								<img src="{sqr_6:3}">
+							</td>
+							<td id="sqr04" class="white_squares">
+								<img src="{sqr_6:4}">
+							</td>
+							<td id="sqr05" class="black_squares" style="">
+								<img src="{sqr_6:5}">
+							</td>
+							<td id="sqr06" class="white_squares" style="">
+								<img src="{sqr_6:6}">
+							</td>
+							<td id="sqr07" class="black_squares" style="">
+								<img src="{sqr_6:7}">
+							</td>
+						</tr>
+						<tr align="center">
+							<th class="vert_coords">1</th>
+							<td id="sqr00" class="black_squares" style="">
+								<img src="{sqr_7:0}">
+							</td>
+							<td id="sqr01" class="white_squares" style="">
+								<img src="{sqr_7:1}">
+							</td>
+							<td id="sqr02" class="black_squares" style="">
+								<img src="{sqr_7:2}">
+							</td>
+							<td id="sqr03" class="white_squares" style="">
+								<img src="{sqr_7:3}">
+							</td>
+							<td id="sqr04" class="black_squares">
+								<img src="{sqr_7:4}">
+							</td>
+							<td id="sqr05" class="white_squares" style="">
+								<img src="{sqr_7:5}">
+							</td>
+							<td id="sqr06" class="black_squares" style="">
+								<img src="{sqr_7:6}">
+							</td>
+							<td id="sqr07" class="white_squares" style="">
+								<img src="{sqr_7:7}">
+							</td>
+						</tr>
+						<tr>
+							<td class="board_angle"></td>
+							<td class="horiz_coords">a</td>
+							<td class="horiz_coords">b</td>
+							<td class="horiz_coords">c</td>
+							<td class="horiz_coords">d</td>
+							<td class="horiz_coords">e</td>
+							<td class="horiz_coords">f</td>
+							<td class="horiz_coords">g</td>
+							<td class="horiz_coords">h</td>
+							<td class="board_angle"></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</body>
 </html>
