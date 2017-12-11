@@ -53,6 +53,7 @@ var req_rejoindre_salon = function(req,res,query) {
 	marqueurs.pseudo = query.pseudo;
 	marqueurs.date = moment().format('LLL');;
 	marqueurs.astuce = query.astuce;
+	marqueurs.joueurs = "";
 
 
 	page = page.supplant(marqueurs);
