@@ -13,6 +13,7 @@ var trait = function(req, res, query) {
 
 	var page;
 	var color;
+	var board;
 	var adv;
 	var marqueurs;
 	var marqueurs_board;
@@ -21,6 +22,7 @@ var trait = function(req, res, query) {
 	var contenu_fichier;
 	var contenu_board;
 	var i;
+	var tmp;
 
 	contenu_fichier = fs.readFileSync("salon.json", 'utf-8');
 	liste_membre = JSON.parse(contenu_fichier);
@@ -31,17 +33,25 @@ var trait = function(req, res, query) {
 		if(liste_membre[i].pseudo === query.pseudo){
 			adv = liste_membre[i].adv;
 			if(liste_membre[i].color === "blanc") {
-				color = "blanc"
+				color = "blanc";
+				board = query.pseudo + ".json";
 				contenu_board = fs.readFileSync(query.pseudo + ".json", 'utf-8');
 				liste_board = JSON.parse(contenu_board);
 			} else if(liste_membre[i].color === "noir") {
-				color = "noir"
+				color = "noir";
+				board = adv + ".json";
 				contenu_board = fs.readFileSync(adv + ".json", 'utf-8');
 				liste_board = JSON.parse(contenu_board);
 
 			}
 		}
 	}
+	
+	tmp = liste_board[query.x][query.y];
+	liste_board[query.x][query.y] = " ";
+	liste_board[query.x_new][query.y_new] = tmp;
+	contenu_board = JSON.stringify(liste_board);
+	fs.writeFileSync(board, contenu_board);
 
 	for(i = 0; i < liste_membre.length; i++){
 		if(liste_membre[i].pseudo === query.pseudo){
