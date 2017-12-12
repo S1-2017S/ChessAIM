@@ -59,10 +59,11 @@ var trait = function(req, res, query) {
 	}
 
 	if(test === true) {
+
 		page = fs.readFileSync('res_choix.html','utf-8');
 		fs.writeFileSync(query.pseudo + ".json", contenu_init_board, "UTF-8")
 
-			marqueurs_board = {};
+		marqueurs_board = {};
 		for(var ligne = 0; ligne < 8; ligne++) {
 			for(var colonne = 0; colonne < 8; colonne++) {
 
