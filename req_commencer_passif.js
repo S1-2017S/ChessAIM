@@ -45,32 +45,33 @@ var trait = function(req, res, query) {
 		for(var colonne = 0; colonne < 8; colonne++) {
 			
 			if(liste_board[ligne][colonne] === "R") {
-				marqueurs_board["sqr_" + ligne + ":" + colonne] = "rookB.png";
+				marqueurs_board["sqr_" + ligne + ":" + colonne] = "<img src='rookB.png'>";
 			} else if(liste_board[ligne][colonne] === "N") {
-				marqueurs_board["sqr_" + ligne + ":" + colonne] = "knightB.png";
+				marqueurs_board["sqr_" + ligne + ":" + colonne] = "<img src='knightB.png'>";
 			} else if(liste_board[ligne][colonne] === "B") {
-				marqueurs_board["sqr_" + ligne + ":" + colonne] = "bishopB.png";
+				marqueurs_board["sqr_" + ligne + ":" + colonne] = "<img src='bishopB.png'>";
 			} else if(liste_board[ligne][colonne] === "Q") {
-				marqueurs_board["sqr_" + ligne + ":" + colonne] = "queenB.png";
+				marqueurs_board["sqr_" + ligne + ":" + colonne] = "<img src='queenB.png'>";
 			} else if(liste_board[ligne][colonne] === "K") {
-				marqueurs_board["sqr_" + ligne + ":" + colonne] = "kingB.png";
+				marqueurs_board["sqr_" + ligne + ":" + colonne] = "<img src='kingB.png'>";
 			} else if(liste_board[ligne][colonne] === "P") {
-				marqueurs_board["sqr_" + ligne + ":" + colonne] = "pawnB.png";
+				marqueurs_board["sqr_" + ligne + ":" + colonne] = "<img src='pawnB.png'>";
 			} else if(liste_board[ligne][colonne] === "r") {
-				marqueurs_board["sqr_" + ligne + ":" + colonne] = "rookW.png";
+				marqueurs_board["sqr_" + ligne + ":" + colonne] = "<img src='rookW.png'>";
 			} else if(liste_board[ligne][colonne] === "n") {
-				marqueurs_board["sqr_" + ligne + ":" + colonne] = "knightW.png";
+				marqueurs_board["sqr_" + ligne + ":" + colonne] = "<img src='knightW.png'>";
 			} else if(liste_board[ligne][colonne] === "b") {
-				marqueurs_board["sqr_" + ligne + ":" + colonne] = "bishopW.png";
+				marqueurs_board["sqr_" + ligne + ":" + colonne] = "<img src='bishopW.png'>";
 			} else if(liste_board[ligne][colonne] === "q") {
-				marqueurs_board["sqr_" + ligne + ":" + colonne] = "queenW.png";
+				marqueurs_board["sqr_" + ligne + ":" + colonne] = "<img src='queenW.png'>";
 			} else if(liste_board[ligne][colonne] === "k") {
-				marqueurs_board["sqr_" + ligne + ":" + colonne] = "kingW.png";
+				marqueurs_board["sqr_" + ligne + ":" + colonne] = "<img src='kingW.png'>";
 			} else if(liste_board[ligne][colonne] === "p") {
-				marqueurs_board["sqr_" + ligne + ":" + colonne] = "pawnW.png";
+				marqueurs_board["sqr_" + ligne + ":" + colonne] = "<img src='pawnW.png'>";
 			} else if(liste_board[ligne][colonne] === " ") {
-				marqueurs_board["sqr_" + ligne + ":" + colonne] = "vide.png";
+				marqueurs_board["sqr_" + ligne + ":" + colonne] = "<img src='vide.png'>";
 			}
+
 		}
 	}
 	page = page.supplant(marqueurs_board);
