@@ -31,6 +31,7 @@ var req_rejoindre_salon = function(req,res,query) {
 		if(liste_membre[i].pseudo === query.pseudo){
 			test = true;
 			liste_membre[i].etat = disponible;
+			liste_membre[i].color = "blanc";
 			contenu_fichier = JSON.stringify(liste_membre);
 			fs.writeFileSync("salon.json", contenu_fichier, 'utf-8');
 		}

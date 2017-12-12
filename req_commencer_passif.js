@@ -29,6 +29,7 @@ var trait = function(req, res, query) {
 			liste_membre[i].adv = query.adv;
 			liste_membre[i].etat = "indisponible";
 			liste_membre[i].statut = "passif";
+			liste_membre[i].color = "noir";
 			contenu_fichier = JSON.stringify(liste_membre);
 			fs.writeFileSync("salon.json", contenu_fichier, "UTF-8");
 			marqueurs = {};
