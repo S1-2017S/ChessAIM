@@ -29,7 +29,10 @@ var trait = function(req, res, query) {
 	test = false;
 
 	contenu_fichier = fs.readFileSync("salon.json", 'utf-8');
-	liste_membre = JSON.parse(contenu_fichier);
+	liste_membre = JSON.parse(contenu_fichier);	
+	
+	contenu_init_board = fs.readFileSync("init_board.json","UTF-8");
+	liste_init_board = JSON.parse(contenu_init_board);
 
 	contenu_image = fs.readFileSync("pieces.json", 'utf-8');
 	liste_image = JSON.parse(contenu_image);
@@ -64,10 +67,6 @@ var trait = function(req, res, query) {
 	}
 
 	if(test === true) {
-	
-	contenu_board = fs.readFileSync(query.adv +".json","UTF-8");
-	liste_board = JSON.parse(contenu_board);
-
 
 		page = fs.readFileSync('res_choix.html','utf-8');
 
@@ -75,19 +74,19 @@ var trait = function(req, res, query) {
 		for(var ligne = 0; ligne < 8; ligne++) {
 			for(var colonne = 0; colonne < 8; colonne++) {
 			
-				pawn = liste_board[ligne][colonne];	
+				pawn = liste_init_board[ligne][colonne];	
 
-				if(liste_board[ligne][colonne] === init_board[ligne][colonne].toUpperCase()) {
+				if(liste_init_board[ligne][colonne] === liste_init_board[ligne][colonne].toUpperCase() && liste_init_board[ligne][colonne] !== " ") {
 					
 					marqueurs_board["sqr_" + ligne + ":" + colonne] = 
 						"<img src="+liste_image[pawn]+">";
 				
-				} else if(liste_board[ligne][colonne] === init_board[ligne][colonne].toLowerCase()) {
+				} else if(liste_init_board[ligne][colonne] === liste_init_board[ligne][colonne].toLowerCase() && liste_init_board[ligne][colonne] !== " ") {
 					
 					marqueurs_board["sqr_" + ligne + ":" + colonne] = 
 						"<a href='req_choix?pseudo="+query.pseudo+"&x="+ligne+"&y="+colonne+"'><img src="+liste_image[pawn]+"></a>";
 				
-				} else if(liste_board[ligne][colonne] === " ") {
+				} else if(liste_init_board[ligne][colonne] === " ") {
 					
 					marqueurs_board["sqr_" + ligne + ":" + colonne] = 
 						"<img src="+liste_image[pawn]+">";

@@ -43,12 +43,12 @@ var trait = function(req, res, query) {
 			if(liste_membre[i].color === "blanc") {
 
 				color = "blanc";
-				contenu_board = fs.readFileSync(query.pseudo + ".json", 'utf-8');
+				contenu_board = fs.readFileSync(adv + ".json", 'utf-8');
 
 			} else if(liste_membre[i].color === "noir") {
 
 				color = "noir";
-				contenu_board = fs.readFileSync(adv + ".json", 'utf-8');
+				contenu_board = fs.readFileSync(query.pseudo + ".json", 'utf-8');
 
 			}
 
@@ -64,12 +64,12 @@ var trait = function(req, res, query) {
 			
 			if(color === "noir") {
 
-				if(liste_board[ligne][colonne] === liste_board[ligne][colonne].toUpperCase()) {
+				if(liste_board[ligne][colonne] === liste_board[ligne][colonne].toUpperCase() && liste_board[ligne][colonne] !== " ") {
 					
 					marqueurs_board["sqr_" + ligne + ":" + colonne] = 
-						"<img src=liste_image[pawn]>";
+						"<img src="+liste_image[pawn]+">";
 				
-				} else if(liste_board[ligne][colonne] === liste_board[ligne][colonne].toLowerCase()) {
+				} else if(liste_board[ligne][colonne] === liste_board[ligne][colonne].toLowerCase() && liste_board[ligne][colonne] !== " ") {
 					
 					marqueurs_board["sqr_" + ligne + ":" + colonne] = 
 						"<a href='req_placement?pseudo="+query.pseudo+"&x="+query.x+"&y="+query.y+"&x_new="+ligne+"&y_new="+colonne+"'><img src="+liste_image[pawn]+"></a>";
@@ -83,15 +83,15 @@ var trait = function(req, res, query) {
 
 			} else if (color === "blanc") {
 
-				if(liste_board[ligne][colonne] === liste_board[ligne][colonne].toUpperCase()) {
+				if(liste_board[ligne][colonne] === liste_board[ligne][colonne].toUpperCase() && liste_board[ligne][colonne] !== " ") {
 					
 					marqueurs_board["sqr_" + ligne + ":" + colonne] = 
 						"<a href='req_placement?pseudo="+query.pseudo+"&x="+query.x+"&y="+query.y+"&x_new="+ligne+"&y_new="+colonne+"'><img src="+liste_image[pawn]+"></a>";
 				
-				} else if(liste_board[ligne][colonne] === liste_board[ligne][colonne].toLowerCase()) {
+				} else if(liste_board[ligne][colonne] === liste_board[ligne][colonne].toLowerCase() && liste_board[ligne][colonne] !== " ") {
 					
 					marqueurs_board["sqr_" + ligne + ":" + colonne] = 
-						"<img src=liste_image[pawn]>";
+						"<img src="+liste_image[pawn]+">";
 				
 				} else if(liste_board[ligne][colonne] === " ") {
 					
