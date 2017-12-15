@@ -56,27 +56,32 @@ var trait = function(req, res, query) {
 		}
 	}
 
+	var l = 7;
+
 	marqueurs_board = {};
 	for(var ligne = 0; ligne < 8; ligne++) {
+
+		var c = 7;
+
 		for(var colonne = 0; colonne < 8; colonne++) {
 		
-		pawn = liste_board[ligne][colonne];	
-			
+			pawn = liste_board[ligne][colonne];
+
 			if(color === "noir") {
 
 				if(liste_board[ligne][colonne] === liste_board[ligne][colonne].toUpperCase() && liste_board[ligne][colonne] !== " ") {
 					
-					marqueurs_board["sqr_" + ligne + ":" + colonne] = 
+					marqueurs_board["sqr_" + l + ":" + c] = 
 						"<img src="+liste_image[pawn]+">";
 				
 				} else if(liste_board[ligne][colonne] === liste_board[ligne][colonne].toLowerCase() && liste_board[ligne][colonne] !== " ") {
 					
-					marqueurs_board["sqr_" + ligne + ":" + colonne] = 
+					marqueurs_board["sqr_" + l + ":" + c] = 
 						"<a href='req_placement?pseudo="+query.pseudo+"&x="+query.x+"&y="+query.y+"&x_new="+ligne+"&y_new="+colonne+"'><img src="+liste_image[pawn]+"></a>";
 				
 				} else if(liste_board[ligne][colonne] === " ") {
 					
-					marqueurs_board["sqr_" + ligne + ":" + colonne] = 
+					marqueurs_board["sqr_" + l + ":" + c] = 
 						"<a href='req_placement?pseudo="+query.pseudo+"&x="+query.x+"&y="+query.y+"&x_new="+ligne+"&y_new="+colonne+"'><img src="+liste_image[pawn]+"></a>";
 				
 				}
@@ -101,7 +106,9 @@ var trait = function(req, res, query) {
 				}
 			
 			}
+			c--;
 		}
+		l--;
 	}
 	page = page.supplant(marqueurs_board);
 

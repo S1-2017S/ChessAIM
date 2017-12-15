@@ -49,14 +49,20 @@ var trait = function(req, res, query) {
 	}
 	page = fs.readFileSync('res_passif.html', 'UTF-8');
 
+	var l = 7;
+
 	marqueurs_board = {};
 	for(var ligne = 0; ligne < 8; ligne++) {
-		for(var colonne = 0; colonne < 8; colonne++) {
 		
-			pawn = liste_init_board[ligne][colonne];
+		var c = 7;
+
+		for(var colonne = 0; colonne < 8; colonne++) {
+
+			pawn = liste_init_board[l][c];
 			marqueurs_board["sqr_" + ligne + ":" + colonne] = "<img src="+liste_image[pawn]+">";
-			
+			c--;
 		}
+		l--;
 	}
 	page = page.supplant(marqueurs_board);
 
