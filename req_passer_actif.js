@@ -11,10 +11,13 @@ var trait = function(req, res, query) {
 	var page;
 	var color;
 	var adv;
+	var pawn;
 	var contenu_fichier;
 	var contenu_board;
+	var contenu_image;
 	var liste_membre;
 	var liste_board;
+	var liste_image;
 	var i;
 	var test;
 	var j;
@@ -26,6 +29,9 @@ var trait = function(req, res, query) {
 
 	contenu_fichier = fs.readFileSync("salon.json", 'utf-8');
 	liste_membre = JSON.parse(contenu_fichier);
+
+	contenu_image = fs.readFileSync("pieces.json", 'utf-8');
+	liste_image = JSON.parse(contenu_image);
 
 	marqueurs = {};
 	marqueurs.pseudo = query.pseudo;
@@ -57,88 +63,47 @@ var trait = function(req, res, query) {
 		page = fs.readFileSync('res_choix.html', 'utf-8');
 		for(var ligne = 0; ligne < 8; ligne++) {
 			for(var colonne = 0; colonne < 8; colonne++) {
-				if(color === "blanc") {
-					if(liste_board[ligne][colonne] === "R") {
+		
+				pawn = liste_board[ligne][colonne];	
+			
+				if(color === "noir") {
+
+					if(liste_board[ligne][colonne] === liste_board[ligne][colonne].toUpperCase()) {
+						
 						marqueurs_board["sqr_" + ligne + ":" + colonne] = 
-							"<img src='rookB.png'>";
-					} else if(liste_board[ligne][colonne] === "N") {
+							"<a href='req_choix?pseudo="+query.pseudo+"&x="+ligne+"&y="+colonne+"'><img src="+liste_image[pawn]+"></a>";
+					
+					} else if(liste_board[ligne][colonne] === liste_board[ligne][colonne].toLowerCase()) {
+						
 						marqueurs_board["sqr_" + ligne + ":" + colonne] = 
-							"<img src='knightB.png'>";
-					} else if(liste_board[ligne][colonne] === "B") {
-						marqueurs_board["sqr_" + ligne + ":" + colonne] = 
-							"<img src='bishopB.png'>";
-					} else if(liste_board[ligne][colonne] === "Q") {
-						marqueurs_board["sqr_" + ligne + ":" + colonne] = 
-							"<img src='queenB.png'>";
-					} else if(liste_board[ligne][colonne] === "K") {
-						marqueurs_board["sqr_" + ligne + ":" + colonne] = 
-							"<img src='kingB.png'>";
-					} else if(liste_board[ligne][colonne] === "P") {
-						marqueurs_board["sqr_" + ligne + ":" + colonne] = 
-							"<img src='pawnB.png'>";
-					} else if(liste_board[ligne][colonne] === "r") {
-						marqueurs_board["sqr_" + ligne + ":" + colonne] = 
-							"<a href='req_choix?pseudo="+query.pseudo+"&x="+ligne+"&y="+colonne+"'><img src='rookW.png'></a>";
-					} else if(liste_board[ligne][colonne] === "n") {
-						marqueurs_board["sqr_" + ligne + ":" + colonne] = 
-							"<a href='req_choix?pseudo="+query.pseudo+"&x="+ligne+"&y="+colonne+"'><img src='knightW.png'></a>";
-					} else if(liste_board[ligne][colonne] === "b") {
-						marqueurs_board["sqr_" + ligne + ":" + colonne] = 
-							"<a href='req_choix?pseudo="+query.pseudo+"&x="+ligne+"&y="+colonne+"'><img src='bishopW.png'></a>";
-					} else if(liste_board[ligne][colonne] === "q") {
-						marqueurs_board["sqr_" + ligne + ":" + colonne] = 
-							"<a href='req_choix?pseudo="+query.pseudo+"&x="+ligne+"&y="+colonne+"'><img src='queenW.png'></a>";
-					} else if(liste_board[ligne][colonne] === "k") {
-						marqueurs_board["sqr_" + ligne + ":" + colonne] = 
-							"<a href='req_choix?pseudo="+query.pseudo+"&x="+ligne+"&y="+colonne+"'><img src='kingW.png'></a>";
-					} else if(liste_board[ligne][colonne] === "p") {
-						marqueurs_board["sqr_" + ligne + ":" + colonne] = 
-							"<a href='req_choix?pseudo="+query.pseudo+"&x="+ligne+"&y="+colonne+"'><img src='pawnW.png'></a>";
+							"<img src="+liste_image[pawn]+">";
+					
 					} else if(liste_board[ligne][colonne] === " ") {
+						
 						marqueurs_board["sqr_" + ligne + ":" + colonne] = 
-							"<img src='vide.png'>";
-					} 
-				} else if(color === "noir") {
-					if(liste_board[ligne][colonne] === "R") {
+							"<img src="+liste_image[pawn]+">";
+					
+					}
+
+				} else if (color === "blanc") {
+
+					if(liste_board[ligne][colonne] === liste_board[ligne][colonne].toUpperCase()) {
+						
 						marqueurs_board["sqr_" + ligne + ":" + colonne] = 
-							"<a href='req_choix?pseudo="+query.pseudo+"&x="+ligne+"&y="+colonne+"'><img src='rookB.png'></a>";
-					} else if(liste_board[ligne][colonne] === "N") {
+							"<img src="+liste_image[pawn]+">";
+					
+					} else if(liste_board[ligne][colonne] === liste_board[ligne][colonne].toLowerCase()) {
+						
 						marqueurs_board["sqr_" + ligne + ":" + colonne] = 
-							"<a href='req_choix?pseudo="+query.pseudo+"&x="+ligne+"&y="+colonne+"'><img src='knightB.png'></a>";
-					} else if(liste_board[ligne][colonne] === "B") {
-						marqueurs_board["sqr_" + ligne + ":" + colonne] = 
-							"<a href='req_choix?pseudo="+query.pseudo+"&x="+ligne+"&y="+colonne+"'><img src='bishopB.png'></a>";
-					} else if(liste_board[ligne][colonne] === "Q") {
-						marqueurs_board["sqr_" + ligne + ":" + colonne] = 
-							"<a href='req_choix?pseudo="+query.pseudo+"&x="+ligne+"&y="+colonne+"'><img src='queenB.png'></a>";
-					} else if(liste_board[ligne][colonne] === "K") {
-						marqueurs_board["sqr_" + ligne + ":" + colonne] = 
-							"<a href='req_choix?pseudo="+query.pseudo+"&x="+ligne+"&y="+colonne+"'><img src='kingB.png'></a>";
-					} else if(liste_board[ligne][colonne] === "P") {
-						marqueurs_board["sqr_" + ligne + ":" + colonne] = 
-							"<a href='req_choix?pseudo="+query.pseudo+"&x="+ligne+"&y="+colonne+"'><img src='pawnB.png'></a>";
-					} else if(liste_board[ligne][colonne] === "r") {
-						marqueurs_board["sqr_" + ligne + ":" + colonne] = 
-							"<img src='rookW.png'>";
-					} else if(liste_board[ligne][colonne] === "n") {
-						marqueurs_board["sqr_" + ligne + ":" + colonne] = 
-							"<img src='knightW.png'>";
-					} else if(liste_board[ligne][colonne] === "b") {
-						marqueurs_board["sqr_" + ligne + ":" + colonne] = 
-							"<img src='bishopW.png'>";
-					} else if(liste_board[ligne][colonne] === "q") {
-						marqueurs_board["sqr_" + ligne + ":" + colonne] = 
-							"<img src='queenW.png'>";
-					} else if(liste_board[ligne][colonne] === "k") {
-						marqueurs_board["sqr_" + ligne + ":" + colonne] = 
-							"<img src='kingW.png'>";
-					} else if(liste_board[ligne][colonne] === "p") {
-						marqueurs_board["sqr_" + ligne + ":" + colonne] = 
-							"<img src='pawnW.png'>";
+							"<a href='req_choix?pseudo="+query.pseudo+"&x="+ligne+"&y="+colonne+"'><img src="+liste_image[pawn]+"></a>";
+					
 					} else if(liste_board[ligne][colonne] === " ") {
+						
 						marqueurs_board["sqr_" + ligne + ":" + colonne] = 
-							"<img src='vide.png'>";
-					} 
+							"<img src="+liste_image[pawn]+">";
+					
+					}
+				
 				}
 			}
 		}
@@ -150,47 +115,10 @@ var trait = function(req, res, query) {
 		marqueurs_board = {};
 		for(var ligne = 0; ligne < 8; ligne++) {
 			for(var colonne = 0; colonne < 8; colonne++) {
-
-				if(liste_board[ligne][colonne] === "R") {
-					marqueurs_board["sqr_" + ligne + ":" + colonne] = 
-					"<img src='rookB.png'>";
-				} else if(liste_board[ligne][colonne] === "N") {
-					marqueurs_board["sqr_" + ligne + ":" + colonne] = 
-					"<img src='knightB.png'>";
-				} else if(liste_board[ligne][colonne] === "B") {
-					marqueurs_board["sqr_" + ligne + ":" + colonne] = 
-					"<img src='bishopB.png'>";
-				} else if(liste_board[ligne][colonne] === "Q") {
-					marqueurs_board["sqr_" + ligne + ":" + colonne] = 
-					"<img src='queenB.png'>";
-				} else if(liste_board[ligne][colonne] === "K") {
-					marqueurs_board["sqr_" + ligne + ":" + colonne] = 
-					"<img src='kingB.png'>";
-				} else if(liste_board[ligne][colonne] === "P") {
-					marqueurs_board["sqr_" + ligne + ":" + colonne] = 
-					"<img src='pawnB.png'>";
-				} else if(liste_board[ligne][colonne] === "r") {
-					marqueurs_board["sqr_" + ligne + ":" + colonne] = 
-					"<img src='rookW.png'>";
-				} else if(liste_board[ligne][colonne] === "n") {
-					marqueurs_board["sqr_" + ligne + ":" + colonne] = 
-					"<img src='knightW.png'>";
-				} else if(liste_board[ligne][colonne] === "b") {
-					marqueurs_board["sqr_" + ligne + ":" + colonne] = 
-					"<img src='bishopW.png'>";
-				} else if(liste_board[ligne][colonne] === "q") {
-					marqueurs_board["sqr_" + ligne + ":" + colonne] = 
-					"<img src='queenW.png'>";
-				} else if(liste_board[ligne][colonne] === "k") {
-					marqueurs_board["sqr_" + ligne + ":" + colonne] = 
-					"<img src='kingW.png'>";
-				} else if(liste_board[ligne][colonne] === "p") {
-					marqueurs_board["sqr_" + ligne + ":" + colonne] = 
-					"<img src='pawnW.png'>";
-				} else if(liste_board[ligne][colonne] === " ") {
-					marqueurs_board["sqr_" + ligne + ":" + colonne] = 
-					"<img src='vide.png'>";
-				}
+				
+				pawn = liste_board[ligne][colonne];
+				marqueurs_board["sqr_" + ligne + ":" + colonne] = "<img src="+liste_image[pawn]+">";
+			
 			}
 		}
 		page = page.supplant(marqueurs_board);

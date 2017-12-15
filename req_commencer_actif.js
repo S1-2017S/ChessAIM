@@ -14,32 +14,36 @@ var trait = function(req, res, query) {
 	var marqueurs;
 	var marqueurs_board;
 	var page;
+	var pawn;
 	var contenu_fichier;
 	var contenu_init_board;
+	var contenu_image;
 	var liste_membre;
 	var liste_init_board;
+	var liste_image;
 	var i;
 	var liste;
 	var test;
 	var versus;
 
 	test = false;
+
 	contenu_fichier = fs.readFileSync("salon.json", 'utf-8');
 	liste_membre = JSON.parse(contenu_fichier);
-	contenu_init_board = fs.readFileSync("init_board.json", 'utf-8');
-	liste_init_board = JSON.parse(contenu_init_board);
+
+	contenu_image = fs.readFileSync("pieces.json", 'utf-8');
+	liste_image = JSON.parse(contenu_image);
 
 	liste = "";
 	for (i = 0; i < liste_membre.length; i++) {
+		
 		if (liste_membre[i].pseudo !== query.pseudo && liste_membre[i].etat === "disponible") {
 			liste += "<a href=./req_commencer_passif?pseudo=" + query.pseudo + "&adv=" + liste_membre[i].pseudo + ">" + liste_membre[i].pseudo + "</a>";
 			liste += "<br>";
 
+			}
+
 		}
-
-	}
-
-
 
 	for(i = 0; i < liste_membre.length; i++) {
 		if(liste_membre[i].adv === query.pseudo){
@@ -60,59 +64,45 @@ var trait = function(req, res, query) {
 	}
 
 	if(test === true) {
+	
+	contenu_board = fs.readFileSync(query.adv +".json","UTF-8");
+	liste_board = JSON.parse(contenu_board);
+
 
 		page = fs.readFileSync('res_choix.html','utf-8');
-		fs.writeFileSync(query.pseudo + ".json", contenu_init_board, "UTF-8")
 
 		marqueurs_board = {};
 		for(var ligne = 0; ligne < 8; ligne++) {
 			for(var colonne = 0; colonne < 8; colonne++) {
+			
+				pawn = liste_board[ligne][colonne];	
 
-				if(liste_init_board[ligne][colonne] === "R") {
+				if(liste_board[ligne][colonne] === init_board[ligne][colonne].toUpperCase()) {
+					
 					marqueurs_board["sqr_" + ligne + ":" + colonne] = 
-						"<img src='rookB.png'>";
-				} else if(liste_init_board[ligne][colonne] === "N") {
+						"<img src="+liste_image[pawn]+">";
+				
+				} else if(liste_board[ligne][colonne] === init_board[ligne][colonne].toLowerCase()) {
+					
 					marqueurs_board["sqr_" + ligne + ":" + colonne] = 
-						"<img src='knightB.png'>";
-				} else if(liste_init_board[ligne][colonne] === "B") {
+						"<a href='req_choix?pseudo="+query.pseudo+"&x="+ligne+"&y="+colonne+"'><img src="+liste_image[pawn]+"></a>";
+				
+				} else if(liste_board[ligne][colonne] === " ") {
+					
 					marqueurs_board["sqr_" + ligne + ":" + colonne] = 
-						"<img src='bishopB.png'>";
-				} else if(liste_init_board[ligne][colonne] === "Q") {
-					marqueurs_board["sqr_" + ligne + ":" + colonne] = 
-						"<img src='queenB.png'>";
-				} else if(liste_init_board[ligne][colonne] === "K") {
-					marqueurs_board["sqr_" + ligne + ":" + colonne] = 
-						"<img src='kingB.png'>";
-				} else if(liste_init_board[ligne][colonne] === "P") {
-					marqueurs_board["sqr_" + ligne + ":" + colonne] = 
-						"<img src='pawnB.png'>";
-				} else if(liste_init_board[ligne][colonne] === "r") {
-					marqueurs_board["sqr_" + ligne + ":" + colonne] = 
-						"<a href='req_choix?pseudo="+query.pseudo+"&x="+ligne+"&y="+colonne+"'><img src='rookW.png'></a>";
-				} else if(liste_init_board[ligne][colonne] === "n") {
-					marqueurs_board["sqr_" + ligne + ":" + colonne] = 
-						"<a href='req_choix?pseudo="+query.pseudo+"&x="+ligne+"&y="+colonne+"'><img src='knightW.png'></a>";
-				} else if(liste_init_board[ligne][colonne] === "b") {
-					marqueurs_board["sqr_" + ligne + ":" + colonne] = 
-						"<a href='req_choix?pseudo="+query.pseudo+"&x="+ligne+"&y="+colonne+"'><img src='bishopW.png'></a>";
-				} else if(liste_init_board[ligne][colonne] === "q") {
-					marqueurs_board["sqr_" + ligne + ":" + colonne] = 
-						"<a href='req_choix?pseudo="+query.pseudo+"&x="+ligne+"&y="+colonne+"'><img src='queenW.png'></a>";
-				} else if(liste_init_board[ligne][colonne] === "k") {
-					marqueurs_board["sqr_" + ligne + ":" + colonne] = 
-						"<a href='req_choix?pseudo="+query.pseudo+"&x="+ligne+"&y="+colonne+"'><img src='kingW.png'></a>";
-				} else if(liste_init_board[ligne][colonne] === "p") {
-					marqueurs_board["sqr_" + ligne + ":" + colonne] = 
-						"<a href='req_choix?pseudo="+query.pseudo+"&x="+ligne+"&y="+colonne+"'><img src='pawnW.png'></a>";
-				} else if(liste_init_board[ligne][colonne] === " ") {
-					marqueurs_board["sqr_" + ligne + ":" + colonne] = 
-						"<img src='vide.png'>";
-				} 
+						"<img src="+liste_image[pawn]+">";
+				
+				}
+				 
 			}
 		}
+
 		page = page.supplant(marqueurs_board);
+
 	} else {
+
 		page = fs.readFileSync('res_salon.html','utf-8');
+
 	}
 
 		marqueurs = {};
