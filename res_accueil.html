@@ -5,34 +5,40 @@
 <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
 <link rel="icon" href="img_favicon.ico" />
 <title>ChessAIM</title>
+<style type="text/css">
+	body {
+		background-size: cover;
+		background-repeat: no-repeat;
+	}
+</style>
 </head>
 
-	<body background="img_bg_accueil.jpg";>
-	
-		<script>NekoType="neon"</script>
-		<h1 id=nl><script src="http://webneko.net/n200504.js"></script>
-		<a href="http://webneko.net">Neko</a></h1>
+<body background="img_bg_accueil.jpg";>
 
-		<h2><img src="img_favicon.ico"> ChessAIM</h2>
+<script>NekoType="neon"</script>
+<h1 id=nl><script src="http://webneko.net/n200504.js"></script>
+<a href="http://webneko.net">Neko</a></h1>
 
-		{erreur}
+<h2><img src="img_favicon.ico"> ChessAIM</h2>
 
-		<p/>
+{erreur}
 
-			<form action="/req_connexion" method="GET"> 
-				<input type="text" name="pseudo" value="{pseudo}"> 
-				<br/>
-				<input type="password" name="password" value="">
-				<br/>
-				<input type="submit" name="action" value="Se connecter">
-			</form>
+<p/>
 
-		<p/>
+<form action="/req_connexion" method="GET"> 
+<input type="text" name="pseudo" value="{pseudo}"> 
+<br/>
+<input type="password" name="password" value="">
+<br/>
+<input type="submit" name="action" value="Se connecter">
+</form>
 
-		<form action="/req_inscription" method="GET">
-			<button name="action" value="creer">Créer compte</button>
-		</form>
+<p/>
 
-	</body>
+<form action="/req_inscription" method="GET">
+<button name="action" value="creer">Créer compte</button>
+</form>
+
+</body>
 
 </html>
