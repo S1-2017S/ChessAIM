@@ -23,6 +23,7 @@ var trait = function(req, res, query) {
 	var j;
 	var marqueurs;
 	var marqueurs_board;
+	var horiz_coord = "ABCDEFGH";
 
 	test = "a";
 
@@ -62,7 +63,7 @@ var trait = function(req, res, query) {
 		page = fs.readFileSync('res_choix.html', 'utf-8');
 
 		var l = 7;
-
+		
 		for(var ligne = 0; ligne < 8; ligne++) {
 		
 			var c = 7;
@@ -72,7 +73,9 @@ var trait = function(req, res, query) {
 				pawn = liste_board[ligne][colonne];
 
 				if(color === "noir") {
-
+					marqueurs_board[colonne + 1] = String(8 - colonne);
+					marqueurs_board[horiz_coord[colonne]] = horiz_coord[7 - colonne];
+	
 					if(liste_board[ligne][colonne] === liste_board[ligne][colonne].toUpperCase() && liste_board[ligne][colonne] !== " ") {
 						
 						marqueurs_board["sqr_" + l + ":" + c] = 
@@ -91,6 +94,8 @@ var trait = function(req, res, query) {
 					}
 
 				} else if (color === "blanc") {
+					marqueurs_board[colonne + 1] = String(colonne + 1);
+                	marqueurs_board[horiz_coord[colonne]] = horiz_coord[colonne];
 
 					if(liste_board[ligne][colonne] === liste_board[ligne][colonne].toUpperCase() && liste_board[ligne][colonne] !== " ") {
 						
@@ -132,10 +137,14 @@ var trait = function(req, res, query) {
 				pawn = liste_board[ligne][colonne];
 
 				if(color === "blanc") {
-					
+					marqueurs_board[colonne + 1] = String(colonne + 1);
+					marqueurs_board[horiz_coord[colonne]] = horiz_coord[colonne];
+	
 					marqueurs_board["sqr_" + ligne + ":" + colonne] = "<img src="+liste_image[pawn]+">";
 				} else if(color === "noir") {
-					
+					marqueurs_board[colonne + 1] = String(8 - colonne);
+					marqueurs_board[horiz_coord[colonne]] = horiz_coord[7 - colonne];
+	
 					marqueurs_board["sqr_" + l + ":" + c] = "<img src="+liste_image[pawn]+">";
 				}
 				c--;

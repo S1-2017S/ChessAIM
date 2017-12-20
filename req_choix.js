@@ -57,6 +57,7 @@ var trait = function(req, res, query) {
 	}
 
 	var l = 7;
+	var horiz_coord = "ABCDEFGH";
 
 	marqueurs_board = {};
 	for(var ligne = 0; ligne < 8; ligne++) {
@@ -68,7 +69,9 @@ var trait = function(req, res, query) {
 			pawn = liste_board[ligne][colonne];
 
 			if(color === "noir") {
-
+			marqueurs_board[colonne + 1] = String(8 - colonne);
+            marqueurs_board[horiz_coord[colonne]] = horiz_coord[7 - colonne];	
+				
 				if(liste_board[ligne][colonne] === liste_board[ligne][colonne].toUpperCase() && liste_board[ligne][colonne] !== " ") {
 					
 					marqueurs_board["sqr_" + l + ":" + c] = 
@@ -87,6 +90,8 @@ var trait = function(req, res, query) {
 				}
 
 			} else if (color === "blanc") {
+				marqueurs_board[colonne + 1] = String(colonne + 1);
+                marqueurs_board[horiz_coord[colonne]] = horiz_coord[colonne];
 
 				if(liste_board[ligne][colonne] === liste_board[ligne][colonne].toUpperCase() && liste_board[ligne][colonne] !== " ") {
 					

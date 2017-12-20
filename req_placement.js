@@ -84,9 +84,16 @@ var trait = function(req, res, query) {
 
 			pawn = liste_board[ligne][colonne];	
 
+			var horiz_coord = "ABCDEFGH"
 			if(color === "blanc"){
+				
 				marqueurs_board["sqr_" + ligne + ":" + colonne] = "<img src="+liste_image[pawn]+">";
+				marqueurs_board[colonne + 1] = String(colonne + 1);
+				marqueurs_board[horiz_coord[colonne]] = horiz_coord[colonne];
+
 			} else if(color === "noir"){
+				marqueurs_board[colonne + 1] = String(8 - colonne);
+				marqueurs_board[horiz_coord[colonne]] = horiz_coord[7 - colonne];
 				marqueurs_board["sqr_" + l + ":" + c] = "<img src="+liste_image[pawn]+">";
 			}
 			c--;

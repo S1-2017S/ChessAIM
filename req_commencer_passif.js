@@ -64,6 +64,15 @@ var trait = function(req, res, query) {
 		}
 		l--;
 	}
+	
+	var horiz_coord = "ABCDEFGH"
+	for(i = 0; i < 8; i++) {
+		marqueurs_board[i + 1] = String(8 - i);
+		marqueurs_board[horiz_coord[i]] = horiz_coord[7 - i];
+	}
+
+			
+	
 	page = page.supplant(marqueurs_board);
 
 	page = page.supplant(marqueurs);
