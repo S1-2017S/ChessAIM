@@ -78,7 +78,7 @@ var trait = function(req, res, query) {
 				h = query.x;
 				v = query.y;
 
-				if(liste_board[ligne][colonne] === liste_board[h][v] && liste_board[h][v] === "P") {
+				if(liste_board[h][v] === "P") {
 					console.log(h+v);
 					h_new = Number(h)+1;
 					console.log(liste_board[h][v]);
@@ -90,18 +90,13 @@ var trait = function(req, res, query) {
 						marqueurs_board["sqr_"+ h_new +":"+v] = "<a href='req_placement?pseudo="+query.pseudo+"&x="+ h +"&y="+ v +"&x_new="+ h_new + "&y_new="+ v +"'><img src="+ liste_images[pawn] +"></a>";
 					}
 					v_new = Number(v)+1;
-					if(liste_board[h_new][v_new] !== " " && liste_board[h_new][v_new] === liste_board[h_new][v_new].toLowerCase()) {
+					if(liste_board[h_new][v_new] !== " " && liste_board[h_new][v_new] === liste_board[h_new][v_new].toLowerCase() && liste_board[h_new][v_new] === liste_board[h_new][v_new]) {
 						pawn = liste_board[h_new][v_new];
 						marqueurs_board["sqr_"+ h_new +":"+ v_new] = "<a href='req_placement?pseudo="+ query.pseudo + "&x=" + h +"&y="+ v +"&x_new="+ h_new +"&y_new="+ v_new +"'><img src="+ liste_images[pawn]+"></a>";
 
 					}
 					v_new = Number(v)-1;
-					if(liste_board[h_new][v_new] !== " " && liste_board[h_new][v_new] === liste_board[h_new][v_new].toLowerCase()) {
-						pawn  = liste_board[h_new][v_new];
-						marqueurs_board["sqr_"+ h_new +":"+ v_new] = "<a href='req_placement?pseudo="+query.pseudo+"&x="+ h +"&y="+ v +"&x_new="+ h_new +"&y_new="+ v_new +"'><img src ="+ liste_images[pawn]+"></a>";
-					}
-
-					if(liste_board[h_new][v_new] !== " " && liste_board[h_new][v_new] === liste_board[h_new][v_new].toLowerCase()) {
+					if(liste_board[h_new][v_new] !== " " && liste_board[h_new][v_new] === liste_board[h_new][v_new].toLowerCase() && liste_board[h_new][v_new]=== liste_board[ligne][colonne]) {
 						pawn  = liste_board[h_new][v_new];
 						marqueurs_board["sqr_"+ h_new +":"+ v_new] = "<a href='req_placement?pseudo="+query.pseudo+"&x="+ h +"&y="+ v +"&x_new="+ h_new +"&y_new="+ v_new +"'><img src ="+ liste_images[pawn]+"></a>";
 					}
@@ -110,12 +105,13 @@ var trait = function(req, res, query) {
 
 					marqueurs_board["sqr_" + l + ":" + c] =
 						"<img src="+liste_images[pawn]+">";
+				
 
 				} else if(liste_board[ligne][colonne] === liste_board[ligne][colonne].toLowerCase() && liste_board[ligne][colonne] !== " ") {
 
 					marqueurs_board["sqr_" + l + ":" + c] =
 						"<img src="+liste_images[pawn]+"></a>";
-
+				
 				} else if(liste_board[ligne][colonne] === " ") {
 
 					marqueurs_board["sqr_" + l + ":" + c] =
@@ -123,10 +119,10 @@ var trait = function(req, res, query) {
 
 
 				}
-
+			
 			}else if (color === "blanc") {
 				h = query.x;
-				v = query.y;
+				v = Number(query.y);
 				marqueurs_board[colonne + 1] = String(colonne + 1);
 				marqueurs_board[horiz_coord[colonne]] = horiz_coord[colonne];
 
