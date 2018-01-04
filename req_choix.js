@@ -90,7 +90,7 @@ var trait = function(req, res, query) {
 						marqueurs_board["sqr_"+ h_new +":"+v] = "<a href='req_placement?pseudo="+query.pseudo+"&x="+ h +"&y="+ v +"&x_new="+ h_new + "&y_new="+ v +"'><img src="+ liste_images[pawn] +"></a>";
 					}
 					v_new = Number(v)+1;
-					if (v_new < 7) {
+					if (v_new <= 7) {
 					if(liste_board[h_new][v_new] !== " " && liste_board[h_new][v_new] === liste_board[h_new][v_new].toLowerCase() && liste_board[h_new][v_new] === liste_board[h_new][v_new]) {
 						pawn = liste_board[h_new][v_new];
 						marqueurs_board["sqr_"+ h_new +":"+ v_new] = "<a href='req_placement?pseudo="+ query.pseudo + "&x=" + h +"&y="+ v +"&x_new="+ h_new +"&y_new="+ v_new +"'><img src="+ liste_images[pawn]+"></a>";
@@ -99,7 +99,7 @@ var trait = function(req, res, query) {
 					}
 
 					v_new = Number(v)-1;
-					if (v_new > 0) {
+					if (v_new >= 0) {
 					if(liste_board[h_new][v_new] !== " " && liste_board[h_new][v_new] === liste_board[h_new][v_new].toLowerCase() && liste_board[h_new][v_new]=== liste_board[ligne][colonne]) {
 						pawn  = liste_board[h_new][v_new];
 						marqueurs_board["sqr_"+ h_new +":"+ v_new] = "<a href='req_placement?pseudo="+query.pseudo+"&x="+ h +"&y="+ v +"&x_new="+ h_new +"&y_new="+ v_new +"'><img src ="+ liste_images[pawn]+"></a>";
@@ -139,14 +139,14 @@ var trait = function(req, res, query) {
 
 					}
 					v_new = Number(v)+1;
-					if (v_new < 7) {
+					if (v_new <= 7) {
 					if(liste_board[h_new][v_new] !== " " && liste_board[h_new][v_new] === liste_board[h_new][v_new].toUpperCase()) {
 						pawn = liste_board[h_new][v_new];
 						marqueurs_board["sqr_"+ h_new+":"+ v_new] = "<a href='req_placement?pseudo="+ query.pseudo +"&x="+ h +"&y="+ v +"&x_new="+ h_new + "&y_new="+ v_new+"'><img src="+ liste_images[pawn] +"></a>";
 					}
 					}
 					v_new = Number(v)-1;
-					if (v_new > 0) {
+					if (v_new >= 0) {
 					if(liste_board[h_new][v_new] !== " " && liste_board[h_new][v_new] === liste_board[h_new][v_new].toUpperCase()) {
 						pawn = liste_board[h_new][v_new];
 						marqueurs_board["sqr_"+ h_new +":"+ v_new] = "<a href='req_placement?pseudo="+ query.pseudo +"&x="+ h +"&y="+ v +"&x_new="+ h_new +"&y_new="+ v_new+"'><img src="+ liste_images[pawn] +"></a>";
