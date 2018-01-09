@@ -52,12 +52,33 @@ var trait = function(req, res, query) {
 			}
 		}
 	}
-	
-	tmp = liste_board[query.x][query.y];
-	liste_board[query.x][query.y] = " ";
-	liste_board[query.x_new][query.y_new] = tmp;
-	contenu_board = JSON.stringify(liste_board);
-	fs.writeFileSync(board, contenu_board);
+
+
+	if(listeboard[query.x][query.y] === "r" && liste_board[query.x_new][query.y_new] === "k") {
+
+		tmp = liste_board[query.x_new][query.y_new];
+		liste_board[query.x_new][query.y_new] = liste_board[query.x][query.y];
+		liste_board[query.x][query.y] = tmp;
+		contenu_board = JSON.stringify(liste_board);
+		fs.writeFileSync(board, contenu_board);
+
+	} else if(listeboard[query.x][query.y] === "R" && liste_board[query.x_new][query.y_new] === "K") {
+
+		tmp = liste_board[query.x_new][query.y_new];
+		liste_board[query.x_new][query.y_new] = liste_board[query.x][query.y];
+		liste_board[query.x][query.y] = tmp;
+		contenu_board = JSON.stringify(liste_board);
+		fs.writeFileSync(board, contenu_board);
+
+	} else {
+
+		tmp = liste_board[query.x][query.y];
+		liste_board[query.x][query.y] = " ";
+		liste_board[query.x_new][query.y_new] = tmp;
+		contenu_board = JSON.stringify(liste_board);
+		fs.writeFileSync(board, contenu_board);
+
+	}
 
 	for(i = 0; i < liste_membre.length; i++){
 		if(liste_membre[i].pseudo === query.pseudo){
@@ -71,7 +92,25 @@ var trait = function(req, res, query) {
 			liste_membre[i].statut = "actif";
 		}
 	}
-	
+
+	if(liste_board[query.x][query.y] === "p" && query.x_new === 0) {
+
+		page = fs.readFileSync("res_promotion.html","UTF-8");
+		res.writeHead(200, {'Content-Type': 'text/html'});
+		res.write(page);
+		res.end();
+
+
+	}else if (liste_board[query.x][query.y] === "P" && query.x_new === 7) {
+
+		page = fs.readFileSync("res_promotion.html","UTF-8");
+		res.writeHead(200, {'Content-Type': 'text/html'});
+		res.write(page);
+		res.end();
+
+	}
+
+
 	contenu_fichier = JSON.stringify(liste_membre);
 	fs.writeFileSync("salon.json", contenu_fichier, "UTF-8");
 	page = fs.readFileSync("res_passif.html","UTF-8");
@@ -85,23 +124,23 @@ var trait = function(req, res, query) {
 			pawn = liste_board[ligne][colonne];	
 
 			var horiz_coord = "ABCDEFGH"
-			if(color === "blanc"){
-				
-				marqueurs_board["sqr_" + ligne + ":" + colonne] = "<img src="+liste_image[pawn]+">";
-				marqueurs_board[colonne + 1] = String(colonne + 1);
-				marqueurs_board[horiz_coord[colonne]] = horiz_coord[colonne];
+				if(color === "blanc"){
 
-			} else if(color === "noir"){
-				marqueurs_board[colonne + 1] = String(8 - colonne);
-				marqueurs_board[horiz_coord[colonne]] = horiz_coord[7 - colonne];
-				marqueurs_board["sqr_" + l + ":" + c] = "<img src="+liste_image[pawn]+">";
-			}
+					marqueurs_board["sqr_" + ligne + ":" + colonne] = "<img src="+liste_image[pawn]+">";
+					marqueurs_board[colonne + 1] = String(colonne + 1);
+					marqueurs_board[horiz_coord[colonne]] = horiz_coord[colonne];
+
+				} else if(color === "noir"){
+					marqueurs_board[colonne + 1] = String(8 - colonne);
+					marqueurs_board[horiz_coord[colonne]] = horiz_coord[7 - colonne];
+					marqueurs_board["sqr_" + l + ":" + c] = "<img src="+liste_image[pawn]+">";
+				}
 			c--;
 		}
 		l--;
 	}
 	page = page.supplant(marqueurs_board);
-	
+
 	page = page.supplant(marqueurs);
 
 	res.writeHead(200, {'Content-Type': 'text/html'});
