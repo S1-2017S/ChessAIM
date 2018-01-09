@@ -23,7 +23,7 @@ var trait = function(req, res, query) {
 	contenu_fichier = fs.readFileSync("salon.json", 'utf-8');
 	liste_membre = JSON.parse(contenu_fichier);
 
-
+//=================== Récupération des informations de jeu ============= \\
 	for(var i = 0; i < liste_membre.length; i++){
 		if(liste_membre[i].pseudo === query.pseudo){
 
@@ -45,6 +45,7 @@ var trait = function(req, res, query) {
 		}
 	}
 
+//============ Appel de la fonction de déplacement/affichage ===============\\
 	if (liste_board[query.x][query.y] === "P") {
 	 	resultat = move_black_pawn(req,res,query);
 	} else if (liste_board[query.x][query.y] === "p") {
