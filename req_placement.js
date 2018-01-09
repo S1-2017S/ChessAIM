@@ -93,6 +93,9 @@ var trait = function(req, res, query) {
 		}
 	}
 
+	contenu_fichier = JSON.stringify(liste_membre);
+	fs.writeFileSync("salon.json", contenu_fichier, "UTF-8");
+
 	if(liste_board[query.x][query.y] === "p" && query.x_new === 0) {
 
 		page = fs.readFileSync("res_promotion.html","UTF-8");
@@ -111,8 +114,6 @@ var trait = function(req, res, query) {
 	}
 
 
-	contenu_fichier = JSON.stringify(liste_membre);
-	fs.writeFileSync("salon.json", contenu_fichier, "UTF-8");
 	page = fs.readFileSync("res_passif.html","UTF-8");
 
 	marqueurs_board = {};
