@@ -41,17 +41,18 @@ var trait = function(req, res, query) {
 			adv = liste_membre[i].adv;
 			if(liste_membre[i].statut === "actif"){
 				test = "b"
-			}else if(liste_membre[i].adv === ""){
+			}else if(liste_membre[i].adv === "" || liste_membre[i].statut === ""){
 				test = "c"
 			}
 			if(liste_membre[i].color === "blanc") {
 				color = "blanc";
 				contenu_board = fs.readFileSync(adv + ".json", 'utf-8');
+				liste_board = JSON.parse(contenu_board);
 			} else if(liste_membre[i].color === "noir") {
 				color = "noir";
-				contenu_board = fs.readFileSync(query.pseudo + ".json", 'utf-8');
+				contenu_board = fs.readFileSync(query.pseudo +".json", 'utf-8');
+				liste_board = JSON.parse(contenu_board);
 			}
-			liste_board = JSON.parse(contenu_board);
 		}
 	}
 

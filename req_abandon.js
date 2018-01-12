@@ -18,14 +18,29 @@ var trait = function(req, res, query) {
 	var i;
 	var adv;
 
+
+
 	contenu_fichier = fs.readFileSync("salon.json", 'utf-8');
 	liste_membre = JSON.parse(contenu_fichier);
+
+	for(var i = 0; i < liste_membre.length; i++){
+		if(liste_membre[i].pseudo === query.pseudo){
+			adv = liste_membre[i].adv;
+			if(liste_membre[i].color === "blanc") {
+				fs.unlinkSync(adv + ".json");
+			} else if(liste_membre[i].color === "noir") {
+				fs.unlinkSync(query.pseudo +".json");
+			}           
+		}
+	}                                                                            
+
 
 	for(i = 0; i < liste_membre.length; i++){
 		if(liste_membre[i].pseudo === query.pseudo){
 			adv = liste_membre[i].adv;
 			liste_membre[i].statut = "";
 			liste_membre[i].adv = "";
+			liste_membre[i].color = "";
 		}
 
 	}
@@ -34,16 +49,17 @@ var trait = function(req, res, query) {
 		if(liste_membre[i].pseudo === adv){
 			liste_membre[i].statut = "";
 			liste_membre[i].adv = "";
+			liste_membre[i].color = "";
 		}
 	}
 
 	contenu_fichier = JSON.stringify(liste_membre);
 	fs.writeFileSync("salon.json", contenu_fichier, 'utf-8');
 
+
+
 	page = fs.readFileSync('res_fin.html', 'UTF-8');
-	
-	fs.unlinkSync(query.pseudo+".json");
-	fs.unlinkSync(adv+".json");
+
 
 	marqueurs = {};
 	marqueurs.pseudo = query.pseudo;
