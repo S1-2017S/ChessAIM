@@ -54,7 +54,7 @@ var trait = function(req, res, query) {
 	}
 
 
-	if(listeboard[query.x][query.y] === "r" && liste_board[query.x_new][query.y_new] === "k") {
+	if(liste_board[query.x][query.y] === "r" && liste_board[query.x_new][query.y_new] === "k") {
 
 		tmp = liste_board[query.x_new][query.y_new];
 		liste_board[query.x_new][query.y_new] = liste_board[query.x][query.y];
@@ -62,7 +62,7 @@ var trait = function(req, res, query) {
 		contenu_board = JSON.stringify(liste_board);
 		fs.writeFileSync(board, contenu_board);
 
-	} else if(listeboard[query.x][query.y] === "R" && liste_board[query.x_new][query.y_new] === "K") {
+	} else if(liste_board[query.x][query.y] === "R" && liste_board[query.x_new][query.y_new] === "K") {
 
 		tmp = liste_board[query.x_new][query.y_new];
 		liste_board[query.x_new][query.y_new] = liste_board[query.x][query.y];

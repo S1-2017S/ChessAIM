@@ -75,7 +75,7 @@ var white_pawn = function(req, res, query) {
 
 		marqueurs_board = {};
 
-		//======= Génération des liens cliquables, avec affichage du plateau ========\\
+//======= Génération des liens cliquables, avec affichage du plateau ========\\
 
 		var horiz_coord = "ABCDEFGH";
 

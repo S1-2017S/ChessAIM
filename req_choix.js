@@ -46,9 +46,9 @@ var trait = function(req, res, query) {
 	}
 
 //============ Appel de la fonction de déplacement/affichage ===============\\
-	if (liste_board[query.x][query.y] === "P") {
+	if (liste_board[query.x][query.y] === liste_board[query.x][query.y].toUpperCase() && liste_board[query.x][query.y] === "P") {
 	 	resultat = move_black_pawn(req,res,query);
-	} else if (liste_board[query.x][query.y] === "p") {
+	} else if (liste_board[query.x][query.y] === liste_board[query.x][query.y].toLowerCase() && liste_board[query.x][query.y] === "p") {
 		resultat = move_white_pawn(req,res,query);
 	}
 };
