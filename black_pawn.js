@@ -59,10 +59,7 @@ var black_pawn = function(req, res, query) {
 		marqueurs_board = {};
 		console.log(liste_board.length);
 		var horiz_coord = "ABCDEFGH";
-		var max = 7;
-		var l = 7;
 		for(var ligne = 0; ligne < 8; ligne ++) {
-			var c = 7;
 			for(var colonne = 0; colonne < 8; colonne ++) {
 				marqueurs_board[colonne + 1] = String(8-colonne);
 				marqueurs_board[horiz_coord[colonne]] = horiz_coord[7-colonne];
@@ -142,31 +139,27 @@ var black_pawn = function(req, res, query) {
 		v_new = Number(v)+1;
 		v_new2 = Number(v)-1;
 
-
 		var horiz_coord = "ABCDEFGH";
 
-		var l = 7;
-
+		marqueurs_board = {};
 		for(var ligne = 0; ligne < 8; ligne ++) {
 
-			var c = 7;
-			for(var colonne = 0; colonne < 8; colonne ++) {
-
+			for(var colonne = 0; colonne < 8; colonne++) {
 				marqueurs_board[colonne + 1] = String(8-colonne);
 				marqueurs_board[horiz_coord[colonne]] = horiz_coord[7-colonne];
 
-			
-				
-if(h_new < 8) {
-				if ( liste_board[ligne][colonne] === liste_board[h_new][v] &&liste_board[h_new][v] === " ") {
 
-					pawn = liste_board[h_new][v];
-					marqueurs_board["sqr_"+ h_new +":"+ v] = "<a href='req_placement?pseudo="+query.pseudo+"&x="+ h +"&y="+ v +"&x_new="+ h_new + "&y_new="+ v +"'><img src="+ liste_images[pawn] +"></a>";
 
+				if(h_new < 8) {
+					if ( liste_board[ligne][colonne] === liste_board[h_new][v] &&liste_board[h_new][v] === " ") {
+
+						pawn = liste_board[h_new][v];
+						marqueurs_board["sqr_"+ h_new +":"+ v] = "<a href='req_placement?pseudo="+query.pseudo+"&x="+ h +"&y="+ v +"&x_new="+ h_new + "&y_new="+ v +"'><img src="+ liste_images[pawn] +"></a>";
+
+					}
 				}
-				}
 
-				if (h_new <= 7 && v_new < 8) {
+				if (h_new < 8 && v_new < 8) {
 					if (liste_board[h_new][v_new] === liste_board[ligne][colonne].toLowerCase() && liste_board[h_new][v_new] !== " ") {
 
 						pawn = liste_board[h_new][v_new];
@@ -175,8 +168,8 @@ if(h_new < 8) {
 					}
 				}
 
-				if (h_new <= 7 && v_new2 >= 0) {
-					if (liste_board[h_new][v_new2] === liste_board[ligne][colonne].toLowerCase() && liste_board[h_new][v_new2] !== " ") {
+				if (h_new < 8) {
+					if (liste_board[ligne][colonne] === liste_board[h_new][v_new2].toLowerCase() && liste_board[h_new][v_new2] !== " ") {
 
 						pawn = liste_board[h_new][v_new2];
 						marqueurs_board["sqr_"+ h_new +":"+ v_new2] = "<a href='req_placement?pseudo="+query.pseudo+"&x="+ h +"&y="+ v +"&x_new="+ h_new + "&y_new="+ v_new2 +"'><img src="+ liste_images[pawn] +"></a>";
@@ -205,6 +198,9 @@ if(h_new < 8) {
 
 			}
 		}
+		page = page.supplant(marqueurs);
+		page = page.supplant(marqueurs_board);
+
 		res.writeHead(200, {"Content-Type": "text/html"});
 		res.write(page);
 		res.end();
