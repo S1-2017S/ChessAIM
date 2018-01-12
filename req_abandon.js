@@ -41,7 +41,9 @@ var trait = function(req, res, query) {
 	fs.writeFileSync("salon.json", contenu_fichier, 'utf-8');
 
 	page = fs.readFileSync('res_fin.html', 'UTF-8');
-
+	
+	fs.unlinkSync(query.pseudo+".json");
+	fs.unlinkSync(adv+".json");
 
 	marqueurs = {};
 	marqueurs.pseudo = query.pseudo;
