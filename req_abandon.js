@@ -63,6 +63,7 @@ var trait = function(req, res, query) {
 
 	marqueurs = {};
 	marqueurs.pseudo = query.pseudo;
+	marqueurs.vainqueur = adv;
 	page = page.supplant(marqueurs);
 
 	res.writeHead(200,{'Content-type': 'text/html'});

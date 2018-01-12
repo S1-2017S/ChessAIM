@@ -59,6 +59,7 @@ var trait = function(req, res, query) {
 	
 	if(test === "c"){
 		page = fs.readFileSync('res_fin.html', 'utf-8');
+		marqueurs.vainqueur = query.pseudo;
 	}else if(test === "b"){
 		marqueurs_board = {};
 		page = fs.readFileSync('res_choix.html', 'utf-8');
