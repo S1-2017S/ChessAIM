@@ -20,12 +20,16 @@ var trait = function(req, res, query) {
 	var marqueurs_board;
 	var liste_membre;
 	var liste_board;
-	var liste_image;;
+	var liste_image;
 	var contenu_fichier;
 	var contenu_board;
 	var contenu_image;
 	var i;
 	var tmp;
+	var liste;
+	var colonne;
+	var l;
+	var c;
 
 	contenu_fichier = fs.readFileSync("salon.json", 'utf-8');
 	liste_membre = JSON.parse(contenu_fichier);
@@ -54,6 +58,8 @@ var trait = function(req, res, query) {
 	}
 
 	i = Number(query.x_new);
+	l = Number(query.x_new);
+	c = Number(query.y_new);
 	if(liste_board[query.x][query.y] === "r" && liste_board[query.x_new][query.y_new] === "k") {
 
 		tmp = liste_board[query.x_new][query.y_new];
@@ -95,6 +101,19 @@ var trait = function(req, res, query) {
 		fs.writeFileSync("salon.json", contenu_fichier, "UTF-8");
 
 		page = fs.readFileSync("res_promotion.html","UTF-8");
+		liste = "";
+		
+		for(colonne = 0; colonne < 4; colonne++) {
+			i = 7;
+			pawn = liste_board[i][colonne];
+			console.log(pawn);
+			liste += "<a href=./req_promotion?pseudo="+ query.pseudo +"&query.x="+ l +"&query.y="+ c +"&new_pawn="+ pawn +"'><img src="+ liste_image[pawn] +"></a>";
+			liste += "<br>";
+		}
+			marqueurs = {};
+			marqueurs.promotion = liste;
+			page = page.supplant(marqueurs);
+		
 		res.writeHead(200, {'Content-Type': 'text/html'});
 		res.write(page);
 		res.end();
