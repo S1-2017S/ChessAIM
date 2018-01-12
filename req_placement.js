@@ -53,7 +53,7 @@ var trait = function(req, res, query) {
 		}
 	}
 
-
+	i = Number(query.x_new);
 	if(liste_board[query.x][query.y] === "r" && liste_board[query.x_new][query.y_new] === "k") {
 
 		tmp = liste_board[query.x_new][query.y_new];
@@ -70,84 +70,122 @@ var trait = function(req, res, query) {
 		contenu_board = JSON.stringify(liste_board);
 		fs.writeFileSync(board, contenu_board);
 
-	} else {
-
+	} else if(liste_board[query.x][query.y] === "p" && i === 0) {
 		tmp = liste_board[query.x][query.y];
 		liste_board[query.x][query.y] = " ";
 		liste_board[query.x_new][query.y_new] = tmp;
 		contenu_board = JSON.stringify(liste_board);
 		fs.writeFileSync(board, contenu_board);
 
-	}
-
-	for(i = 0; i < liste_membre.length; i++){
-		if(liste_membre[i].pseudo === query.pseudo){
-			adv = liste_membre[i].adv;	
-			liste_membre[i].statut = "passif"
+		for(i = 0; i < liste_membre.length; i++){
+			if(liste_membre[i].pseudo === query.pseudo){
+				adv = liste_membre[i].adv;
+				liste_membre[i].statut = "passif"
+			}
 		}
-	}
 
-	for(i = 0; i < liste_membre.length; i++){
-		if(liste_membre[i].pseudo === adv){
-			liste_membre[i].statut = "actif";
+		for(i = 0; i < liste_membre.length; i++){
+			if(liste_membre[i].pseudo === adv){
+				liste_membre[i].statut = "actif";
+			}
+
 		}
-	}
 
-	contenu_fichier = JSON.stringify(liste_membre);
-	fs.writeFileSync("salon.json", contenu_fichier, "UTF-8");
-
-	if(liste_board[query.x][query.y] === "p" && query.x_new === 0) {
+		contenu_fichier = JSON.stringify(liste_membre);
+		fs.writeFileSync("salon.json", contenu_fichier, "UTF-8");
 
 		page = fs.readFileSync("res_promotion.html","UTF-8");
 		res.writeHead(200, {'Content-Type': 'text/html'});
 		res.write(page);
 		res.end();
 
+	}else if (liste_board[query.x][query.y] === "P" && i === 7) {
+		tmp = liste_board[query.x][query.y];
+		liste_board[query.x][query.y] = " ";
+		liste_board[query.x_new][query.y_new] = tmp;
+		contenu_board = JSON.stringify(liste_board);
+		fs.writeFileSync(board, contenu_board);
+		for(i = 0; i < liste_membre.length; i++){
+			if(liste_membre[i].pseudo === query.pseudo){
+				adv = liste_membre[i].adv;
+				liste_membre[i].statut = "passif"
+			}
+		}
 
-	}else if (liste_board[query.x][query.y] === "P" && query.x_new === 7) {
+		for(i = 0; i < liste_membre.length; i++){
+			if(liste_membre[i].pseudo === adv){
+				liste_membre[i].statut = "actif";
+			}
+		}
+
+		contenu_fichier = JSON.stringify(liste_membre);
+		fs.writeFileSync("salon.json", contenu_fichier, "UTF-8");
 
 		page = fs.readFileSync("res_promotion.html","UTF-8");
 		res.writeHead(200, {'Content-Type': 'text/html'});
 		res.write(page);
 		res.end();
 
-	}
+	} else { 
+		tmp = liste_board[query.x][query.y];
+		liste_board[query.x][query.y] = " ";
+		liste_board[query.x_new][query.y_new] = tmp;
+		contenu_board = JSON.stringify(liste_board);
+		fs.writeFileSync(board, contenu_board);
 
 
-	page = fs.readFileSync("res_passif.html","UTF-8");
 
-	marqueurs_board = {};
-	var l = 7;
-	for(var ligne = 0; ligne < 8; ligne++) {
-		var c = 7;
-		for(var colonne = 0; colonne < 8; colonne++) {
-
-			pawn = liste_board[ligne][colonne];	
-
-			var horiz_coord = "ABCDEFGH"
-				if(color === "blanc"){
-
-					marqueurs_board["sqr_" + ligne + ":" + colonne] = "<img src="+liste_image[pawn]+">";
-					marqueurs_board[colonne + 1] = String(colonne + 1);
-					marqueurs_board[horiz_coord[colonne]] = horiz_coord[colonne];
-
-				} else if(color === "noir"){
-					marqueurs_board[colonne + 1] = String(8 - colonne);
-					marqueurs_board[horiz_coord[colonne]] = horiz_coord[7 - colonne];
-					marqueurs_board["sqr_" + l + ":" + c] = "<img src="+liste_image[pawn]+">";
-				}
-			c--;
+		for(i = 0; i < liste_membre.length; i++){
+			if(liste_membre[i].pseudo === query.pseudo){
+				adv = liste_membre[i].adv;	
+				liste_membre[i].statut = "passif"
+			}
 		}
-		l--;
+
+		for(i = 0; i < liste_membre.length; i++){
+			if(liste_membre[i].pseudo === adv){
+				liste_membre[i].statut = "actif";
+			}
+		}
+
+		contenu_fichier = JSON.stringify(liste_membre);
+		fs.writeFileSync("salon.json", contenu_fichier, "UTF-8");
+
+
+		page = fs.readFileSync("res_passif.html","UTF-8");
+
+		marqueurs_board = {};
+		var l = 7;
+		for(var ligne = 0; ligne < 8; ligne++) {
+			var c = 7;
+			for(var colonne = 0; colonne < 8; colonne++) {
+
+				pawn = liste_board[ligne][colonne];	
+
+				var horiz_coord = "ABCDEFGH"
+					if(color === "blanc"){
+
+						marqueurs_board["sqr_" + ligne + ":" + colonne] = "<img src="+liste_image[pawn]+">";
+						marqueurs_board[colonne + 1] = String(colonne + 1);
+						marqueurs_board[horiz_coord[colonne]] = horiz_coord[colonne];
+
+					} else if(color === "noir"){
+						marqueurs_board[colonne + 1] = String(8 - colonne);
+						marqueurs_board[horiz_coord[colonne]] = horiz_coord[7 - colonne];
+						marqueurs_board["sqr_" + l + ":" + c] = "<img src="+liste_image[pawn]+">";
+					}
+				c--;
+			}
+			l--;
+		}
+		page = page.supplant(marqueurs_board);
+
+		page = page.supplant(marqueurs);
+
+		res.writeHead(200, {'Content-Type': 'text/html'});
+		res.write(page);
+		res.end();
 	}
-	page = page.supplant(marqueurs_board);
-
-	page = page.supplant(marqueurs);
-
-	res.writeHead(200, {'Content-Type': 'text/html'});
-	res.write(page);
-	res.end();
-
 };
 
 module.exports = trait;
