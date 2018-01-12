@@ -34,7 +34,7 @@ var black_pawn = function(req, res, query) {
 	var c;
 	var check;
 
-	page = fs.readFileSync('res_placement.html','utf-8');
+	page = fs.readFileSync('res_placement_noir.html','utf-8');
 
 	contenu_image = fs.readFileSync("pieces.json","utf-8");
 	liste_images = JSON.parse(contenu_image);
@@ -57,27 +57,26 @@ var black_pawn = function(req, res, query) {
 		v_new2 = Number(v)-1;
 		check = false;
 		marqueurs_board = {};
-
+		console.log(liste_board.length);
 		var horiz_coord = "ABCDEFGH";
-
+		var max = 7;
 		var l = 7;
 		for(var ligne = 0; ligne < 8; ligne ++) {
 			var c = 7;
 			for(var colonne = 0; colonne < 8; colonne ++) {
 				marqueurs_board[colonne + 1] = String(8-colonne);
 				marqueurs_board[horiz_coord[colonne]] = horiz_coord[7-colonne];
-
 				if (h_new <= 7) {
 					if ( liste_board[ligne][colonne] === liste_board[h_new][v] &&liste_board[h_new][v] === " ") {
 
 						check = true;
 						pawn = liste_board[h_new][v];
-						marqueurs_board["sqr_"+ l +":"+ c] = "<a href='req_placement?pseudo="+query.pseudo+"&x="+ h +"&y="+ v +"&x_new="+ h_new + "&y_new="+ v +"'><img src="+ liste_images[pawn] +"></a>";
+						marqueurs_board["sqr_"+ h_new +":"+ v] = "<a href='req_placement?pseudo="+query.pseudo+"&x="+ h +"&y="+ v +"&x_new="+ h_new + "&y_new="+ v +"'><img src="+ liste_images[pawn] +"></a>";
 
 						if (check === true && liste_board[h_new2][v] === " ") {
 
 							pawn = liste_board[h_new][v];
-							marqueurs_board["sqr_"+ l +":"+ c] = "<a href='req_placement?pseudo="+query.pseudo+"&x="+ h +"&y="+ v +"&x_new="+ h_new2 + "&y_new="+ v +"'><img src="+ liste_images[pawn] +"></a>";
+							marqueurs_board["sqr_"+ h_new2 +":"+ v] = "<a href='req_placement?pseudo="+query.pseudo+"&x="+ h +"&y="+ v +"&x_new="+ h_new2 + "&y_new="+ v +"'><img src="+ liste_images[pawn] +"></a>";
 
 						}
 
@@ -88,7 +87,7 @@ var black_pawn = function(req, res, query) {
 					if (liste_board[h_new][v_new] === liste_board[ligne][colonne].toLowerCase() && liste_board[h_new][v_new] !== " ") {
 
 						pawn = liste_board[h_new][v_new];
-						marqueurs_board["sqr_"+ l +":"+ c] = "<a href='req_placement?pseudo="+query.pseudo+"&x="+ h +"&y="+ v +"&x_new="+ h_new + "&y_new="+ v_new +"'><img src="+ liste_images[pawn] +"></a>";
+						marqueurs_board["sqr_"+ h_new +":"+ v_new] = "<a href='req_placement?pseudo="+query.pseudo+"&x="+ h +"&y="+ v +"&x_new="+ h_new + "&y_new="+ v_new +"'><img src="+ liste_images[pawn] +"></a>";
 
 					}
 				}
@@ -97,33 +96,32 @@ var black_pawn = function(req, res, query) {
 					if (liste_board[h_new][v_new2] === liste_board[ligne][colonne].toLowerCase() && liste_board[h_new][v_new2] !== " ") {
 
 						pawn = liste_board[h_new][v_new2];
-						marqueurs_board["sqr_"+ l +":"+ c] = "<a href='req_placement?pseudo="+query.pseudo+"&x="+ h +"&y="+ v +"&x_new="+ h_new + "&y_new="+ v_new2 +"'><img src="+ liste_images[pawn] +"></a>";
+						marqueurs_board["sqr_"+ h_new +":"+ v_new2] = "<a href='req_placement?pseudo="+query.pseudo+"&x="+ h +"&y="+ v +"&x_new="+ h_new + "&y_new="+ v_new2 +"'><img src="+ liste_images[pawn] +"></a>";
 					}
 				}
 
 				if (liste_board[ligne][colonne] === liste_board[query.x][query.y]) {
 
 					pawn = liste_board[ligne][colonne];
-					marqueurs_board["sqr_"+ l + ":"+ c] = "<img src="+ liste_images[pawn] +"></a>";
+					marqueurs_board["sqr_"+ ligne + ":"+ colonne] = "<img src="+ liste_images[pawn] +"></a>";
 
 				}
 
 				if (liste_board[ligne][colonne] === " ") {
 
 					pawn = liste_board[ligne][colonne];
-					marqueurs_board["sqr_"+ l + ":"+ c] = "<img src="+ liste_images[pawn] +"></a>";
+					marqueurs_board["sqr_"+ ligne + ":"+ colonne] = "<img src="+ liste_images[pawn] +"></a>";
 				}
 
 				else {
 
 					pawn = liste_board[ligne][colonne];
-					marqueurs_board["sqr_"+ l + ":"+ c] = "<img src="+ liste_images[pawn] +"></a>";
+					marqueurs_board["sqr_"+ ligne + ":"+ colonne] = "<img src="+ liste_images[pawn] +"></a>";
 
 				}
 
 
-		
-			c--;
+				c--;
 			}
 			l--;
 		}
@@ -210,7 +208,7 @@ var black_pawn = function(req, res, query) {
 					marqueurs_board["sqr_"+ l + ":"+ c] = "<img src="+ liste_images[pawn] +"></a>";
 
 				}
-			c--;	
+				c--;	
 			}
 			l--;
 		}
