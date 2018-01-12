@@ -92,7 +92,7 @@ var black_pawn = function(req, res, query) {
 					}
 				}
 
-				if (h_new <= 0 && v_new2 >= 0) {
+				if (h_new <= 7 && v_new2 >= 0) {
 					if (liste_board[h_new][v_new2] === liste_board[ligne][colonne].toLowerCase() && liste_board[h_new][v_new2] !== " ") {
 
 						pawn = liste_board[h_new][v_new2];
@@ -155,28 +155,22 @@ var black_pawn = function(req, res, query) {
 				marqueurs_board[colonne + 1] = String(8-colonne);
 				marqueurs_board[horiz_coord[colonne]] = horiz_coord[7-colonne];
 
-				if (h_new <= 7) {
-					if ( liste_board[ligne][colonne] === liste_board[h_new][v] &&liste_board[h_new][v] === " ") {
+			
+				
+if(h_new < 8) {
+				if ( liste_board[ligne][colonne] === liste_board[h_new][v] &&liste_board[h_new][v] === " ") {
 
-						check = true;
-						pawn = liste_board[h_new][v];
-						marqueurs_board["sqr_"+ l +":"+ c] = "<a href='req_placement?pseudo="+query.pseudo+"&x="+ h +"&y="+ v +"&x_new="+ h_new + "&y_new="+ v +"'><img src="+ liste_images[pawn] +"></a>";
+					pawn = liste_board[h_new][v];
+					marqueurs_board["sqr_"+ h_new +":"+ v] = "<a href='req_placement?pseudo="+query.pseudo+"&x="+ h +"&y="+ v +"&x_new="+ h_new + "&y_new="+ v +"'><img src="+ liste_images[pawn] +"></a>";
 
-						if (check === true && liste_board[h_new2][v] === " ") {
-
-							pawn = liste_board[h_new][v];
-							marqueurs_board["sqr_"+ l +":"+ c] = "<a href='req_placement?pseudo="+query.pseudo+"&x="+ h +"&y="+ v +"&x_new="+ h_new2 + "&y_new="+ v +"'><img src="+ liste_images[pawn] +"></a>";
-
-						}
-
-					}
+				}
 				}
 
 				if (h_new <= 7 && v_new < 8) {
 					if (liste_board[h_new][v_new] === liste_board[ligne][colonne].toLowerCase() && liste_board[h_new][v_new] !== " ") {
 
 						pawn = liste_board[h_new][v_new];
-						marqueurs_board["sqr_"+ l +":"+ c] = "<a href='req_placement?pseudo="+query.pseudo+"&x="+ h +"&y="+ v +"&x_new="+ h_new + "&y_new="+ v_new +"'><img src="+ liste_images[pawn] +"></a>";
+						marqueurs_board["sqr_"+ h_new +":"+ v_new] = "<a href='req_placement?pseudo="+query.pseudo+"&x="+ h +"&y="+ v +"&x_new="+ h_new + "&y_new="+ v_new +"'><img src="+ liste_images[pawn] +"></a>";
 
 					}
 				}
@@ -185,38 +179,32 @@ var black_pawn = function(req, res, query) {
 					if (liste_board[h_new][v_new2] === liste_board[ligne][colonne].toLowerCase() && liste_board[h_new][v_new2] !== " ") {
 
 						pawn = liste_board[h_new][v_new2];
-						marqueurs_board["sqr_"+ l +":"+ c] = "<a href='req_placement?pseudo="+query.pseudo+"&x="+ h +"&y="+ v +"&x_new="+ h_new + "&y_new="+ v_new2 +"'><img src="+ liste_images[pawn] +"></a>";
+						marqueurs_board["sqr_"+ h_new +":"+ v_new2] = "<a href='req_placement?pseudo="+query.pseudo+"&x="+ h +"&y="+ v +"&x_new="+ h_new + "&y_new="+ v_new2 +"'><img src="+ liste_images[pawn] +"></a>";
 					}
 				}
 
 				if (liste_board[ligne][colonne] === liste_board[query.x][query.y]) {
 
 					pawn = liste_board[ligne][colonne];
-					marqueurs_board["sqr_"+ l + ":"+ c] = "<img src="+ liste_images[pawn] +"></a>";
+					marqueurs_board["sqr_"+ ligne + ":"+ colonne] = "<img src="+ liste_images[pawn] +"></a>";
 
 				}
 
 				if (liste_board[ligne][colonne] === " ") {
 
 					pawn = liste_board[ligne][colonne];
-					marqueurs_board["sqr_"+ l + ":"+ c] = "<img src="+ liste_images[pawn] +"></a>";
+					marqueurs_board["sqr_"+ ligne + ":"+ colonne] = "<img src="+ liste_images[pawn] +"></a>";
 				}
 
 				else {
 
 					pawn = liste_board[ligne][colonne];
-					marqueurs_board["sqr_"+ l + ":"+ c] = "<img src="+ liste_images[pawn] +"></a>";
+					marqueurs_board["sqr_"+ ligne + ":"+ colonne] = "<img src="+ liste_images[pawn] +"></a>";
 
 				}
-				c--;	
+
 			}
-			l--;
 		}
-
-		page = page.supplant(marqueurs_board);
-
-		page = page.supplant(marqueurs);
-
 		res.writeHead(200, {"Content-Type": "text/html"});
 		res.write(page);
 		res.end();
