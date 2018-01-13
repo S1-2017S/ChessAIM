@@ -21,6 +21,8 @@ var trait = function(req, res, query) {
 	var liste_membre;
 	var liste_board;
 	var liste_image;
+	var liste_init;
+	var contenu_init;
 	var contenu_fichier;
 	var contenu_board;
 	var contenu_image;
@@ -33,6 +35,9 @@ var trait = function(req, res, query) {
 
 	//========== Récupèration des informations de partie =============\\
 	
+	contenu_init = fs.readFileSync("init_board.json","UTF-8");
+	liste_init = JSON.parse(contenu_init);
+
 	contenu_fichier = fs.readFileSync("salon.json", 'utf-8');
 	liste_membre = JSON.parse(contenu_fichier);
 
@@ -85,7 +90,9 @@ var trait = function(req, res, query) {
 		
 		} else if (query.y === 7) {
 
+	
 		}
+	
 	} else if(liste_board[query.x][query.y] === "R" && liste_board[query.x_new][query.y_new] === "K") {
 
 		tmp = liste_board[query.x_new][query.y_new];
@@ -93,6 +100,7 @@ var trait = function(req, res, query) {
 		liste_board[query.x][query.y] = tmp;
 		contenu_board = JSON.stringify(liste_board);
 		fs.writeFileSync(board+ ".json", contenu_board, "utf-8");
+		
 		//============== Promotions ===============\\
 	} else if(liste_board[query.x][query.y] === "p" && i === 0) {
 		
@@ -111,7 +119,7 @@ var trait = function(req, res, query) {
 
 		for(colonne = 0; colonne < 4; colonne++) {
 			i = 7;
-			pawn = liste_board[i][colonne];
+			pawn = liste_init[i][colonne];
 			console.log(pawn);
 			liste += "<a href=./req_promotion?pseudo="+ query.pseudo +"&x_new="+ l +"&y_new="+ c +"&new_pawn="+ pawn +"><img src="+ liste_image[pawn] +"></a>";
 			liste += "<br>";
@@ -125,6 +133,7 @@ var trait = function(req, res, query) {
 		res.end();
 
 	}else if (liste_board[query.x][query.y] === "P" && i === 7) {
+		
 		tmp = liste_board[query.x_new][query.y_new];
 		liste_board[query.x_new][query.y_new] = liste_board[query.x][query.y];
 		liste_board[query.x][query.y] = " ";
@@ -140,7 +149,7 @@ var trait = function(req, res, query) {
 
 		for(colonne = 0; colonne < 4; colonne++) {
 			i = 0;
-			pawn = liste_board[i][colonne];
+			pawn = liste_init[i][colonne];
 			console.log(pawn);
 			liste += "<a href=./req_promotion?pseudo="+ query.pseudo +"&x_new="+ l +"&y_new="+ c +"&new_pawn="+ pawn +"><img src="+ liste_image[pawn] +"></a>";
 			liste += "<br>";

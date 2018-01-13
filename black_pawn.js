@@ -169,7 +169,7 @@ var black_pawn = function(req, res, query) {
 					}
 				}
 
-				if (h_new < 8) {
+				if (h_new <= 7 && v_new2 >= 0) {
 					if (liste_board[ligne][colonne] === liste_board[h_new][v_new2].toLowerCase() && liste_board[h_new][v_new2] !== " ") {
 
 						pawn = liste_board[h_new][v_new2];
