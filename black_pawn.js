@@ -33,19 +33,20 @@ var black_pawn = function(req, res, query) {
 	var l;
 	var c;
 	var check;
+	var board;
 
 	page = fs.readFileSync('res_placement_noir.html','utf-8');
 
 	contenu_image = fs.readFileSync("pieces.json","utf-8");
 	liste_images = JSON.parse(contenu_image);
-
+	
 	tableau_initial = fs.readFileSync("init_board.json","UTF-8");
 	liste_init = JSON.parse(tableau_initial);
 
 	marqueurs = {};
 	marqueurs.pseudo = query.pseudo;
-
-	contenu_board = fs.readFileSync(query.pseudo +".json","UTF-8");
+	board = query.pseudo;
+	contenu_board = fs.readFileSync(board +".json","UTF-8");
 	liste_board = JSON.parse(contenu_board);
 
 	if(liste_board[query.x][query.y] === liste_init[query.x][query.y]) {

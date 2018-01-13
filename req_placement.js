@@ -44,13 +44,13 @@ var trait = function(req, res, query) {
 			adv = liste_membre[i].adv;
 			if(liste_membre[i].color === "noir") {
 				color = "noir";
-				board = query.pseudo + ".json";
-				contenu_board = fs.readFileSync(query.pseudo + ".json", 'utf-8');
+				board = query.pseudo;
+				contenu_board = fs.readFileSync(board + ".json", 'utf-8');
 				liste_board = JSON.parse(contenu_board);
 			} else if(liste_membre[i].color === "blanc") {
 				color = "blanc";
-				board = adv + ".json";
-				contenu_board = fs.readFileSync(adv + ".json", 'utf-8');
+				board = adv;
+				contenu_board = fs.readFileSync(board + ".json", 'utf-8');
 				liste_board = JSON.parse(contenu_board);
 
 			}
@@ -66,7 +66,7 @@ var trait = function(req, res, query) {
 		liste_board[query.x_new][query.y_new] = liste_board[query.x][query.y];
 		liste_board[query.x][query.y] = tmp;
 		contenu_board = JSON.stringify(liste_board);
-		fs.writeFileSync(board, contenu_board);
+		fs.writeFileSync(board+".json", contenu_board);
 
 	} else if(liste_board[query.x][query.y] === "R" && liste_board[query.x_new][query.y_new] === "K") {
 
@@ -74,28 +74,15 @@ var trait = function(req, res, query) {
 		liste_board[query.x_new][query.y_new] = liste_board[query.x][query.y];
 		liste_board[query.x][query.y] = tmp;
 		contenu_board = JSON.stringify(liste_board);
-		fs.writeFileSync(board, contenu_board);
+		fs.writeFileSync(board+ ".json", contenu_board, "utf-8");
 
 	} else if(liste_board[query.x][query.y] === "p" && i === 0) {
-		tmp = liste_board[query.x][query.y];
+		tmp = liste_board[query.x_new][query.y_new];
+		liste_board[query.x_new][query.y_new] = liste_board[query.x][query.y];
 		liste_board[query.x][query.y] = " ";
-		liste_board[query.x_new][query.y_new] = tmp;
 		contenu_board = JSON.stringify(liste_board);
-		fs.writeFileSync(board, contenu_board);
+		fs.writeFileSync(board+ ".json", contenu_board,"UTF-8");
 
-		for(i = 0; i < liste_membre.length; i++){
-			if(liste_membre[i].pseudo === query.pseudo){
-				adv = liste_membre[i].adv;
-				liste_membre[i].statut = "passif"
-			}
-		}
-
-		for(i = 0; i < liste_membre.length; i++){
-			if(liste_membre[i].pseudo === adv){
-				liste_membre[i].statut = "actif";
-			}
-
-		}
 
 		contenu_fichier = JSON.stringify(liste_membre);
 		fs.writeFileSync("salon.json", contenu_fichier, "UTF-8");
@@ -107,7 +94,7 @@ var trait = function(req, res, query) {
 			i = 7;
 			pawn = liste_board[i][colonne];
 			console.log(pawn);
-			liste += "<a href=./req_promotion?pseudo="+ query.pseudo +"&query.x="+ l +"&query.y="+ c +"&new_pawn="+ pawn +"'><img src="+ liste_image[pawn] +"></a>";
+			liste += "<a href=./req_promotion?pseudo="+ query.pseudo +"&x_new="+ l +"&y_new="+ c +"&new_pawn="+ pawn +"><img src="+ liste_image[pawn] +"></a>";
 			liste += "<br>";
 		}
 			marqueurs = {};
@@ -123,7 +110,7 @@ var trait = function(req, res, query) {
 		liste_board[query.x][query.y] = " ";
 		liste_board[query.x_new][query.y_new] = tmp;
 		contenu_board = JSON.stringify(liste_board);
-		fs.writeFileSync(board, contenu_board);
+		fs.writeFileSync(board+ ".json", contenu_board, "UTF-8");
 		for(i = 0; i < liste_membre.length; i++){
 			if(liste_membre[i].pseudo === query.pseudo){
 				adv = liste_membre[i].adv;
@@ -150,9 +137,10 @@ var trait = function(req, res, query) {
 		liste_board[query.x][query.y] = " ";
 		liste_board[query.x_new][query.y_new] = tmp;
 		contenu_board = JSON.stringify(liste_board);
-		fs.writeFileSync(board, contenu_board);
-
-
+		fs.writeFileSync(board+ ".json", contenu_board, "UTF-8");
+		contenu_board = fs.readFileSync(board+".json","UTF-8");
+		liste_board = JSON.parse(contenu_board);
+	
 
 		for(i = 0; i < liste_membre.length; i++){
 			if(liste_membre[i].pseudo === query.pseudo){

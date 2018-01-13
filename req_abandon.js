@@ -17,6 +17,7 @@ var trait = function(req, res, query) {
 	var liste_membre;
 	var i;
 	var adv;
+	var board;
 
 
 
@@ -25,11 +26,12 @@ var trait = function(req, res, query) {
 
 	for(var i = 0; i < liste_membre.length; i++){
 		if(liste_membre[i].pseudo === query.pseudo){
-			adv = liste_membre[i].adv;
+			adv = liste_membre[i].adv +".json";
 			if(liste_membre[i].color === "blanc") {
-				fs.unlinkSync(adv + ".json");
+				fs.unlinkSync(adv);
 			} else if(liste_membre[i].color === "noir") {
-				fs.unlinkSync(query.pseudo +".json");
+				board = query.pseudo +".json"
+				fs.unlinkSync(board);
 			}           
 		}
 	}                                                                            

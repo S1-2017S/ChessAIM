@@ -19,6 +19,7 @@ var trait = function(req, res, query) {
 	var move_black_pawn = require("./black_pawn.js");
 	var move_white_pawn = require("./white_pawn.js");
 	var resultat;
+	var board;
 
 	contenu_fichier = fs.readFileSync("salon.json", 'utf-8');
 	liste_membre = JSON.parse(contenu_fichier);
@@ -37,7 +38,8 @@ var trait = function(req, res, query) {
 			} else if(liste_membre[i].color === "noir") {
 
 				color = "noir";
-				contenu_board = fs.readFileSync(query.pseudo + ".json", 'utf-8');
+				board = query.pseudo;
+				contenu_board = fs.readFileSync(board + ".json", 'utf-8');
 
 			}
 

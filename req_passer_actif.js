@@ -24,7 +24,7 @@ var trait = function(req, res, query) {
 	var marqueurs;
 	var marqueurs_board;
 	var horiz_coord = "ABCDEFGH";
-
+	var board;
 	test = "a";
 
 
@@ -50,7 +50,8 @@ var trait = function(req, res, query) {
 				liste_board = JSON.parse(contenu_board);
 			} else if(liste_membre[i].color === "noir") {
 				color = "noir";
-				contenu_board = fs.readFileSync(query.pseudo +".json", 'utf-8');
+				board = query.pseudo;
+				contenu_board = fs.readFileSync(board +".json", 'utf-8');
 				liste_board = JSON.parse(contenu_board);
 			}
 		}
