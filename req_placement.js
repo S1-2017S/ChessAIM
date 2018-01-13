@@ -83,7 +83,7 @@ var trait = function(req, res, query) {
 		contenu_board = JSON.stringify(liste_board);
 		fs.writeFileSync(board+".json", contenu_board, "UTF-8");
 		
-		} else if (query.y === 7 {
+		} else if (query.y === 7) {
 
 		}
 	} else if(liste_board[query.x][query.y] === "R" && liste_board[query.x_new][query.y_new] === "K") {
