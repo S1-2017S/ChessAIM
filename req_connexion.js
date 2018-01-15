@@ -21,25 +21,32 @@ var trait = function (req, res, query) {
 	var listeMembres;
 	var i;
 	var trouve;
-
+	var connected;
+	var check;
 	// ON LIT LES COMPTES EXISTANTS
 
 	contenu_fichier = fs.readFileSync("membres.json", 'utf-8');    
 	listeMembres = JSON.parse(contenu_fichier);
 
 	// ON VERIFIE QUE LE PSEUDO/PASSWORD EXISTE
-
+	check = false;
 	trouve = false;
 	i = 0;
 	while(i<listeMembres.length && trouve === false) {
 		if(listeMembres[i].pseudo === query.pseudo) {
 			if(listeMembres[i].password === query.password) {
+				if (listeMembres[i].statut === "true") {
+					check = true;
+					trouve = true;
+				} else {
 				trouve = true;
 				listeMembres[i].statut = "true";
 				console.log("prout");
 				contenu_fichier = JSON.stringify(listeMembres);
 				fs.writeFileSync("membres.json", contenu_fichier, 'utf-8');
+				}
 			}
+
 		}
 		i++;
 	}
@@ -56,6 +63,15 @@ var trait = function (req, res, query) {
 		marqueurs.pseudo = query.pseudo;
 		page = page.supplant(marqueurs);
 
+	
+	} else if(check === true) {
+		page = fs.readFileSync('res_accueil.html','UTF8');
+
+		marqueurs = {};
+		marqueurs.erreur = "Le compte est déjà connecté";
+		marqueurs.pseudo = query.pseudo;
+		page = page.supplant(marqueurs);
+	
 	} else {
 		// SI IDENTIFICATION OK, ON ENVOIE PAGE ACCUEIL MEMBRE
 
