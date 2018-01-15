@@ -27,7 +27,7 @@ var trait = function(req, res, query) {
 	var versus;
 
 	test = false;
-
+	//============ Préparation d'une éventuelle partie ============\\
 	contenu_fichier = fs.readFileSync("salon.json", 'utf-8');
 	liste_membre = JSON.parse(contenu_fichier);	
 	
@@ -37,6 +37,7 @@ var trait = function(req, res, query) {
 	contenu_image = fs.readFileSync("pieces.json", 'utf-8');
 	liste_image = JSON.parse(contenu_image);
 
+	//=== Génération des liens permettant de défier un joueur ====\\
 	liste = "";
 	for (i = 0; i < liste_membre.length; i++) {
 		
@@ -47,6 +48,7 @@ var trait = function(req, res, query) {
 			}
 
 		}
+	  //=========== Création du statut de jeu si joeur défié ============\\
 
 	for(i = 0; i < liste_membre.length; i++) {
 		if(liste_membre[i].adv === query.pseudo){
@@ -65,7 +67,7 @@ var trait = function(req, res, query) {
 			test = true;
 		}
 	}
-
+	//========= Si le joueur subit un défi, il commence actif ========\\
 	if(test === true) {
 
 		page = fs.readFileSync('res_choix.html','utf-8');
@@ -101,9 +103,10 @@ var trait = function(req, res, query) {
 		}
 
 		page = page.supplant(marqueurs_board);
-
+	  
+	  //============ Sinon, il reste en attente sur le salon ===========\\
 	} else {
-
+		
 		page = fs.readFileSync('res_salon.html','utf-8');
 
 	}

@@ -30,8 +30,6 @@ var black_pawn = function(req, res, query) {
 	var liste_board;
 	var liste_init;
 	var liste_images;
-	var l;
-	var c;
 	var check;
 	var board;
 

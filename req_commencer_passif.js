@@ -24,7 +24,7 @@ var trait = function(req, res, query) {
 	var init_board;
 	var contenu_echiquier;
 	var board;
-
+   //==== Récupérations des fichiers permettant de créer la partie ====\\
 	contenu_fichier = fs.readFileSync("salon.json", "UTF-8");
 	liste_membre = JSON.parse(contenu_fichier);
 	
@@ -33,9 +33,12 @@ var trait = function(req, res, query) {
 
 	contenu_image = fs.readFileSync("pieces.json", 'utf-8');
 	liste_image = JSON.parse(contenu_image);
+
+	    //====== Création du fichier de jeu dynamique ==========\\
 	board = query.pseudo;
 	fs.writeFileSync(board + ".json", contenu_init_board, "UTF-8")
 
+	   //======== Modification des statuts de jeu =============\\
 	for (i = 0; i < liste_membre.length; i++) {
 		if (liste_membre[i].pseudo === query.pseudo) {
 			liste_membre[i].adv = query.adv;

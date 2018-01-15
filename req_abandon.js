@@ -19,6 +19,7 @@ var trait = function(req, res, query) {
 	var adv;
 	var board;
 
+	//============ Récupération des informations de jeu ===========\\
 
 
 	contenu_fichier = fs.readFileSync("salon.json", 'utf-8');
@@ -35,7 +36,7 @@ var trait = function(req, res, query) {
 			}           
 		}
 	}                                                                            
-
+	//========= Modification des status de jeu =============\\
 
 	for(i = 0; i < liste_membre.length; i++){
 		if(liste_membre[i].pseudo === query.pseudo){
@@ -59,7 +60,7 @@ var trait = function(req, res, query) {
 	fs.writeFileSync("salon.json", contenu_fichier, 'utf-8');
 
 
-
+	//======== Affichage de la page de fin de partie ============\\
 	page = fs.readFileSync('res_fin.html', 'UTF-8');
 
 
