@@ -26,8 +26,8 @@ var trait = function(req, res, query) {
 	var horiz_coord = "ABCDEFGH";
 	var board;
 	test = "a";
-
-
+	
+	//========= Récupération des informations de jeu ============\\
 	contenu_fichier = fs.readFileSync("salon.json", 'utf-8');
 	liste_membre = JSON.parse(contenu_fichier);
 
@@ -36,6 +36,9 @@ var trait = function(req, res, query) {
 
 	marqueurs = {};
 	marqueurs.pseudo = query.pseudo;
+
+//================= Analyse des différents cas entre l'abandon, le changement de tour, et le rafraichissement ========================\\
+
 	for(i = 0; i < liste_membre.length; i++){
 		if(liste_membre[i].pseudo === query.pseudo){
 			adv = liste_membre[i].adv;
@@ -57,10 +60,14 @@ var trait = function(req, res, query) {
 		}
 	}
 
-	
+  //== Cas n° 1: abandon de l'adversaire, affichage de la page de fin ==\\	
 	if(test === "c"){
+		
 		page = fs.readFileSync('res_fin.html', 'utf-8');
 		marqueurs.vainqueur = query.pseudo;
+  
+  //==================== Cas n°2: Passage en actif =======================\\
+	
 	}else if(test === "b"){
 		marqueurs_board = {};
 		page = fs.readFileSync('res_choix.html', 'utf-8');
@@ -76,6 +83,7 @@ var trait = function(req, res, query) {
 				pawn = liste_board[ligne][colonne];
 
 				if(color === "noir") {
+					
 					marqueurs_board[colonne + 1] = String(8 - colonne);
 					marqueurs_board[horiz_coord[colonne]] = horiz_coord[7 - colonne];
 	
@@ -125,7 +133,10 @@ var trait = function(req, res, query) {
 		page = page.supplant(marqueurs_board);
 
 
+	//========= Cas n°3: On reste sur la page passif ==========\\
+
 	}else{
+		
 		page = fs.readFileSync('res_passif.html', 'utf-8');
 		marqueurs_board = {};
 

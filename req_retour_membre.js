@@ -15,8 +15,12 @@ var req_retour_membre = function(req, res, query) {
 	var liste_membre;
 	var i;
 	var indisponible = "indisponible"
+	
+	//===== Récupération informations salon =====\\
 	contenu_fichier = fs.readFileSync("salon.json", 'utf-8');
 	liste_membre = JSON.parse(contenu_fichier);
+	
+	//==== Modification du statut de disponibilité ===//
 
 	for(i = 0; i < liste_membre.length; i++){
 		if(liste_membre[i].pseudo === query.pseudo){

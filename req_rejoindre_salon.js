@@ -23,19 +23,22 @@ var req_rejoindre_salon = function(req,res,query) {
 	var i;
 
 	test = false;
-
+	//======= Récupération des informatons du lobby ===========\\
 	contenu_fichier = fs.readFileSync("salon.json", 'utf-8');
 	liste_membre = JSON.parse(contenu_fichier);
+	
+	//======== Premier cas, le joueur est déjà dans le salon ==========\\
 
 	for(i = 0; i < liste_membre.length; i++){
 		if(liste_membre[i].pseudo === query.pseudo){
 			test = true;
 			liste_membre[i].etat = disponible;
-			liste_membre[i].color = "blanc";
 			contenu_fichier = JSON.stringify(liste_membre);
 			fs.writeFileSync("salon.json", contenu_fichier, 'utf-8');
 		}
 	}
+	
+	//========= Second cas, le joueur n'y était pas ==========\\
 	console.log(test);
 	if(test === false){
 		nouveau_joueur = {};

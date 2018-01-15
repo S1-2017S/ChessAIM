@@ -102,6 +102,7 @@ var trait = function(req, res, query) {
 		fs.writeFileSync(board+ ".json", contenu_board, "utf-8");
 		
 		//============== Promotions ===============\\
+	
 	} else if(liste_board[query.x][query.y] === "p" && i === 0) {
 		
 		tmp = liste_board[query.x_new][query.y_new];

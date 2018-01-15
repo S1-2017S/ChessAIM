@@ -15,9 +15,13 @@ var trait = function (req, res, query) {
 	var contenu_membre;
 	var liste_membre;
 	var i;
+	
+	//========= Récupération des informations utilisateur ==========\\
 
 	contenu_membre = fs.readFileSync("membres.json","UTF-8");
 	liste_membre = JSON.parse(contenu_membre);
+	
+	//======== Changement du statut connecté du joueur ======\\
 
 	for(i = 0; i < liste_membre.length; i++) {
 		if(liste_membre[i].pseudo === query.pseudo) {

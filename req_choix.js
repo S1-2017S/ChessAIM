@@ -47,7 +47,8 @@ var trait = function(req, res, query) {
 		}
 	}
 
-//============ Appel de la fonction de déplacement/affichage ===============\\
+//Appel de la fonction de déplacement/affichage correspondant à la pièce choisie\\
+	
 	if (liste_board[query.x][query.y] === liste_board[query.x][query.y].toUpperCase() && liste_board[query.x][query.y] === "P") {
 	 	resultat = move_black_pawn(req,res,query);
 	} else if (liste_board[query.x][query.y] === liste_board[query.x][query.y].toLowerCase() && liste_board[query.x][query.y] === "p") {
