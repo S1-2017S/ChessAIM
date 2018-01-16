@@ -43,6 +43,7 @@ var trait = function(req, res, query) {
 		
 		if (liste_membre[i].pseudo !== query.pseudo && liste_membre[i].etat === "disponible") {
 	liste += "<form action='/req_commencer_passif' method='GET'><input type ='hidden' name='pseudo' value='"+ query.pseudo +"'><input type ='hidden' name ='adv' value='"+ liste_membre[i].pseudo +"'><button class='button1' name='action' value=''>" + liste_membre[i].pseudo + "</button></form>";
+	liste += "<br>";
 			}
 
 		}

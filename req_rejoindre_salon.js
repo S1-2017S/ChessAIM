@@ -21,7 +21,7 @@ var req_rejoindre_salon = function(req,res,query) {
 	var nouveau_joueur;
 	var test;
 	var i;
-
+	var liste;
 	test = false;
 	//======= Récupération des informatons du lobby ===========\\
 	contenu_fichier = fs.readFileSync("salon.json", 'utf-8');
