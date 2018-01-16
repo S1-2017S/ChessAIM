@@ -44,14 +44,10 @@
 </head>
 
 	<body>
+	<h2><img src="img_favicon.ico"> ChessAIM</h2>
+	<div class="dark-matter">
 
-		{pseudo}
-
-		<h2> JE CHOISIS MA PIECE </h2>
-
-		<form action="req_abandon" method="GET">
-			<button name="pseudo" value="{pseudo}">Abandonner</button>
-		</form>
+		<h3> Choisis ta pièce {pseudo}</h3>
 
 		<link rel="stylesheet" type="text/css" href="css_tableau.css">	
 		<title> Grille d'échecs </title>
@@ -295,5 +291,10 @@
                 </div>
             </div>
         </div>
+
+		<form action="req_abandon" method="GET">
+			<button class="button1" name="pseudo" value="{pseudo}">Abandonner</button>
+		</form>
+		</div>
 	</body>
 </html>

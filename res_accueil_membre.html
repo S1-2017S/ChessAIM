@@ -9,38 +9,39 @@
 </head>
 
 <body>
-	<h1>
-		ChessAIM   :  Nous sommes le {date}.   
-		<form  action="/req_retour_accueil" method="GET">
-			<button class="button" name="pseudo" value="{pseudo}">Déconnexion</button>
-		</form>
-	</h1>
 
-	<h2>
-		Bienvenue <em>{pseudo}<em></br>
-		Envie de faire une petite partie ?<br/>
-		<form action="/req_rejoindre_salon" method="GET">
+<h1><img src="img_favicon.ico"> ChessAIM</h1>
+  
+<div class="dark-matter">
+<form action="/req_rejoindre_salon" method="GET">
+	<h3>Bienvenue <em>{pseudo}</em></br>
+	Envie de faire une petite partie ?
+	</h3>
 			<input type ="hidden" name="pseudo" value="{pseudo}">
-			<input type ="submit" name="action" value="Rejoindre le salon">
-		</form>
-	</h2>
+			<button class="button1" name="action" value="Rejoindre le salon">Rejoindre salon</button>
+</form>
+<br/>
+<form  action="/req_retour_accueil" method="GET">
+	<button class="button1" name="pseudo" value="{pseudo}">Déconnexion</button>
+</form>
+</div>
 
-	<br/>
-	<h2>Règles du jeu :</h2>
+<div class="dark-matter">
+	<h3>Règles du jeu :</h3>
 		<p>
 			Le jeu d'échecs se joue à deux joueurs qui font évoluer seize pièces chacun, respectivement blanches et noires, sur un échiquier de 64 cases en alternance blanches et noires. Pour parler des adversaires, on dit « les Blancs » et « les Noirs ».<br/>
 			Les huits lignes de cases verticales sont appelées colonnes.<br/>
 			Les huits lignes de cases horizontales sont appelées rangées (ou plus rarement traverses).<br/>
 			Les lignes obliques à 45° sont appelées diagonales.<br/>
-			Dans la représentation conventionnelle en diagrammes, les Blancs sont en bas, les Noirs en haut.<br/>
+			Dans la représentation conventionnelle en diagrammes, les Blancs sont en bas, les Noirs en haut.<br/><br/>
 
 		</p>
 
-	<h2>Fontionnement du site</h2>
+	<h3>Fontionnement du site</h3>
 		<p>
-			Tu cliques sur le bouton "Salon de jeu et boom c'est parti !!
+			Rejoignez le salon puis cliquez sur un utilisateur connecté afin de le défier aux échecs ;) 
 		</p>
-
+</div>
 </body>
 
 </html>

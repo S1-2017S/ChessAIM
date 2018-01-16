@@ -58,7 +58,7 @@ var trait = function (req, res, query) {
 		page = fs.readFileSync('res_accueil.html', 'utf-8');
 
 		marqueurs = {};
-		marqueurs.erreur = "ERREUR : compte ou mot de passe incorrect";
+		marqueurs.erreur = "<div class='dark-matter1'>" + "ERREUR : compte ou mot de passe incorrect" + "</div>";
 		marqueurs.pseudo = query.pseudo;
 		page = page.supplant(marqueurs);
 
@@ -67,7 +67,7 @@ var trait = function (req, res, query) {
 		page = fs.readFileSync('res_accueil.html','UTF8');
 
 		marqueurs = {};
-		marqueurs.erreur = "Le compte est déjà connecté";
+		marqueurs.erreur = "<div class='dark-matter1'>" + "Le compte est déjà connecté" + "</div>";
 		marqueurs.pseudo = query.pseudo;
 		page = page.supplant(marqueurs);
 	
