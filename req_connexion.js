@@ -41,7 +41,6 @@ var trait = function (req, res, query) {
 				} else {
 				trouve = true;
 				listeMembres[i].statut = "true";
-				console.log("prout");
 				contenu_fichier = JSON.stringify(listeMembres);
 				fs.writeFileSync("membres.json", contenu_fichier, 'utf-8');
 				}

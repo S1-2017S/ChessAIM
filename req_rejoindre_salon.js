@@ -39,7 +39,6 @@ var req_rejoindre_salon = function(req,res,query) {
 	}
 	
 	//========= Second cas, le joueur n'y était pas ==========\\
-	console.log(test);
 	if(test === false){
 		nouveau_joueur = {};
 		nouveau_joueur.pseudo = query.pseudo;

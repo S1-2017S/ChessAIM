@@ -44,7 +44,7 @@ var trait = function(req, res, query) {
 			adv = liste_membre[i].adv;
 			if(liste_membre[i].statut === "actif"){
 				test = "b"
-			}else if(liste_membre[i].adv === "" || liste_membre[i].statut === ""){
+			}else if(liste_membre[i].adv === "" && liste_membre[i].statut === ""){
 				test = "c"
 			}
 			if(liste_membre[i].color === "blanc") {

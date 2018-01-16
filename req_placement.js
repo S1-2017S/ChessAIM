@@ -121,7 +121,6 @@ var trait = function(req, res, query) {
 		for(colonne = 0; colonne < 4; colonne++) {
 			i = 7;
 			pawn = liste_init[i][colonne];
-			console.log(pawn);
 			liste += "<a href=./req_promotion?pseudo="+ query.pseudo +"&x_new="+ l +"&y_new="+ c +"&new_pawn="+ pawn +"><img src="+ liste_image[pawn] +"></a>";
 			liste += "<br>";
 		}
@@ -151,7 +150,6 @@ var trait = function(req, res, query) {
 		for(colonne = 0; colonne < 4; colonne++) {
 			i = 0;
 			pawn = liste_init[i][colonne];
-			console.log(pawn);
 			liste += "<a href=./req_promotion?pseudo="+ query.pseudo +"&x_new="+ l +"&y_new="+ c +"&new_pawn="+ pawn +"><img src="+ liste_image[pawn] +"></a>";
 			liste += "<br>";
 		}
