@@ -4,20 +4,22 @@
 <head>
 <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
 <link rel="icon" href="img_favicon.ico" />
+<link rel="stylesheet" href="style.css">
 <title>ChessAIM - Inscription</title>
 </head>
 
-<h2>Formulaire de création de compte</h2>
 
 {erreur}
 <p/>
 
-<form action="/req_confirme_inscription" method="GET">
+<form class="dark-matter" action="/req_confirme_inscription" method="GET">
+
+<h2>Formulaire de création de compte</h2>
     <label>Pseudo : </label><input type="text" placeholder="Nom d'utilisateur" name="pseudo" value="{pseudo}">
     <br/>
-    <label>Password : </label><input type="password" placeholder="Mot de passe" name="password" value="">
+    <label>Mot de passe : </label><input type="password" placeholder="Mot de passe" name="password" value="">
     <br/>
-	<label>Confirmation Password : </label><input type="password" placeholder="Mot de passe" name = "check"value="">
+	<label>Confirmation  : </label><input type="password" placeholder="Mot de passe" name = "check"value="">
 	<br/>
 	<i> * Le pseudo et le mot de passe doivent comporter 6 caractères alphanumériques minimum <i/><br/><br/>
     <button name="action" value="creer">Créer compte</button>
