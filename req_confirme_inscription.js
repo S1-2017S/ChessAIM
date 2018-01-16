@@ -64,7 +64,7 @@ var trait = function (req, res, query) {
 			if (query.pseudo[i] === code[j]) {
 				compteur++;
 			}
-		} console.log(compteur);
+		}
 	}
 	if (compteur === query.pseudo.length) {
 		pseudo_check = true;
@@ -125,7 +125,7 @@ var trait = function (req, res, query) {
 				page = fs.readFileSync('res_inscription.html', 'utf-8');
 
 				marqueurs = {};
-				marqueurs.erreur = "ERREUR : ce compte existe déjà";
+				marqueurs.erreur = "Erreur : ce compte existe déjà.";
 				marqueurs.pseudo = query.pseudo;
 				page = page.supplant(marqueurs);
 
@@ -134,7 +134,7 @@ var trait = function (req, res, query) {
 				page = fs.readFileSync('res_inscription.html', 'utf-8');
 
 				marqueurs = {};
-				marqueurs.erreur = "ERREUR : Veuillez entrer un mot de passe d'au moins 6 caractères";
+				marqueurs.erreur = "Erreur : le mot de passe doit comporter au moins 6 caractères.";
 				marqueurs.pseudo = query.pseudo;
 				marqueurs.password = query.password;
 				page = page.supplant(marqueurs);
@@ -144,7 +144,7 @@ var trait = function (req, res, query) {
 				page = fs.readFileSync('res_inscription.html', 'utf-8');
 
 				marqueurs = {};
-				marqueurs.erreur = "ERREUR : Veuillez entrer un mot de passe avec des caractères alphanumérique";
+				marqueurs.erreur = "Erreur : saisissez un mot de passe avec des caractères alphanumériques.";
 				marqueurs.pseudo = query.pseudo;
 				marqueurs.password = query.password;
 				page = page.supplant(marqueurs);
@@ -154,7 +154,7 @@ var trait = function (req, res, query) {
 				page = fs.readFileSync('res_inscription.html', 'UTF-8');
 
 				marqueurs = {};
-				marqueurs.erreur = "Erreur: Le login est trop court, ou comporte des caractères non autorisés."
+				marqueurs.erreur = "Erreur: le pseudo est trop court, ou comporte des caractères non autorisés."
 					marqueurs.pseudo = query.pseudo;
 				marqueurs.password = query.password;
 				page = page.supplant(marqueurs);
@@ -164,7 +164,7 @@ var trait = function (req, res, query) {
 				page = fs.readFileSync('res_inscription.html','UTF-8');
 
 				marqueurs = {};
-				marqueurs.erreur = 'Erreur: Les mots de passe ne correspondent pas.';
+				marqueurs.erreur = 'Erreur: les mots de passe ne correspondent pas.';
 				marqueurs.pseudo = query.pseudo;
 				marqueurs.password = query.password;
 				page = page.supplant(marqueurs);
