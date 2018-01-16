@@ -8,13 +8,14 @@
 <title>ChessAIM - Inscription</title>
 </head>
 
+<body>
 
 {erreur}
+
 <p/>
 
 <form class="dark-matter" action="/req_confirme_inscription" method="GET">
-
-<h2>Formulaire de création de compte</h2>
+	<h3>Formulaire de création de compte</h3>
     <label>Pseudo : </label><input type="text" placeholder="Nom d'utilisateur" name="pseudo" value="{pseudo}">
     <br/>
     <label>Mot de passe : </label><input type="password" placeholder="Mot de passe" name="password" value="">
@@ -22,8 +23,15 @@
 	<label>Confirmation  : </label><input type="password" placeholder="Mot de passe" name = "check"value="">
 	<br/>
 	<i> * Le pseudo et le mot de passe doivent comporter 6 caractères alphanumériques minimum <i/><br/><br/>
-    <button name="action" value="creer">Créer compte</button>
+    <button class="button" name="action" value="creer">Créer compte</button>
 </form>
-<form action="/" method="GET">
-	<button name="" value="">Retour</button>
+
+<p/>
+
+<form  action="/" method="GET">
+	<button class="button" name="" value="">Retour</button>
+</form>
+
+</body>
+
 </html>
