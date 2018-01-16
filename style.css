@@ -1,0 +1,26 @@
+body {
+	background: #b6a67e url(img_bg.png) repeat;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.dark-matter {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 500px;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px 30px 20px 30px;
+    font: 20px ;
+    color: #D3D3D3;
+    text-shadow: 1px 1px 1px #444;
+    border: none;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+}
+
+.dark-matter h2 {
+    padding: 0px 0px 10px 40px;
+    display: block;
+    border-bottom: 1px solid #444;
+    margin: -10px -30px 30px -30px;
+}
