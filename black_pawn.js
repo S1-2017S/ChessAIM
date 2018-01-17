@@ -56,7 +56,7 @@ var black_pawn = function(req, res, query) {
 		v_new2 = Number(v)-1;
 		check = false;
 		marqueurs_board = {};
-		console.log(liste_board.length);
+		
 		var horiz_coord = "ABCDEFGH";
 		for(var ligne = 0; ligne < 8; ligne ++) {
 			for(var colonne = 0; colonne < 8; colonne ++) {
@@ -117,9 +117,7 @@ var black_pawn = function(req, res, query) {
 				}
 
 
-				c--;
 			}
-			l--;
 		}
 
 

@@ -9,14 +9,20 @@
 <title>ChessAIM</title>
 </head>
 <body>
-<h1>Le vainqueur est {vainqueur}<h1/>
+<h1><img src="img_favicon.ico"> ChessAIM</h1>
+
+<div class="dark-matter">
+<h4>Le vainqueur est </h4>
+<h5>{vainqueur}</h5>
 <form action="req_retour_membre" method="GET">
-<button name="pseudo" value="{pseudo}">accueil</button>
+<button class="button1" name="pseudo" value="{pseudo}">accueil</button>
 </form>
+<br/>
 <form action="req_rejoindre_salon" method="GET">
-<button name="pseudo" value="{pseudo}">Salon</button>
+<button class="button1" name="pseudo" value="{pseudo}">Salon</button>
 </form>
 
+</div>
 </body>
 
 </html>

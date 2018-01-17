@@ -5,28 +5,52 @@
 <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
 <link rel="icon" href="img_favicon.ico" />
 <link rel="stylesheet" href="style.css" />
-<title>ChessAIM - Salon</title>
+<title>ChessAIM</title>
 <meta http-equiv="refresh" content="3; url=/req_commencer_actif?pseudo={pseudo}">
 </head>
 
 <body>
 
+	<h1><img src="img_favicon.ico"> ChessAIM</h1>
 
-<p>Bonjour, {pseudo}! Nous somme le {date}.
-<form action ="req_retour_membre" method="GET">
-<input type="hidden" name="pseudo" value="{pseudo}">
-<button name="action" value="disconnect">Retour à l'accueil membres</button>
-</form>
-</p>
+	<div class="dark-matter">
 
-<p>
-{joueurs}
-</p>
+		<h3>
+			Bonjour, {pseudo} ! 
+			<span>
+				Nous sommes le {date}.
+			</span>
+		</h3>
 
+		<form action ="req_retour_membre" method="GET">
+			<input type="hidden" name="pseudo" value="{pseudo}">
+			<button class="button1" name="action" value="disconnect">Retour à l'accueil membres</button>
+		</form>
+	</div>
 
-<p>
-Ici, vous pouvez défier quiconque est simultanément connecté en cliquant sur défier. Le joueur à l'origine du défi prend automatiquement la main en début de partie.
-</p>
+	</p>
+
+	<div class="dark-matter">
+		<h3>
+			Liste des membres connectés
+			<span>
+				Cliquez sur un joueur pour lancer une partie
+			</span>
+		</h3>
+		
+		{joueurs}
+	
+	</div>
+
+	<div class="dark-matter">
+	
+	<p>
+	
+	Ici, vous pouvez défier quiconque est simultanément connecté en cliquant sur son pseudo. Le joueur qui est défié prend automatiquement la main en début de partie, par politesse. Bonne partie, que le meilleur gagne !
+	
+	</p>
+	
+	</div>
 
 </body>
 

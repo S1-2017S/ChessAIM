@@ -29,7 +29,6 @@ var trait = function (req, res, query) {
 	var colonne;
 	var l;
 	var c;
-	console.log(query);
 
 	//========== Recherche des informations de la partie ================\\
 	contenu_fichier = fs.readFileSync("salon.json", 'utf-8');
@@ -58,8 +57,6 @@ var trait = function (req, res, query) {
 
 	l = Number(query.x_new);
 	c = Number(query.y_new);
-	console.log(c);
-	console.log(l);
 
 	//================= Promotion de la pièce =======================\\
 

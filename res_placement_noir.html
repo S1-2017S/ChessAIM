@@ -41,17 +41,11 @@ background: #a9a9a9;
 </head>
 <body>
 
-{pseudo}
+<h2><img src="img_favicon.ico"> ChessAIM</h2>
+    <div class="dark-matter">
 
-<h2>Je déplace ma pièce</h2>
+        <h3> Déplace ta pièce {pseudo}</h2>
 
-<form action="req_placement?adv={adv}" method="GET">
-<button name="pseudo" value="{pseudo}">Deplacer</button>
-</form>
-
-<form action="req_abandon" method="GET">
-<button name="pseudo" value="{pseudo}">Abandonner</button>
-</form>
 
 <title> Grille d'échecs </title> 
 <div id="chess_desk">
@@ -292,6 +286,11 @@ background: #a9a9a9;
 </table>
 </div>
 </div>
+</div>
+
+<form action="req_abandon" method="GET">
+<button class="button1" name="pseudo" value="{pseudo}">Abandonner</button>
+</form>
 </div>
 </body>
 </html>

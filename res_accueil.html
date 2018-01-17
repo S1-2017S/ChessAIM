@@ -10,33 +10,28 @@
 
 <body>
 
-<script>NekoType="neon"</script>
-<h1 id=nl><script src="http://webneko.net/n200504.js"></script>
-<a href="http://webneko.net">Neko</a></h1>
 
-<h2><img src="img_favicon.ico"> ChessAIM</h2>
+<h1><img src="img_favicon.ico"> ChessAIM</h1>
 
 {erreur}
 
-<p/>
-
-<form class="dark-matter" action="/req_connexion" method="GET"> 
-<h2>Connexion</h2>
-<input type="text" placeholder="Nom d'utilisateur" name="pseudo" value="{pseudo}"> 
-<br/>
-<br/>
-<input type="password" placeholder="Mot de passe" name="password" value="">
-<br/>
-<br/>
-<input type="submit" name="action" value="Se connecter">
+<div class="dark-matter">
+<form action="/req_connexion" method="GET"> 
+	<h3>Connexion</h3>
+	<input type="text" placeholder="Nom d'utilisateur" name="pseudo" value="{pseudo}"> 
+	<br/>
+	<input type="password" placeholder="Mot de passe" name="password" value="">
+	<br/>
+	<br/>
+	<button class="button" name="action" value="Se connecter">Se connecter</button>
 </form>
 
-<p/>
+<br/>
 
-<form class="dark-matter" action="/req_inscription" method="GET">
-<button name="action" value="creer">Créer compte</button>
+<form action="/req_inscription" method="GET">
+	<button class="button" name="action" value="creer">Créer compte</button>
 </form>
-
+</div>
 </body>
 
 </html>
