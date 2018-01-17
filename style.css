@@ -168,4 +168,21 @@ body {
     box-shadow: 1px 1px 1px #3D3D3D;
     -webkit-box-shadow:1px 1px 1px #3D3D3D;
     -moz-box-shadow:1px 1px 1px #3D3D3D;
-
+}
+.dark-matter2 {
+	margin-top: -30px;
+	margin-left: auto;
+	margin-right: auto;
+    margin-bottom: 70px;
+    max-width: 50px;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 20px 30px 20px 30px;
+    font-size: 18px;
+	text-align: center;
+    color: #D3D3D3;
+    text-shadow: 1px 1px 1px #444;
+    border: none;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+}
