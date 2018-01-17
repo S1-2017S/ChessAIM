@@ -27,7 +27,7 @@ var req_abandon = require("./req_abandon.js");
 var req_placement = require("./req_placement.js");
 var req_passer_actif = require("./req_passer_actif.js");
 var req_promotion = require("./req_promotion.js");
-// var req_stats = require("./req_stats.js");
+var req_gestion_compte = require("./gestion_compte.js");
 
 
 var req_static = require("./req_static.js");
@@ -93,9 +93,9 @@ var traite_requete = function (req, res) {
 			case '/req_promotion':
 				req_promotion(req, res, query);
 				break;
-//			case '/req_stats':
-//				req_stats(req, res, query);
-//				break;
+			case '/req_gestion_compte':
+				req_gestion_compte(req, res, query);
+				break;
 			default:
                 req_static(req, res, pathname);
                 break;

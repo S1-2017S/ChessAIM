@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+<link rel="icon" href="img_favicon.ico" />
+<link rel="stylesheet" href="style.css">
+<title>ChessAIM - Inscription</title>
+</head>
+
+<body>
+
+	<h2><img src="img_favicon.ico"> ChessAIM</h2>
+
+	<div class="dark-matter">
+		<h3>
+			Vous pouvez ici modifier les informations de votre compte
+		</h3>
+		<form action="req_gestion_compte" method="GET">
+			<button class="button1" name="mod_pseudo" value={pseudo}>
+				Changer pseudo
+			</button>
+			<br/>
+			<button class="button1" name="mod_pwd" value={pseudo}>
+				Changer mot de passe
+			</button>
+		</form>
+		<br/>
+		<form action="/req_retour_acceuil" method="GET">
+			<button class="button1" name="action" value="">
+				Supprimer compte
+			</button>
+		</form>
+		<br/>
+		<form action="/req_retour_membre" method="GET">
+			<button class="button1" name="action" value="">
+				RETOUR
+			</button>
+		</form>
+	</div>
+	
+	<div class="dark-matter3">
+		{pop_mod}
+	</div>
+	
+	<div class="dark-matter1">
+			{erreur}
+	</div>
+</body>
+
+</html>			
