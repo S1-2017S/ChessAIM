@@ -1,5 +1,5 @@
 //=========================================================================
-// Traitement de l'envoi d'une requête fichier
+// Traitement de "req_static"
 // Bennaceur / Fumey-Humbert / Mercier-Handisyde / Vasseur
 // Version : 14.11.2017
 //=========================================================================

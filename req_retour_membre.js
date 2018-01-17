@@ -1,5 +1,7 @@
 //===================================================
 // Traitement de "req_retour_membre"
+// Auteurs : Bennaceur / Fumey-Humbert / Mercier-Handisyde / Vasseur
+// Version : Janvier 2018
 //===================================================
 
 "use strict";
