@@ -17,6 +17,7 @@
 			Vous pouvez ici modifier les informations de votre compte
 		</h3>
 		<form action="req_gestion_compte" method="GET">
+			<input type="hidden" name="pseudo" value="{pseudo}">
 			<button class="button1" name="mod_pseudo" value={pseudo}>
 				Changer pseudo
 			</button>
@@ -26,26 +27,23 @@
 			</button>
 		</form>
 		<br/>
-		<form action="/req_retour_acceuil" method="GET">
-			<button class="button1" name="action" value="">
+		<form action="/req_gestion_compte" method="GET">
+			<input type="hidden" name="splice" value="{pseudo}">
+			<button class="button1" name="pseudo" value="{pseudo}">
 				Supprimer compte
 			</button>
 		</form>
 		<br/>
 		<form action="/req_retour_membre" method="GET">
-			<button class="button1" name="action" value="">
+			<button class="button1" name="pseudo" value="{pseudo}">
 				RETOUR
 			</button>
 		</form>
 	</div>
 	
-	<div class="dark-matter3">
 		{pop_mod}
-	</div>
 	
-	<div class="dark-matter1">
-			{erreur}
-	</div>
+		{erreur}
 </body>
 
 </html>			
