@@ -27,7 +27,7 @@ var req_abandon = require("./req_abandon.js");
 var req_placement = require("./req_placement.js");
 var req_passer_actif = require("./req_passer_actif.js");
 var req_promotion = require("./req_promotion.js");
-var req_gestion_compte = require("./gestion_compte.js");
+var req_gestion_compte = require("./req_gestion_compte.js");
 
 
 var req_static = require("./req_static.js");
