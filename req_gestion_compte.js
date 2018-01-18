@@ -68,7 +68,7 @@ var trait = function (req, res, query) {
 
 	} else if (liste_membre[j].pseudo === query.old_pseudo) {
 		if (query.new_pseudo.length > 6) {
-			liste = "";
+			liste = "<div class ='dark-matter1'>Le pseudonyme a bien été modifié, votre nouveau pseudo est "+ query.new_pseudo +". Pensez à bien le noter <3";
 			erreurs = "";
 			liste_membre[j].pseudo = query.new_pseudo;
 			contenu_fichier = JSON.stringify(liste_membre);
@@ -98,7 +98,7 @@ var trait = function (req, res, query) {
 	} else if (liste_membre[j].password === query.old_pwd) {
 
 		if (query.new_pwd.length > 6 && query.new_pwd === query.confirm_pwd) {
-			liste = "";
+			liste = "<div class='dark-matter'>Le mot de passe a bien été modifié, votre nouveau mot de passe est" + query.new_pwd +". Pensez à bien le noter <3";
 			erreurs = "";
 			liste_membre[j].password = query.new_pwd;
 			contenu_fichier = JSON.stringify(liste_membre);
@@ -107,7 +107,7 @@ var trait = function (req, res, query) {
 			marqueurs.pop_mod = liste;
 			marqueurs.pseudo = query.old_pseudo;
 			marqueurs.erreur = erreurs;
-			page = page.supplant(page);
+			page = page.supplant(marqueurs);
 			res.writeHead(200, {'Content-Type': 'text/html'});
 			res.write(page);
 			res.end;

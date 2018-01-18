@@ -23,7 +23,10 @@ var any_piece = function(req, res, query) {
 	var liste_membre;
 	var liste_board;
 	var liste_image;
-
+	var l;
+	var c;
+	var horiz_coord;
+	var i;
 
 	page = fs.readFileSync('res_placement.html', 'utf-8');
 
@@ -35,7 +38,9 @@ var any_piece = function(req, res, query) {
 
 	marqueurs = {};
 	marqueurs.pseudo = query.pseudo;
-	for(var i = 0; i < liste_membre.length; i++){
+
+	for(i = 0; i < liste_membre.length; i++){
+
 		if(liste_membre[i].pseudo === query.pseudo){
 
 			adv = liste_membre[i].adv;
@@ -56,18 +61,22 @@ var any_piece = function(req, res, query) {
 		}
 	}
 
-	var l = 7;
+	l = 7;
 
 	marqueurs_board = {};
-	for(var ligne = 0; ligne < 8; ligne++) {
+	for(ligne = 0; ligne < 8; ligne++) {
 
-		var c = 7;
+		c = 7;
 
-		for(var colonne = 0; colonne < 8; colonne++) {
+		for(colonne = 0; colonne < 8; colonne++) {
 
 			pawn = liste_board[ligne][colonne];
 
 			if(color === "noir") {
+
+				marqueurs_board[colonne + 1] = String(8 - colonne);
+				marqueurs_board[horiz_coord[colonne]] = horiz_coord[7 - colonne];
+
 
 				if(liste_board[ligne][colonne] === liste_board[ligne][colonne].toUpperCase() && liste_board[ligne][colonne] !== " ") {
 
@@ -87,6 +96,10 @@ var any_piece = function(req, res, query) {
 				}
 
 			} else if (color === "blanc") {
+
+				marqueurs_board[colonne + 1] = String(colonne + 1);
+				marqueurs_board[horiz_coord[colonne]] = horiz_coord[colonne];
+
 
 				if(liste_board[ligne][colonne] === liste_board[ligne][colonne].toUpperCase() && liste_board[ligne][colonne] !== " ") {
 
