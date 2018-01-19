@@ -34,7 +34,9 @@ var white_pawn = function(req, res, query) {
 	var l;
 	var c;
 	var check;
-
+	var ligne;
+	var colonne;
+	var horiz_coord;
 
 	//============ Récupération des informations de jeu ================\\
 	page = fs.readFileSync('res_placement.html','utf-8');
@@ -77,15 +79,15 @@ var white_pawn = function(req, res, query) {
 
 //======= Génération des liens cliquables, avec affichage du plateau ========\\
 
-		var horiz_coord = "ABCDEFGH";
+		horiz_coord = "ABCDEFGH";
 
-		var l = 7;
+		l = 7;
 
-		for(var ligne = 0; ligne < 8; ligne ++) {
+		for(ligne = 0; ligne < 8; ligne ++) {
 
-			var c = 7;
+			c = 7;
 
-			for(var colonne = 0; colonne < 8; colonne ++) {
+			for(colonne = 0; colonne < 8; colonne ++) {
 
 				marqueurs_board[colonne + 1] = String(colonne +1);
 				marqueurs_board[horiz_coord[colonne]] = horiz_coord[colonne];
@@ -168,16 +170,16 @@ var white_pawn = function(req, res, query) {
 		v_new2 = Number(v)-1;
 
 		marqueurs_board = {};
-		var horiz_coord = "ABCDEFGH";
+		horiz_coord = "ABCDEFGH";
 
 
-		var l = 7;
+		l = 7;
 
-		for(var ligne = 0; ligne < 8; ligne ++) {
+		for(ligne = 0; ligne < 8; ligne ++) {
 
-			var c = 7;
+			c = 7;
 
-			for(var colonne = 0; colonne < 8; colonne ++) {
+			for(colonne = 0; colonne < 8; colonne ++) {
 
 				marqueurs_board[colonne + 1] = String(colonne +1);
 				marqueurs_board[horiz_coord[colonne]] = horiz_coord[colonne];

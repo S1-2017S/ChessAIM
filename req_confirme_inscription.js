@@ -42,10 +42,10 @@ var trait = function (req, res, query) {
 	}
 
 	// ON VERIFIE LA LONGUEUR DU LOGIN
-	if (query.pseudo.length < 6 ) {
-		pseudo_len = false;
-	} else {
+	if (query.pseudo.length > 6 && query.pseudo.length < 15) {
 		pseudo_len = true;
+	} else {
+		pseudo_len = false;
 	}
 
 	// ON VERIFIE LA LONGUEUR DU PASSWORD
@@ -59,10 +59,15 @@ var trait = function (req, res, query) {
 	pseudo_check = false;
 	var code = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIGKLMNOPQRSTUVWXYZ';
 	var compteur = 0;
-	for (i = 0; i < query.pseudo.length; i++) {
-		for (j = 0; j < code.length; j++) {
+	var check_chars = false;
+	for (j = 0; j < code.length; j++) {
+		for (i = 0; i < query.pseudo.length; i++) {
 			if (query.pseudo[i] === code[j]) {
 				compteur++;
+				
+			} else {
+				check_chars = true;
+				console.log(query.pseudo[i]);
 			}
 		}
 	}

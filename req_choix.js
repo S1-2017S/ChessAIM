@@ -18,6 +18,7 @@ var trait = function(req, res, query) {
 	var liste_board;
 	var move_black_pawn = require("./black_pawn.js");
 	var move_white_pawn = require("./white_pawn.js");
+	var move_any_piece = require('./any_piece.js');
 	var resultat;
 	var board;
 
@@ -53,6 +54,8 @@ var trait = function(req, res, query) {
 	 	resultat = move_black_pawn(req,res,query);
 	} else if (liste_board[query.x][query.y] === "p") {
 		resultat = move_white_pawn(req,res,query);
+	} else {
+		resultat = move_any_piece(req, res, query);
 	}
 };
 

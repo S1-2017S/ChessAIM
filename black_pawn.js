@@ -32,7 +32,9 @@ var black_pawn = function(req, res, query) {
 	var liste_images;
 	var check;
 	var board;
-
+	var ligne;
+	var colonne;
+	var horiz_coord;
 	page = fs.readFileSync('res_placement_noir.html','utf-8');
 
 	contenu_image = fs.readFileSync("pieces.json","utf-8");
@@ -57,9 +59,9 @@ var black_pawn = function(req, res, query) {
 		check = false;
 		marqueurs_board = {};
 		
-		var horiz_coord = "ABCDEFGH";
-		for(var ligne = 0; ligne < 8; ligne ++) {
-			for(var colonne = 0; colonne < 8; colonne ++) {
+		horiz_coord = "ABCDEFGH";
+		for(ligne = 0; ligne < 8; ligne ++) {
+			for(colonne = 0; colonne < 8; colonne ++) {
 				marqueurs_board[colonne + 1] = String(8-colonne);
 				marqueurs_board[horiz_coord[colonne]] = horiz_coord[7-colonne];
 				if (h_new <= 7) {

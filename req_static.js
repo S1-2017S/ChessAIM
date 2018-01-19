@@ -57,8 +57,9 @@ var get_static = function (req, res, query) {
 		res.write(page);
 		res.end();
 	} catch (e) {
-		res.writeHead(200, {'Content-Type': 'text/plain'});
-		res.write('ERREUR 404 : ' + file + ' fichier non trouvé');
+		page = fs.readFileSync('res_static.html','UTF-8');
+		res.writeHead(200, {'Content-Type': 'text/html'});
+		res.write(page);
 		res.end();
 	}
 };

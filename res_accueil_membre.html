@@ -2,23 +2,28 @@
 <html>
 
 <head>
-<meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
-<link rel="icon" href="img_favicon.ico" />
-<link rel="stylesheet" href="style.css">
-<title>ChessAIM</title>
+	<meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+	<link rel="icon" href="img_favicon.ico" />
+	<link rel="stylesheet" href="style.css">
+	<title>ChessAIM</title>
 </head>
 
 <body>
 
 <h1><img src="img_favicon.ico"> ChessAIM</h1>
-  
+
 <div class="dark-matter">
-<form action="/req_rejoindre_salon" method="GET">
-	<h3>Bienvenue <em>{pseudo}</em></br>
-	Envie de faire une petite partie ?
-	</h3>
-			<input type ="hidden" name="pseudo" value="{pseudo}">
-			<button class="button1" name="action" value="Rejoindre le salon">Rejoindre salon</button>
+	<form action="/req_rejoindre_salon" method="GET">
+<h3>Bienvenue <em>{pseudo}</em></br>
+Envie de faire une petite partie ?
+</h3>
+	<input type ="hidden" name="pseudo" value="{pseudo}">
+	<button class="button1" name="action" value="Rejoindre le salon">Rejoindre salon</button>
+</form>
+<br/>
+<form action="/req_gestion_compte" method="GET">
+	<button class="button1" name="pseudo"  value="{pseudo}">Gérer mon compte
+	</button>
 </form>
 <br/>
 <form  action="/req_retour_accueil" method="GET">
@@ -27,21 +32,23 @@
 </div>
 
 <div class="dark-matter">
-	<h3>Règles du jeu :</h3>
-		<p>
-			Le jeu d'échecs se joue à deux joueurs qui font évoluer seize pièces chacun, respectivement blanches et noires, sur un échiquier de 64 cases en alternance blanches et noires. Pour parler des adversaires, on dit « les Blancs » et « les Noirs ».<br/>
-			Les huits lignes de cases verticales sont appelées colonnes.<br/>
-			Les huits lignes de cases horizontales sont appelées rangées (ou plus rarement traverses).<br/>
-			Les lignes obliques à 45° sont appelées diagonales.<br/>
-			Dans la représentation conventionnelle en diagrammes, les Blancs sont en bas, les Noirs en haut.<br/><br/>
+<h3>Règles du jeu :</h3>
+<p>
+Le jeu d'échecs se joue à deux joueurs qui font évoluer seize pièces chacun, respectivement blanches et noires, sur un échiquier de 64 cases en alternance blanches et noires. Pour parler des adversaires, on dit « les Blancs » et « les Noirs ».<br/>
+Les huits lignes de cases verticales sont appelées colonnes.<br/>
+Les huits lignes de cases horizontales sont appelées rangées (ou plus rarement traverses).<br/>
+Les lignes obliques à 45° sont appelées diagonales.<br/>
+Dans la représentation conventionnelle en diagrammes, les Blancs sont en bas, les Noirs en haut.<br/><br/>
 
-		</p>
+</p>
 
-	<h3>Fontionnement du site</h3>
-		<p>
-			Rejoignez le salon puis cliquez sur un utilisateur connecté afin de le défier aux échecs ;) 
-		</p>
+<h3>Fontionnement du site</h3>
+<p>
+Rejoignez le salon puis cliquez sur un utilisateur connecté afin de le défier aux échecs ;)
+</p>
 </div>
 </body>
 
 </html>
+
+
