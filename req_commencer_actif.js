@@ -25,6 +25,9 @@ var trait = function(req, res, query) {
 	var liste;
 	var test;
 	var versus;
+	var horiz_coord;
+	var ligne;
+	var colonne;
 
 	test = false;
 	//============ Préparation d'une éventuelle partie ============\\
@@ -71,10 +74,10 @@ var trait = function(req, res, query) {
 		page = fs.readFileSync('res_choix.html','utf-8');
 
 		marqueurs_board = {};
-		var horiz_coord = "ABCDEFGH";
+		horiz_coord = "ABCDEFGH";
 
-		for(var ligne = 0; ligne < 8; ligne++) {
-			for(var colonne = 0; colonne < 8; colonne++) {
+		for(ligne = 0; ligne < 8; ligne++) {
+			for(colonne = 0; colonne < 8; colonne++) {
 				marqueurs_board[colonne + 1] = String(colonne + 1);
                 marqueurs_board[horiz_coord[colonne]] = horiz_coord[colonne];	
 				
