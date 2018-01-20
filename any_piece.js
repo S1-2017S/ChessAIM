@@ -27,6 +27,8 @@ var any_piece = function(req, res, query) {
 	var c;
 	var horiz_coord;
 	var i;
+	var ligne;
+	var colonne;
 
 	page = fs.readFileSync('res_placement.html', 'utf-8');
 
@@ -62,7 +64,7 @@ var any_piece = function(req, res, query) {
 	}
 
 	l = 7;
-
+	horiz_coord = "ABCDEFGH";
 	marqueurs_board = {};
 	for(ligne = 0; ligne < 8; ligne++) {
 

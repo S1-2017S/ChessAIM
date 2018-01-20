@@ -68,7 +68,7 @@ var trait = function (req, res, query) {
 
 	} else if (liste_membre[j].pseudo === query.old_pseudo) {
 		if (query.new_pseudo.length > 6) {
-			liste = "<div class ='dark-matter1'>Le pseudonyme a bien été modifié, votre nouveau pseudo est "+ query.new_pseudo +". Pensez à bien le noter <3";
+			liste = "<div class ='dark-matter'>Le pseudonyme a bien été modifié, votre nouveau pseudo est "+ query.new_pseudo +". Pensez à bien le noter <3";
 			erreurs = "";
 			liste_membre[j].pseudo = query.new_pseudo;
 			contenu_fichier = JSON.stringify(liste_membre);
